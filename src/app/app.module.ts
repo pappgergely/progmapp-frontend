@@ -8,6 +8,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { HeaderComponent } from './components/header/header.component';
 import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
 import { StaffRegistrationComponent } from './components/staff-registration/staff-registration.component';
+import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { StaffRegistrationComponent } from './components/staff-registration/staf
     LoginPageComponent,
     HeaderComponent,
     StudentRegistrationComponent,
-    StaffRegistrationComponent
+    StaffRegistrationComponent,
+    StudentQuizPageComponent
   ],
   imports: [
     BrowserModule,
