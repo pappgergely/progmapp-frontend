@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    StudentRegistrationComponent
   ],
   imports: [
     BrowserModule,
