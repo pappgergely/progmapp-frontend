@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NewQuizQuestionModalComponent } from '../new-quiz-question-modal/new-quiz-question-modal.component';
 
 @Component({
   selector: 'app-teacher-quiz-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherQuizPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
 
+  getNewQuizQuestion(): void {
+    this.modalService.open(NewQuizQuestionModalComponent, { windowClass: 'quiz-question'});
+  }
 }

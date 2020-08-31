@@ -1,0 +1,38 @@
+.msg {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.form {
+  padding: 15px;
+}
+
+::ng-deep .quiz-question .modal-dialog {
+  max-width: 800px;
+}
+
+.question-picture {
+  border: solid black 1px;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.img-upload {
+  margin-left: 10px;
+  margin-top: 162px;
+}
+
+.btn-secondary {
+  margin-left: 5px;
+}
+
+.fa-plus-square {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.add-new-answer label {
+  margin-left: 10px;
+  font-size: 18px;
+}

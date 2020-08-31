@@ -10,6 +10,7 @@ import { StudentRegistrationComponent } from './components/student-registration/
 import { StaffRegistrationComponent } from './components/staff-registration/staff-registration.component';
 import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
 import { TeacherQuizPageComponent } from './components/teacher-quiz-page/teacher-quiz-page.component';
+import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,16 @@ import { TeacherQuizPageComponent } from './components/teacher-quiz-page/teacher
     StudentRegistrationComponent,
     StaffRegistrationComponent,
     StudentQuizPageComponent,
-    TeacherQuizPageComponent
+    TeacherQuizPageComponent,
+    NewQuizQuestionModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule
+  ],
+  entryComponents: [
+    NewQuizQuestionModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

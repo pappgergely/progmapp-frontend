@@ -1,0 +1,58 @@
+<form class="form">
+  <h3 class="msg">Új kvízkérdés létrehozása</h3>
+  <div class="form-group row">
+    <label for="inputQuestionType" class="col-sm-2 col-form-label">Kérdés típusa</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="inputQuestionType">
+        <option selected disabled>Válassz...</option>
+        <option>Felelet választós</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputQuestion" class="col-sm-2 col-form-label">Kérdés szövege</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="inputQuestion" placeholder="Kérdés szövege" rows="5" cols="10"></textarea>
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <div class="col-form-label col-sm-2 pt-0">Kép (opcionális)</div>
+      <div class="col-sm-10">
+        <img src="/assets/img/empty.jpg" alt="" class="question-picture">
+        <button class="btn btn-primary img-upload">Kép feltöltése</button>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <div class="col-sm-2">Válaszok</div>
+    <div class="col-sm-10">
+      <div class="answers">
+        <!--    answers add dinamically    -->
+      </div>
+      <div class="add-new-answer">
+        <i class="far fa-plus-square" (click)="generateNewAnswer()"></i>
+        <label>Új válaszlehetőség hozzáadása</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputTimeLimit" class="col-sm-2 col-form-label">Időlimit (opcionális)</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="inputTimeLimit" placeholder="Időlimit">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputExplain" class="col-sm-2 col-form-label">Magyarázat</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="5" cols="10"></textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Kvízkérdés létrehozása</button>
+      <button type="submit" class="btn btn-secondary" (click)='close()'>Mégsem</button>
+    </div>
+  </div>
+</form>
+
