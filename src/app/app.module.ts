@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
 import { StaffRegistrationComponent } from './components/staff-registration/staff-registration.component';
 import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
+import { TeacherQuizPageComponent } from './components/teacher-quiz-page/teacher-quiz-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { StudentQuizPageComponent } from './components/student-quiz-page/student
     HeaderComponent,
     StudentRegistrationComponent,
     StaffRegistrationComponent,
-    StudentQuizPageComponent
+    StudentQuizPageComponent,
+    TeacherQuizPageComponent
   ],
   imports: [
     BrowserModule,

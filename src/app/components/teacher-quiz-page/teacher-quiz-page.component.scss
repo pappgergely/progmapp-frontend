@@ -1,0 +1,33 @@
+.main-container {
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.welcome-msg {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 30px;
+}
+
+.quiz-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+ol {
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+.quiz-question-list, .quiz-list {
+  margin-top: 50px;
+}
+
+.quiz-question-list {
+  margin-left: 80px;
+}
+
+.quiz-list {
+  margin-right: 150px;
+}
