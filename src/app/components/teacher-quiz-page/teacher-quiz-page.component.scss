@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .main-container {
   background-color: white;
   margin-top: 50px;
@@ -10,11 +14,6 @@
   padding: 30px;
 }
 
-.quiz-page {
-  display: flex;
-  justify-content: space-between;
-}
-
 ol {
   margin-top: 20px;
   padding-bottom: 30px;
@@ -22,12 +21,33 @@ ol {
 
 .quiz-question-list, .quiz-list {
   margin-top: 50px;
-}
-
-.quiz-question-list {
   margin-left: 80px;
 }
 
 .quiz-list {
   margin-right: 150px;
 }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.col2 {
+  background-color: lightgray;
+}
+
+
