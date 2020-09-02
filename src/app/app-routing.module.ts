@@ -7,6 +7,7 @@ import {StudentQuizPageComponent} from './components/student-quiz-page/student-q
 import {TeacherQuizPageComponent} from './components/teacher-quiz-page/teacher-quiz-page.component';
 import {TeacherMainPageComponent} from './components/teacher-main-page/teacher-main-page.component';
 import {StaffMainPageComponent} from './components/staff-main-page/staff-main-page.component';
+import {NewUserPageComponent} from './components/new-user-page/new-user-page.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'student-quiz-page', component: StudentQuizPageComponent},
   {path: 'teacher-quiz-page', component: TeacherQuizPageComponent},
   {path: 'teacher-main-page', component: TeacherMainPageComponent},
-  {path: 'staff-main-page', component: StaffMainPageComponent}
+  {path: 'staff-main-page', component: StaffMainPageComponent},
+  {path: 'new-user', component: NewUserPageComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,48 @@
+.main-container {
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.welcome-msg {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 30px;
+}
+
+.btn-primary {
+  margin-bottom: 40px;
+}
+
+.filter {
+  margin-bottom: 20px;
+}
+
+.user-list {
+  padding-bottom: 20px;
+}
+
+.col-form-label {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.fa-arrow-left {
+  float: left;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #777777;
+  text-decoration: none;
+}
+
+.new-user {
+  width: 800px;
+}

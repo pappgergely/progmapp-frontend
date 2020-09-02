@@ -14,6 +14,9 @@ import { NewQuizQuestionModalComponent } from './components/new-quiz-question-mo
 import { NewForeverquizModalComponent } from './components/new-foreverquiz-modal/new-foreverquiz-modal.component';
 import { TeacherMainPageComponent } from './components/teacher-main-page/teacher-main-page.component';
 import { StaffMainPageComponent } from './components/staff-main-page/staff-main-page.component';
+import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
+import { UserRowComponent } from './components/user-row/user-row.component';
+import { NewUserModalComponent } from './components/new-user-modal/new-user-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { StaffMainPageComponent } from './components/staff-main-page/staff-main-
     NewQuizQuestionModalComponent,
     NewForeverquizModalComponent,
     TeacherMainPageComponent,
-    StaffMainPageComponent
+    StaffMainPageComponent,
+    NewUserPageComponent,
+    UserRowComponent,
+    NewUserModalComponent
   ],
   imports: [
     BrowserModule,
