@@ -13,6 +13,7 @@ import { TeacherQuizPageComponent } from './components/teacher-quiz-page/teacher
 import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
 import { NewForeverquizModalComponent } from './components/new-foreverquiz-modal/new-foreverquiz-modal.component';
 import { TeacherMainPageComponent } from './components/teacher-main-page/teacher-main-page.component';
+import { StaffMainPageComponent } from './components/staff-main-page/staff-main-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TeacherMainPageComponent } from './components/teacher-main-page/teacher
     TeacherQuizPageComponent,
     NewQuizQuestionModalComponent,
     NewForeverquizModalComponent,
-    TeacherMainPageComponent
+    TeacherMainPageComponent,
+    StaffMainPageComponent
   ],
   imports: [
     BrowserModule,
