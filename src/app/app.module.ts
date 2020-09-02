@@ -17,6 +17,8 @@ import { StaffMainPageComponent } from './components/staff-main-page/staff-main-
 import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
 import { UserRowComponent } from './components/user-row/user-row.component';
 import { NewUserModalComponent } from './components/new-user-modal/new-user-modal.component';
+import { NewClassPageComponent } from './components/new-class-page/new-class-page.component';
+import { ClassRowComponent } from './components/class-row/class-row.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NewUserModalComponent } from './components/new-user-modal/new-user-moda
     StaffMainPageComponent,
     NewUserPageComponent,
     UserRowComponent,
-    NewUserModalComponent
+    NewUserModalComponent,
+    NewClassPageComponent,
+    ClassRowComponent
   ],
   imports: [
     BrowserModule,
