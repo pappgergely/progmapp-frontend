@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NewQuizQuestionModalComponent } from '../new-quiz-question-modal/new-quiz-question-modal.component';
+import {NewForeverquizModalComponent} from '../new-foreverquiz-modal/new-foreverquiz-modal.component';
 
 @Component({
   selector: 'app-teacher-quiz-page',
@@ -16,5 +17,9 @@ export class TeacherQuizPageComponent implements OnInit {
 
   getNewQuizQuestion(): void {
     this.modalService.open(NewQuizQuestionModalComponent, { windowClass: 'quiz-question'});
+  }
+
+  getNewForeverQuiz(): void {
+    this.modalService.open(NewForeverquizModalComponent, { windowClass: 'quiz-question'});
   }
 }

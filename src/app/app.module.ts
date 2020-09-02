@@ -11,6 +11,7 @@ import { StaffRegistrationComponent } from './components/staff-registration/staf
 import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
 import { TeacherQuizPageComponent } from './components/teacher-quiz-page/teacher-quiz-page.component';
 import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
+import { NewForeverquizModalComponent } from './components/new-foreverquiz-modal/new-foreverquiz-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewQuizQuestionModalComponent } from './components/new-quiz-question-mo
     StaffRegistrationComponent,
     StudentQuizPageComponent,
     TeacherQuizPageComponent,
-    NewQuizQuestionModalComponent
+    NewQuizQuestionModalComponent,
+    NewForeverquizModalComponent
   ],
   imports: [
     BrowserModule,
