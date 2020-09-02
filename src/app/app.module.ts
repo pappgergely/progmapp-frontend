@@ -19,6 +19,7 @@ import { UserRowComponent } from './components/user-row/user-row.component';
 import { NewUserModalComponent } from './components/new-user-modal/new-user-modal.component';
 import { NewClassPageComponent } from './components/new-class-page/new-class-page.component';
 import { ClassRowComponent } from './components/class-row/class-row.component';
+import { NewClassModalComponent } from './components/new-class-modal/new-class-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ClassRowComponent } from './components/class-row/class-row.component';
     UserRowComponent,
     NewUserModalComponent,
     NewClassPageComponent,
-    ClassRowComponent
+    ClassRowComponent,
+    NewClassModalComponent
   ],
   imports: [
     BrowserModule,

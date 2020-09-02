@@ -1,0 +1,32 @@
+<form class="form">
+  <h3 class="msg">Új osztály létrehozása</h3>
+  <div class="form-group row">
+    <label for="inputClassName" class="col-sm-2 col-form-label">Osztály neve</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="inputClassName" placeholder="Osztály neve">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputNewClass" class="col-sm-2 col-form-label">Diákok</label>
+    <div class="col-sm-10">
+      <div class="selectBox" (click)="showCheckboxes()">
+        <select class="form-control" id="inputNewClass">
+          <option selected disabled>Válassz...</option>
+        </select>
+        <div class="overSelect"></div>
+      </div>
+      <div id="checkboxes">
+        <label for="one">
+          <input type="checkbox" id="one"/>Ide lesznek betöltve a diákok</label>
+      </div>
+    </div>
+  </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Osztály létrehozása</button>
+        <button type="submit" class="btn btn-secondary" (click)='close()'>Mégsem</button>
+      </div>
+    </div>
+</form>
+
+

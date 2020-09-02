@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NewClassModalComponent} from '../new-class-modal/new-class-modal.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-new-class-page',
@@ -7,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewClassPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
 
   createNewClass(): void {
-
+    this.modalService.open(NewClassModalComponent, { windowClass: 'new-class'});
   }
 }

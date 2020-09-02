@@ -1,0 +1,50 @@
+::ng-deep .new-class .modal-dialog {
+  max-width: 800px;
+}
+
+.msg {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.form {
+  padding: 15px;
+}
+
+.btn-primary {
+  margin-right: 10px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+#checkboxes input {
+  margin-right: 5px;
+  margin-left: 4px;
+}
