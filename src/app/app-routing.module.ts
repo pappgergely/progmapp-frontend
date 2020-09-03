@@ -10,6 +10,7 @@ import {StaffMainPageComponent} from './components/staff-main-page/staff-main-pa
 import {NewUserPageComponent} from './components/new-user-page/new-user-page.component';
 import {NewClassPageComponent} from './components/new-class-page/new-class-page.component';
 import {TeacherClassPageComponent} from './components/teacher-class-page/teacher-class-page.component';
+import {ProfilePageComponent} from './components/profile-page/profile-page.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'staff-main-page', component: StaffMainPageComponent},
   {path: 'new-user', component: NewUserPageComponent},
   {path: 'new-class', component: NewClassPageComponent},
-  {path: 'teacher-class-page', component: TeacherClassPageComponent}
+  {path: 'teacher-class-page', component: TeacherClassPageComponent},
+  {path: 'profile', component: ProfilePageComponent}
 ];
 
 @NgModule({

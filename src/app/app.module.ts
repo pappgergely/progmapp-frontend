@@ -22,6 +22,7 @@ import { ClassRowComponent } from './components/class-row/class-row.component';
 import { NewClassModalComponent } from './components/new-class-modal/new-class-modal.component';
 import { TeacherClassPageComponent } from './components/teacher-class-page/teacher-class-page.component';
 import { ClassQuizRowComponent } from './components/class-quiz-row/class-quiz-row.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ClassQuizRowComponent } from './components/class-quiz-row/class-quiz-ro
     ClassRowComponent,
     NewClassModalComponent,
     TeacherClassPageComponent,
-    ClassQuizRowComponent
+    ClassQuizRowComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
