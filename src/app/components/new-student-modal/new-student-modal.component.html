@@ -1,0 +1,36 @@
+<form class="form">
+  <h3 class="msg">Új diák létrehozása</h3>
+  <div class="form-group row">
+    <label for="inputStudentName" class="col-sm-2 col-form-label">Diák neve</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="inputStudentName" placeholder="Diák neve">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail" class="col-sm-2 col-form-label">Email cím</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="inputEmail" placeholder="Email cím">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputNewClass" class="col-sm-2 col-form-label">Osztály</label>
+    <div class="col-sm-10">
+      <div class="selectBox" (click)="showCheckboxes()">
+        <select class="form-control" id="inputNewClass">
+          <option selected disabled>Válassz...</option>
+        </select>
+        <div class="overSelect"></div>
+      </div>
+      <div id="checkboxes">
+        <label for="one">
+          <input type="checkbox" id="one"/>Ide lesznek betöltve az osztályok</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Diák létrehozása és email küldése</button>
+      <button type="submit" class="btn btn-secondary" (click)='close()'>Mégsem</button>
+    </div>
+  </div>
+</form>

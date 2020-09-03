@@ -23,6 +23,7 @@ import { NewClassModalComponent } from './components/new-class-modal/new-class-m
 import { TeacherClassPageComponent } from './components/teacher-class-page/teacher-class-page.component';
 import { ClassQuizRowComponent } from './components/class-quiz-row/class-quiz-row.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { NewStudentModalComponent } from './components/new-student-modal/new-student-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
     NewClassModalComponent,
     TeacherClassPageComponent,
     ClassQuizRowComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    NewStudentModalComponent
   ],
   imports: [
     BrowserModule,
