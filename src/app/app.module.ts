@@ -9,7 +9,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
 import { StaffRegistrationComponent } from './components/staff-registration/staff-registration.component';
 import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
-import { TeacherQuizPageComponent } from './components/teacher-quiz-page/teacher-quiz-page.component';
 import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
 import { NewForeverquizModalComponent } from './components/new-foreverquiz-modal/new-foreverquiz-modal.component';
 import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
@@ -24,6 +23,10 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { NewStudentModalComponent } from './components/new-student-modal/new-student-modal.component';
 import { QuizStatisticModalComponent } from './components/quiz-statistic-modal/quiz-statistic-modal.component';
 import { ChangePasswordModalComponent } from './components/change-password-modal/change-password-modal.component';
+import { QuizQuestionListPageComponent } from './components/quiz-question-list-page/quiz-question-list-page.component';
+import { ForeverQuizListPageComponent } from './components/forever-quiz-list-page/forever-quiz-list-page.component';
+import { ForeverQuizRowComponent } from './components/forever-quiz-row/forever-quiz-row.component';
+import { QuizQuestionRowComponent } from './components/quiz-question-row/quiz-question-row.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,6 @@ import { ChangePasswordModalComponent } from './components/change-password-modal
     StudentRegistrationComponent,
     StaffRegistrationComponent,
     StudentQuizPageComponent,
-    TeacherQuizPageComponent,
     NewQuizQuestionModalComponent,
     NewForeverquizModalComponent,
     NewUserPageComponent,
@@ -47,15 +49,16 @@ import { ChangePasswordModalComponent } from './components/change-password-modal
     ProfilePageComponent,
     NewStudentModalComponent,
     QuizStatisticModalComponent,
-    ChangePasswordModalComponent
+    ChangePasswordModalComponent,
+    QuizQuestionListPageComponent,
+    ForeverQuizListPageComponent,
+    ForeverQuizRowComponent,
+    QuizQuestionRowComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule
-  ],
-  entryComponents: [
-    NewQuizQuestionModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

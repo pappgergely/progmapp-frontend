@@ -4,7 +4,6 @@ import {LoginPageComponent} from './components/login-page/login-page.component';
 import {StudentRegistrationComponent} from './components/student-registration/student-registration.component';
 import {StaffRegistrationComponent} from './components/staff-registration/staff-registration.component';
 import {StudentQuizPageComponent} from './components/student-quiz-page/student-quiz-page.component';
-import {TeacherQuizPageComponent} from './components/teacher-quiz-page/teacher-quiz-page.component';
 import {NewUserPageComponent} from './components/new-user-page/new-user-page.component';
 import {NewClassPageComponent} from './components/new-class-page/new-class-page.component';
 import {TeacherClassPageComponent} from './components/teacher-class-page/teacher-class-page.component';
@@ -13,6 +12,8 @@ import {NewQuizQuestionModalComponent} from './components/new-quiz-question-moda
 import {NewForeverquizModalComponent} from './components/new-foreverquiz-modal/new-foreverquiz-modal.component';
 import {ChangePasswordModalComponent} from './components/change-password-modal/change-password-modal.component';
 import {QuizStatisticModalComponent} from './components/quiz-statistic-modal/quiz-statistic-modal.component';
+import {QuizQuestionListPageComponent} from './components/quiz-question-list-page/quiz-question-list-page.component';
+import {ForeverQuizListPageComponent} from './components/forever-quiz-list-page/forever-quiz-list-page.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -20,7 +21,6 @@ const routes: Routes = [
   {path: 'student-registration', component: StudentRegistrationComponent},
   {path: 'staff-registration', component: StaffRegistrationComponent},
   {path: 'student-quiz-page', component: StudentQuizPageComponent},
-  {path: 'teacher-quiz-page', component: TeacherQuizPageComponent},
   {path: 'new-user', component: NewUserPageComponent},
   {path: 'new-class', component: NewClassPageComponent},
   {path: 'teacher-class-page', component: TeacherClassPageComponent},
@@ -28,7 +28,9 @@ const routes: Routes = [
   {path: 'new-quiz-question', component: NewQuizQuestionModalComponent},
   {path: 'new-forever-quiz', component: NewForeverquizModalComponent},
   {path: 'change-password', component: ChangePasswordModalComponent},
-  {path: 'statistic', component: QuizStatisticModalComponent}
+  {path: 'statistic', component: QuizStatisticModalComponent},
+  {path: 'quiz-question-list', component: QuizQuestionListPageComponent},
+  {path: 'forever-quiz-list', component: ForeverQuizListPageComponent}
 ];
 
 @NgModule({
