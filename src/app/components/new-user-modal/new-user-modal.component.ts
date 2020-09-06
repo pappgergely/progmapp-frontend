@@ -18,18 +18,4 @@ export class NewUserModalComponent implements OnInit {
   close(): void {
     this.activeModal.close();
   }
-
-  generateAnotherRole(): void {
-    const createDiv = document.createElement('div');
-    createDiv.innerHTML = `
-      <select class="form-control" id="inputUserRole">
-        <option selected disabled>Válassz...</option>
-        <option>Admin</option>
-        <option>Irodai munkatárs</option>
-        <option>Tanár</option>
-        <option>Mentor</option>
-        <option>Diák</option>
-      </select>`;
-    document.getElementsByClassName('role')[0].appendChild(createDiv);
-  }
 }

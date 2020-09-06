@@ -12,8 +12,6 @@ import { StudentQuizPageComponent } from './components/student-quiz-page/student
 import { TeacherQuizPageComponent } from './components/teacher-quiz-page/teacher-quiz-page.component';
 import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
 import { NewForeverquizModalComponent } from './components/new-foreverquiz-modal/new-foreverquiz-modal.component';
-import { TeacherMainPageComponent } from './components/teacher-main-page/teacher-main-page.component';
-import { StaffMainPageComponent } from './components/staff-main-page/staff-main-page.component';
 import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
 import { UserRowComponent } from './components/user-row/user-row.component';
 import { NewUserModalComponent } from './components/new-user-modal/new-user-modal.component';
@@ -25,6 +23,7 @@ import { ClassQuizRowComponent } from './components/class-quiz-row/class-quiz-ro
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { NewStudentModalComponent } from './components/new-student-modal/new-student-modal.component';
 import { QuizStatisticModalComponent } from './components/quiz-statistic-modal/quiz-statistic-modal.component';
+import { ChangePasswordModalComponent } from './components/change-password-modal/change-password-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,6 @@ import { QuizStatisticModalComponent } from './components/quiz-statistic-modal/q
     TeacherQuizPageComponent,
     NewQuizQuestionModalComponent,
     NewForeverquizModalComponent,
-    TeacherMainPageComponent,
-    StaffMainPageComponent,
     NewUserPageComponent,
     UserRowComponent,
     NewUserModalComponent,
@@ -49,7 +46,8 @@ import { QuizStatisticModalComponent } from './components/quiz-statistic-modal/q
     ClassQuizRowComponent,
     ProfilePageComponent,
     NewStudentModalComponent,
-    QuizStatisticModalComponent
+    QuizStatisticModalComponent,
+    ChangePasswordModalComponent
   ],
   imports: [
     BrowserModule,

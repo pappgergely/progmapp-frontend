@@ -1,9 +1,37 @@
 <div class="header-container">
   <div class="header">
     <img src="/assets/img/progmaticlogo.png" class="logo" alt="logo">
-    <div class="welcome">
-      <p>Üdvözlünk</p>
-      <p>Felhasználó!</p>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/new-class">Osztályok1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/teacher-class-page">Osztályok2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/new-user">Felhasználók</a>
+      </li>
+      <li class="nav-item">
+        <div ngbDropdown class="d-inline-block dropdown">
+          <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Kvízek</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a routerLink="/new-quiz-question" ngbDropdownItem>Új kvízkérdés létrehozása</a>
+            <a routerLink="/new-forever-quiz" ngbDropdownItem>Új örökkvíz létrehozása</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="welcome mt-4">
+      <p class="mb-0">Üdvözlünk</p>
+      <div ngbDropdown class="d-inline-block dropdown">
+        <a class="profile" id="dropdownBasic2" ngbDropdownToggle>Felhasználó!</a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+          <a routerLink="/profile" ngbDropdownItem>Profilom</a>
+          <a routerLink="/change-password" ngbDropdownItem>Jelszó megváltoztatása</a>
+          <a routerLink="/statistic" ngbDropdownItem>Statisztikám</a>
+          <button ngbDropdownItem>Kijelentkezés</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-new-quiz-question-modal',
@@ -8,15 +7,9 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class NewQuizQuestionModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) {
-    this.activeModal = activeModal;
-  }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  close(): void {
-    this.activeModal.close();
   }
 
   generateNewAnswer(): void {
