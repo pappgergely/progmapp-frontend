@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewForeverquizModalComponent implements OnInit {
 
+  questions = [
+    {id: 1, name: 'kérdés1'},
+    {id: 2, name: 'kérdés2'},
+  ];
+
+  selectedQuestionIds: number[];
+
   public expanded = false;
 
   constructor() { }

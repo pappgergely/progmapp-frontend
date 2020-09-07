@@ -8,6 +8,13 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class NewStudentModalComponent implements OnInit {
 
+  classes = [
+    {id: 1, name: 'osztály1'},
+    {id: 2, name: 'osztály2'},
+  ];
+
+  selectedClassIds: number[];
+
   public expanded = false;
 
   constructor(public activeModal: NgbActiveModal) {
@@ -19,16 +26,5 @@ export class NewStudentModalComponent implements OnInit {
 
   close(): void {
     this.activeModal.close();
-  }
-
-  showCheckboxes(): void {
-    const checkboxes = document.getElementById('checkboxes');
-    if (!this.expanded) {
-      checkboxes.style.display = 'block';
-      this.expanded = true;
-    } else {
-      checkboxes.style.display = 'none';
-      this.expanded = false;
-    }
   }
 }

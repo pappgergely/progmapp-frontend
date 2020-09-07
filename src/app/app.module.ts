@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,7 +61,11 @@ import { QuizQuestionRowComponent } from './components/quiz-question-row/quiz-qu
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
+    NgSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
