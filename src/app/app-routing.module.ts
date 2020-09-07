@@ -14,6 +14,7 @@ import {ChangePasswordModalComponent} from './components/change-password-modal/c
 import {QuizStatisticModalComponent} from './components/quiz-statistic-modal/quiz-statistic-modal.component';
 import {QuizQuestionListPageComponent} from './components/quiz-question-list-page/quiz-question-list-page.component';
 import {ForeverQuizListPageComponent} from './components/forever-quiz-list-page/forever-quiz-list-page.component';
+import {ModifyQuizQuestionModalComponent} from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: 'change-password', component: ChangePasswordModalComponent},
   {path: 'statistic', component: QuizStatisticModalComponent},
   {path: 'quiz-question-list', component: QuizQuestionListPageComponent},
-  {path: 'forever-quiz-list', component: ForeverQuizListPageComponent}
+  {path: 'forever-quiz-list', component: ForeverQuizListPageComponent},
+  {path: 'xyz', component: ModifyQuizQuestionModalComponent}
 ];
 
 @NgModule({

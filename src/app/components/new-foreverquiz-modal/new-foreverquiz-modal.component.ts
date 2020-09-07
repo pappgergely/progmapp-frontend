@@ -20,15 +20,4 @@ export class NewForeverquizModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  showCheckboxes(): void {
-    const checkboxes = document.getElementById('checkboxes');
-    if (!this.expanded) {
-      checkboxes.style.display = 'block';
-      this.expanded = true;
-    } else {
-      checkboxes.style.display = 'none';
-      this.expanded = false;
-    }
-  }
 }

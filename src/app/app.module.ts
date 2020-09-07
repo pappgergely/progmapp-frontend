@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import 'froala-editor/js/plugins.pkgd.min.js';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 
@@ -31,6 +30,8 @@ import { QuizQuestionListPageComponent } from './components/quiz-question-list-p
 import { ForeverQuizListPageComponent } from './components/forever-quiz-list-page/forever-quiz-list-page.component';
 import { ForeverQuizRowComponent } from './components/forever-quiz-row/forever-quiz-row.component';
 import { QuizQuestionRowComponent } from './components/quiz-question-row/quiz-question-row.component';
+import { ModifyForeverquizModalComponent } from './components/modify-foreverquiz-modal/modify-foreverquiz-modal.component';
+import { ModifyQuizQuestionModalComponent } from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,8 @@ import { QuizQuestionRowComponent } from './components/quiz-question-row/quiz-qu
     ForeverQuizListPageComponent,
     ForeverQuizRowComponent,
     QuizQuestionRowComponent,
+    ModifyForeverquizModalComponent,
+    ModifyQuizQuestionModalComponent,
   ],
   imports: [
     BrowserModule,
