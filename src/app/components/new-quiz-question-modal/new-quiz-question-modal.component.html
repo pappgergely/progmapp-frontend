@@ -13,8 +13,7 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Kérdés szövege</label>
     <div class="col-sm-10">
-      <textarea froala="froalaOptions" ngModel="html"></textarea>
-      <div [froalaEditor]="options" [(froalaModel)]="content"></div>
+      <pre [froalaEditor]="options"><code></code></pre>
     </div>
   </div>
   <div class="form-group row">

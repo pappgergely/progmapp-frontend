@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-quiz-question-modal.component.scss']
 })
 export class NewQuizQuestionModalComponent implements OnInit {
-  options: any;
-  content: any;
 
   constructor() { }
+
+  options = {
+    placeholderText: 'Kérdés szövege...',
+    charCounterCount: false,
+    attribution: false
+  };
 
   ngOnInit(): void {
   }
