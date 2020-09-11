@@ -9,7 +9,7 @@
         <a class="nav-link active" routerLink="/teacher-class-page">Osztályok2</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/new-user">Felhasználók</a>
+        <a class="nav-link" routerLink="/new-user" >Felhasználók</a>
       </li>
       <li class="nav-item">
         <div ngbDropdown class="d-inline-block dropdown">
@@ -31,7 +31,7 @@
           <a routerLink="/profile" ngbDropdownItem>Profilom</a>
           <a routerLink="/change-password" ngbDropdownItem>Jelszó megváltoztatása</a>
           <a routerLink="/statistic" ngbDropdownItem>Statisztikám</a>
-          <button ngbDropdownItem>Kijelentkezés</button>
+          <button ngbDropdownItem (click)="logout()">Kijelentkezés</button>
         </div>
       </div>
     </div>

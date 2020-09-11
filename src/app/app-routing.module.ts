@@ -14,7 +14,8 @@ import {ChangePasswordModalComponent} from './components/change-password-modal/c
 import {QuizStatisticModalComponent} from './components/quiz-statistic-modal/quiz-statistic-modal.component';
 import {QuizQuestionListPageComponent} from './components/quiz-question-list-page/quiz-question-list-page.component';
 import {ForeverQuizListPageComponent} from './components/forever-quiz-list-page/forever-quiz-list-page.component';
-import {ModifyQuizQuestionModalComponent} from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
+import {Roles} from './enum/roles.enum';
+import {AuthGuard} from './guard/auth.guard';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -25,14 +26,13 @@ const routes: Routes = [
   {path: 'new-user', component: NewUserPageComponent},
   {path: 'new-class', component: NewClassPageComponent},
   {path: 'teacher-class-page', component: TeacherClassPageComponent},
-  {path: 'profile', component: ProfilePageComponent},
+  {path: 'profile', component: ProfilePageComponent}, // TODO role?
   {path: 'new-quiz-question', component: NewQuizQuestionModalComponent},
   {path: 'new-forever-quiz', component: NewForeverquizModalComponent},
-  {path: 'change-password', component: ChangePasswordModalComponent},
-  {path: 'statistic', component: QuizStatisticModalComponent},
+  {path: 'change-password', component: ChangePasswordModalComponent}, // TODO role?
+  {path: 'statistic', component: QuizStatisticModalComponent}, // TODO role?
   {path: 'quiz-question-list', component: QuizQuestionListPageComponent},
-  {path: 'forever-quiz-list', component: ForeverQuizListPageComponent},
-  {path: 'xyz', component: ModifyQuizQuestionModalComponent}
+  {path: 'forever-quiz-list', component: ForeverQuizListPageComponent} // , canActivate: [AuthGuard], data: { roles: [Roles.teacher]}
 ];
 
 @NgModule({

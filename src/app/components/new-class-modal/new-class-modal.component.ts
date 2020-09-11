@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClient} from '@angular/common/http';
+import {NewClass} from '../../interfaces/new-class';
+import {environment} from '../../../environments/environment';
+import {NewClassService} from '../../services/new-class.service';
 
 @Component({
   selector: 'app-new-class-modal',
@@ -8,10 +12,17 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class NewClassModalComponent implements OnInit {
 
-  public expanded = false;
+  class: NewClass;
+  private readonly SERVER_URL = environment.serverUrl;
 
-  constructor(public activeModal: NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal, private http: HttpClient, private newClassService: NewClassService) {
     this.activeModal = activeModal;
+    this.class = {
+      id: '',
+      year: null,
+      semester: '',
+      isActive: false,
+    };
   }
 
   ngOnInit(): void {
@@ -21,14 +32,8 @@ export class NewClassModalComponent implements OnInit {
     this.activeModal.close();
   }
 
-  showCheckboxes(): void {
-    const checkboxes = document.getElementById('checkboxes');
-    if (!this.expanded) {
-      checkboxes.style.display = 'block';
-      this.expanded = true;
-    } else {
-      checkboxes.style.display = 'none';
-      this.expanded = false;
-    }
+  saveClass(): void {
+    this.newClassService.addClass(this.class);
+    this.activeModal.close();
   }
 }

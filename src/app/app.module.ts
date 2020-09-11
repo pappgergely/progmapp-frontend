@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -32,6 +33,7 @@ import { ForeverQuizRowComponent } from './components/forever-quiz-row/forever-q
 import { QuizQuestionRowComponent } from './components/quiz-question-row/quiz-question-row.component';
 import { ModifyForeverquizModalComponent } from './components/modify-foreverquiz-modal/modify-foreverquiz-modal.component';
 import { ModifyQuizQuestionModalComponent } from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
+import {CsrfInterceptor} from './interceptors/csrf.interceptor';
 
 @NgModule({
   declarations: [
@@ -62,16 +64,24 @@ import { ModifyQuizQuestionModalComponent } from './components/modify-quiz-quest
     ModifyForeverquizModalComponent,
     ModifyQuizQuestionModalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
-    NgSelectModule,
-    FormsModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NgbModule,
+        FroalaEditorModule.forRoot(),
+        FroalaViewModule.forRoot(),
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+  entryComponents: [
+    ModifyForeverquizModalComponent,
+    ModifyQuizQuestionModalComponent
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
