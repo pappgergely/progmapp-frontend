@@ -16,10 +16,12 @@ import {QuizQuestionListPageComponent} from './components/quiz-question-list-pag
 import {ForeverQuizListPageComponent} from './components/forever-quiz-list-page/forever-quiz-list-page.component';
 import {Roles} from './enum/roles.enum';
 import {AuthGuard} from './guard/auth.guard';
+import {MainPageComponent} from './components/main-page/main-page.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'login', component: LoginPageComponent},
+  {path: 'main-page', component: MainPageComponent},
   {path: 'student-registration', component: StudentRegistrationComponent},
   {path: 'staff-registration', component: StaffRegistrationComponent},
   {path: 'student-quiz-page', component: StudentQuizPageComponent},

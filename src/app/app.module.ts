@@ -34,6 +34,7 @@ import { QuizQuestionRowComponent } from './components/quiz-question-row/quiz-qu
 import { ModifyForeverquizModalComponent } from './components/modify-foreverquiz-modal/modify-foreverquiz-modal.component';
 import { ModifyQuizQuestionModalComponent } from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
 import {CsrfInterceptor} from './interceptors/csrf.interceptor';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import {CsrfInterceptor} from './interceptors/csrf.interceptor';
     QuizQuestionRowComponent,
     ModifyForeverquizModalComponent,
     ModifyQuizQuestionModalComponent,
+    MainPageComponent,
   ],
     imports: [
         BrowserModule,
