@@ -5,7 +5,7 @@
     <div class="form-group form-inline">
       <label for="inputFilter" class="col-sm-1 col-form-label">Szűrő:</label>
       <div>
-        <input class="form-control ml-2" type="text" id="inputFilter">
+        <input class="form-control ml-2" type="text" id="inputFilter" [(ngModel)]="filter">
       </div>
     </div>
     <div class="pb-3">
@@ -18,9 +18,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr app-class-quiz-row>Ide kerülnek majd az osztályok és a hozzájuk tartozó örökkvízek</tr>
+        <tr app-class-quiz-row *ngFor='let q of quizWithClass | filterClass: filter' [quizWithClass]="q"></tr>
         </tbody>
       </table>
+      <div *ngIf="quizWithClass.length === 0">
+        Nincs osztály az adatbázisban.
+      </div>
     </div>
   </div>
   <div class="container">

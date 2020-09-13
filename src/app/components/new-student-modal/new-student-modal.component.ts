@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-new-student-modal',
@@ -17,14 +16,8 @@ export class NewStudentModalComponent implements OnInit {
 
   public expanded = false;
 
-  constructor(public activeModal: NgbActiveModal) {
-    this.activeModal = activeModal;
-  }
+  constructor() {}
 
   ngOnInit(): void {
-  }
-
-  close(): void {
-    this.activeModal.close();
   }
 }

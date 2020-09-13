@@ -7,7 +7,7 @@
           <h5 class="card-title text-center">Regisztráció</h5>
           <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-label-group">
-              <input type="text" formControlName="name" id="inputUsername" class="form-control"
+              <input type="text" formControlName="username" id="inputUsername" class="form-control"
                      placeholder="Felhasználónév" required autofocus
                      [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
               <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -15,24 +15,6 @@
                 <div *ngIf="f.username.errors.minlength">A felhasználó névnek legalább 3 karakternek kell lennie</div>
               </div>
               <label for="inputUsername">Felhasználónév</label>
-            </div>
-            <div class="form-label-group">
-              <input type="number" formControlName="phonenumber" id="inputPhonenumber" class="form-control"
-                     placeholder="Telefonszám" required
-                     [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
-              <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
-                <div *ngIf="f.phoneNumber.errors.required">Telefonszám megadása kötelező</div>
-              </div>
-              <label for="inputPhonenumber">Telefonszám</label>
-            </div>
-            <div class="form-label-group">
-              <input type="text" formControlName="address" id="inputAddress" class="form-control"
-                     placeholder="Cím" required
-                     [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
-              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                <div *ngIf="f.address.errors.required">Cím megadása kötelező</div>
-              </div>
-              <label for="inputAddress">Cím</label>
             </div>
             <div class="form-label-group">
               <input type="password" formControlName="password" id="inputPassword" class="form-control"

@@ -16,10 +16,11 @@ export class LoginService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
   public currentUser = new BehaviorSubject<User>(null);
+  private currentUserSubject: BehaviorSubject<User>;
   private csrfToken: string;
 
   constructor(private http: HttpClient, private router: Router) {
-    // this.getCurrentUser();
+    this.getCurrentUser();
     this.csrfToken = '';
     this.fetchCsrf().subscribe(x => {
       console.log(x);
@@ -30,12 +31,16 @@ export class LoginService {
     return this.loggedIn.asObservable();
   }
 
-  // getCurrentUser(): void{
-  //   this.http.get<UserResponse>(
-  //     this.SERVER_URL,
-  //     {withCredentials: true}
-  //   ).subscribe(resp => this.setLoggedIn(resp.success, resp.user) );
-  // }
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+
+  getCurrentUser(): void{
+    this.http.get<UserResponse>(
+      this.SERVER_URL,
+      {withCredentials: true}
+    ).subscribe(resp => this.setLoggedIn(resp.success, resp.user) );
+  }
 
   getCsrf(): string {
     return this.csrfToken;

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {MustMatch} from '../_password-validator/must-match.validator';
 import {first} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-student-registration',
@@ -16,7 +17,7 @@ export class StudentRegistrationComponent implements OnInit {
   loading = false;
   registrationSuccess = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, public router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -43,5 +44,9 @@ export class StudentRegistrationComponent implements OnInit {
       .pipe(first())
       .subscribe(data => { this.registrationSuccess = true; },
         error => { alert(error); });
+
+    if (this.registrationSuccess === true) {
+      this.router.navigateByUrl('/login');
+    }
   }
 }

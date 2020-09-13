@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NewClassModalComponent} from '../new-class-modal/new-class-modal.component';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NewStudentModalComponent} from '../new-student-modal/new-student-modal.component';
+import {NewClass} from '../../interfaces/new-class';
+import {NewClassService} from '../../services/new-class.service';
+import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-class-page',
@@ -10,16 +11,23 @@ import {NewStudentModalComponent} from '../new-student-modal/new-student-modal.c
 })
 export class NewClassPageComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  classes: NewClass[];
+  classSubscription: Subscription;
+  filter: string;
+
+  constructor(private classService: NewClassService, private router: Router) {
+    this.classes = [];
+  }
 
   ngOnInit(): void {
+    this.classSubscription = this.classService.getClasses().subscribe(
+      classes => {
+        this.classes = classes;
+      }
+    );
   }
 
-  createNewClass(): void {
-    this.modalService.open(NewClassModalComponent, { windowClass: 'new-class'});
-  }
-
-  createNewStudent(): void {
-    this.modalService.open(NewStudentModalComponent, { windowClass: 'new-student'});
-  }
+  // ngOnDestroy(): void {
+  //   this.classSubscription.unsubscribe();
+  // }
 }

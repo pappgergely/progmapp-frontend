@@ -1,6 +1,6 @@
 export interface NewClass {
   id: string;
-  year: Date;
+  year: number;
   semester: string;
   isActive?: boolean;
 }

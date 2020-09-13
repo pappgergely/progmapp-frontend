@@ -1,35 +1,41 @@
-<form class="p-3">
-  <h3 class="msg pb-2">Új diák létrehozása</h3>
-  <div class="form-group row">
-    <label for="inputStudentName" class="col-sm-2 col-form-label">Diák neve</label>
-    <div class="col-sm-10">
-      <input class="form-control" type="text" id="inputStudentName" placeholder="Diák neve">
+<div class="container main-container">
+  <form class="p-3">
+    <h3 class="msg pb-2">Új diák létrehozása</h3>
+    <div class="form-group row">
+      <label for="inputStudentName" class="col-sm-2 col-form-label">Diák neve</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="inputStudentName" placeholder="Diák neve">
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputEmail" class="col-sm-2 col-form-label">Email cím</label>
-    <div class="col-sm-10">
-      <input class="form-control" type="text" id="inputEmail" placeholder="Email cím">
+    <div class="form-group row">
+      <label for="inputEmail" class="col-sm-2 col-form-label">Email cím</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="inputEmail" placeholder="Email cím">
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputNewClass" class="col-sm-2 col-form-label">Osztály</label>
-    <div class="col-sm-10">
-      <ng-select [items]="classes"
-                 bindLabel="name"
-                 bindValue="id"
-                 [multiple]="true"
-                 placeholder="Válassz..."
-                 [(ngModel)]="selectedClassIds"
-                 name="class"
-                 id="inputNewClass">
-      </ng-select>
+    <div class="form-group row">
+      <label for="inputNewClass" class="col-sm-2 col-form-label">Osztály</label>
+      <div class="col-sm-10">
+        <ng-select [items]="classes"
+                   bindLabel="name"
+                   bindValue="id"
+                   [multiple]="true"
+                   placeholder="Válassz..."
+                   [(ngModel)]="selectedClassIds"
+                   name="class"
+                   id="inputNewClass">
+        </ng-select>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary mr-2">Diák létrehozása és email küldése</button>
-      <button type="submit" class="btn btn-secondary" (click)='close()'>Mégsem</button>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary mr-2">Diák létrehozása és email küldése</button>
+        <a routerLink="/new-class"><button type="submit" class="btn btn-secondary">Vissza</button></a>
+      </div>
     </div>
+  </form>
+  <div class="container">
+    <p class="lead"></p>
+    <p class="lead mb-0"></p>
   </div>
-</form>
+</div>

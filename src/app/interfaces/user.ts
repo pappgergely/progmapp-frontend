@@ -1,12 +1,11 @@
-import {Roles} from '../enum/roles.enum';
-
 export interface User {
-  id?: number;
   name: string;
+  loginName: string;
+  emailAddress: string;
   password?: string;
-  email?: string;
-  phoneNumber?: number;
-  address?: string;
-  role?: Roles;
-  token?: string;
+  role: [
+    {
+      name: string;
+    }
+  ];
 }

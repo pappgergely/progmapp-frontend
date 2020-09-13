@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {first} from 'rxjs/operators';
 import {MustMatch} from '../_password-validator/must-match.validator';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -17,13 +18,12 @@ export class StaffRegistrationComponent implements OnInit {
   loading = false;
   registrationSuccess = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, public router: Router) {
+  }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      phoneNumber: ['', [Validators.required]],
-      address: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, {
@@ -31,7 +31,9 @@ export class StaffRegistrationComponent implements OnInit {
     });
   }
 
-  get f(): any { return this.registerForm.controls; }
+  get f(): any {
+    return this.registerForm.controls;
+  }
 
   onSubmit(): void {
     this.submitted = true;
@@ -42,9 +44,17 @@ export class StaffRegistrationComponent implements OnInit {
     this.loading = true;
 
     this.userService
-        .register(this.registerForm.value)
-        .pipe(first())
-        .subscribe(data => { this.registrationSuccess = true; },
-          error => { alert(error); });
+      .register(this.registerForm.value)
+      .pipe(first())
+      .subscribe(data => {
+          this.registrationSuccess = true;
+        },
+        error => {
+          alert(error);
+        });
+
+    if (this.registrationSuccess === true) {
+      this.router.navigateByUrl('/login');
     }
+  }
 }

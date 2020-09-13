@@ -5,7 +5,7 @@
     <div class="form-group form-inline">
       <label for="inputFilter" class="col-sm-1 col-form-label">Szűrő:</label>
       <div>
-        <input class="form-control ml-2" type="text" id="inputFilter">
+        <input class="form-control ml-2" type="text" id="inputFilter" [(ngModel)]="filter">
       </div>
     </div>
     <div class="pb-3">
@@ -17,9 +17,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr app-quiz-question-row>Ide kerülnek majd az kvízkérdések + módosítás, törlés gombok</tr>
+        <tr app-quiz-question-row *ngFor='let q of questions | filterClass: filter' [question]="q"></tr>
         </tbody>
       </table>
+      <div *ngIf="questions.length === 0">
+        Nincs kvízkérdés az adatbázisban.
+      </div>
     </div>
   </div>
   <div class="container">

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs';
 import {NewClass} from '../interfaces/new-class';
@@ -13,12 +13,14 @@ export class NewClassService {
   private readonly SERVER_URL = environment.serverUrl + 'class';
   private classes: BehaviorSubject<NewClass[]>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.classes = new BehaviorSubject([]);
+  }
 
   addClass(e: NewClass): void {
     this.http.post<NewClassResponse>(
       this.SERVER_URL,
-      e,
+      {class: e},
       { withCredentials: true }
     ).subscribe(resp => this.updateClasses(resp));
   }
@@ -27,5 +29,20 @@ export class NewClassService {
     if (response.success) {
       this.classes.next(response.class);
     }
+  }
+
+  getClasses(): BehaviorSubject<NewClass[]> {
+    const params = new HttpParams({
+      fromObject: {
+        active: 'true',
+      }
+    });
+
+    this.http.get<NewClassResponse>(this.SERVER_URL + '?' + params,
+      {withCredentials: true})
+      .subscribe(resp => {
+        this.updateClasses(resp);
+      });
+    return this.classes;
   }
 }

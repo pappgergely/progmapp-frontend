@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {HttpClient} from '@angular/common/http';
 import {NewClass} from '../../interfaces/new-class';
-import {environment} from '../../../environments/environment';
 import {NewClassService} from '../../services/new-class.service';
 
 @Component({
@@ -13,10 +10,9 @@ import {NewClassService} from '../../services/new-class.service';
 export class NewClassModalComponent implements OnInit {
 
   class: NewClass;
-  private readonly SERVER_URL = environment.serverUrl;
+  textShow: boolean;
 
-  constructor(public activeModal: NgbActiveModal, private http: HttpClient, private newClassService: NewClassService) {
-    this.activeModal = activeModal;
+  constructor(private newClassService: NewClassService) {
     this.class = {
       id: '',
       year: null,
@@ -28,12 +24,9 @@ export class NewClassModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  close(): void {
-    this.activeModal.close();
-  }
-
   saveClass(): void {
     this.newClassService.addClass(this.class);
-    this.activeModal.close();
+    this.textShow = true;
+    window.scroll(0, 0);
   }
 }

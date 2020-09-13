@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {QuizQuestion} from '../../interfaces/quiz-question';
+import {Subscription} from 'rxjs';
+import {NewQuizQuestionService} from '../../services/new-quiz-question.service';
 
 @Component({
   selector: 'app-quiz-question-list-page',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizQuestionListPageComponent implements OnInit {
 
-  constructor() { }
+  filter: string;
+  questions: QuizQuestion[];
+  quizQuestionSubscription: Subscription;
+
+  constructor(private quizQuestionService: NewQuizQuestionService) {
+    this.questions = [];
+  }
 
   ngOnInit(): void {
+    this.quizQuestionSubscription = this.quizQuestionService.getQuizQuestion().subscribe(
+      question => {
+        this.questions = question;
+      }
+    );
   }
 
 }

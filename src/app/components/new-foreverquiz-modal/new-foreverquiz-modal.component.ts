@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NewQuiz} from '../../interfaces/new-quiz';
+import {NewQuizService} from '../../services/new-quiz.service';
 
 @Component({
   selector: 'app-new-foreverquiz-modal',
@@ -12,12 +14,24 @@ export class NewForeverquizModalComponent implements OnInit {
     {id: 2, name: 'kérdés2'},
   ];
 
-  selectedQuestionIds: number[];
+  quiz: NewQuiz;
+  textShow: boolean;
 
   public expanded = false;
 
-  constructor() { }
+  constructor(private quizService: NewQuizService) {
+    this.quiz = {
+      name: '',
+      questionIds: '',
+    };
+  }
 
   ngOnInit(): void {
+  }
+
+  saveQuiz(): void {
+    this.quizService.addQuiz(this.quiz);
+    this.textShow = true;
+    window.scroll(0, 0);
   }
 }

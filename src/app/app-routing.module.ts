@@ -17,6 +17,9 @@ import {ForeverQuizListPageComponent} from './components/forever-quiz-list-page/
 import {Roles} from './enum/roles.enum';
 import {AuthGuard} from './guard/auth.guard';
 import {MainPageComponent} from './components/main-page/main-page.component';
+import {NewClassModalComponent} from './components/new-class-modal/new-class-modal.component';
+import {NewStudentModalComponent} from './components/new-student-modal/new-student-modal.component';
+import {NewUserModalComponent} from './components/new-user-modal/new-user-modal.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -34,7 +37,10 @@ const routes: Routes = [
   {path: 'change-password', component: ChangePasswordModalComponent}, // TODO role?
   {path: 'statistic', component: QuizStatisticModalComponent}, // TODO role?
   {path: 'quiz-question-list', component: QuizQuestionListPageComponent},
-  {path: 'forever-quiz-list', component: ForeverQuizListPageComponent} // , canActivate: [AuthGuard], data: { roles: [Roles.teacher]}
+  {path: 'forever-quiz-list', component: ForeverQuizListPageComponent}, // canActivate: [AuthGuard], data: { roles: [Roles.teacher]}
+  {path: 'new-class-modal', component: NewClassModalComponent},
+  {path: 'new-student-modal', component: NewStudentModalComponent},
+  {path: 'new-user-modal', component: NewUserModalComponent}
 ];
 
 @NgModule({

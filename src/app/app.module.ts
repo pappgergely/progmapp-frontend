@@ -35,6 +35,11 @@ import { ModifyForeverquizModalComponent } from './components/modify-foreverquiz
 import { ModifyQuizQuestionModalComponent } from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
 import {CsrfInterceptor} from './interceptors/csrf.interceptor';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { FilterClassPipe } from './pipes/filter-class.pipe';
+import { FilterUserPipe } from './pipes/filter-user.pipe';
+import {RouterModule} from '@angular/router';
+import { QuizPipe } from './pipes/quiz.pipe';
+import { QuizQuestionPipe } from './pipes/quiz-question.pipe';
 
 @NgModule({
   declarations: [
@@ -65,6 +70,10 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     ModifyForeverquizModalComponent,
     ModifyQuizQuestionModalComponent,
     MainPageComponent,
+    FilterClassPipe,
+    FilterUserPipe,
+    QuizPipe,
+    QuizQuestionPipe,
   ],
     imports: [
         BrowserModule,
@@ -75,12 +84,10 @@ import { MainPageComponent } from './components/main-page/main-page.component';
         FroalaViewModule.forRoot(),
         NgSelectModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ],
-  entryComponents: [
-    ModifyForeverquizModalComponent,
-    ModifyQuizQuestionModalComponent
-  ],
+  entryComponents: [],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true }
   ],

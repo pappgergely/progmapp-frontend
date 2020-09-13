@@ -13,12 +13,14 @@ export class NewUserService {
   private readonly SERVER_URL = environment.serverUrl + 'user';
   private users: BehaviorSubject<NewUser[]>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.users = new BehaviorSubject([]);
+  }
 
   addUser(e: NewUser): void {
     this.http.post<NewUserResponse>(
       this.SERVER_URL,
-      e,
+      {user: e},
       { withCredentials: true }
     ).subscribe(resp => this.updateUsers(resp));
   }

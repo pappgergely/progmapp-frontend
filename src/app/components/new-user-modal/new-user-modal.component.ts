@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {NewUser} from '../../interfaces/new-user';
-import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
 import {NewUserService} from '../../services/new-user.service';
 
 @Component({
@@ -19,13 +16,10 @@ export class NewUserModalComponent implements OnInit {
     {id: 4, name: 'diák'},
   ];
 
-  selectedRoleIds: number[];
-
   user: NewUser;
-  private readonly SERVER_URL = environment.serverUrl;
+  textShow: boolean;
 
-  constructor(public activeModal: NgbActiveModal, private http: HttpClient, private newUserService: NewUserService) {
-    this.activeModal = activeModal;
+  constructor(private newUserService: NewUserService) {
     this.user = {
       name: '',
       loginName: '',
@@ -38,12 +32,9 @@ export class NewUserModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  close(): void {
-    this.activeModal.close();
-  }
-
   saveUser(): void {
     this.newUserService.addUser(this.user);
-    this.activeModal.close();
+    this.textShow = true;
+    window.scroll(0, 0);
   }
 }
