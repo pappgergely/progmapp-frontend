@@ -1,16 +1,32 @@
 <div class="container main-container">
   <form class="p-3">
+    <div class="alert alert-success" role="alert" *ngIf="textShow">
+      Felhasználó sikeresen létrehozva
+    </div>
     <h3 class="msg pb-2">Új diák létrehozása</h3>
     <div class="form-group row">
-      <label for="inputStudentName" class="col-sm-2 col-form-label">Diák neve</label>
+      <label for="inputStudentName" class="col-sm-2 col-form-label">Teljes név</label>
       <div class="col-sm-10">
-        <input class="form-control" type="text" id="inputStudentName" placeholder="Diák neve">
+        <input class="form-control" type="text" id="inputStudentName" placeholder="Teljes név" [(ngModel)]="student.name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputUserLoginName" class="col-sm-2 col-form-label">Felhasználónév</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="inputUserLoginName" placeholder="Felhasználónév"
+               [(ngModel)]="student.loginName">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputUserpassword" class="col-sm-2 col-form-label">Jelszó (opcionális)</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="inputUserpassword" placeholder="Jelszó" [(ngModel)]="student.password">
       </div>
     </div>
     <div class="form-group row">
       <label for="inputEmail" class="col-sm-2 col-form-label">Email cím</label>
       <div class="col-sm-10">
-        <input class="form-control" type="text" id="inputEmail" placeholder="Email cím">
+        <input class="form-control" type="text" id="inputEmail" placeholder="Email cím" [(ngModel)]="student.emailAddress">
       </div>
     </div>
     <div class="form-group row">
@@ -29,7 +45,7 @@
     </div>
     <div class="form-group row">
       <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary mr-2">Diák létrehozása és email küldése</button>
+        <button type="submit" class="btn btn-primary mr-2" (click)="saveStudent()">Diák létrehozása és email küldése</button>
         <a routerLink="/new-class"><button type="submit" class="btn btn-secondary">Vissza</button></a>
       </div>
     </div>

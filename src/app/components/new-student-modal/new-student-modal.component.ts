@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Student} from '../../interfaces/student';
+import {StudentService} from '../../services/student.service';
 
 @Component({
   selector: 'app-new-student-modal',
@@ -12,12 +14,28 @@ export class NewStudentModalComponent implements OnInit {
     {id: 2, name: 'osztály2'},
   ];
 
+  student: Student;
+  textShow: boolean;
+
   selectedClassIds: number[];
 
   public expanded = false;
 
-  constructor() {}
+  constructor(private studentService: StudentService) {
+    this.student = {
+      name: '',
+      loginName: '',
+      emailAddress: '',
+      password: '',
+    };
+  }
 
   ngOnInit(): void {
+  }
+
+  saveStudent(): void {
+    this.studentService.addStudent(this.student);
+    this.textShow = true;
+    window.scroll(0, 0);
   }
 }
