@@ -9,7 +9,7 @@
         <a class="nav-link active" routerLink="/teacher-class-page">Osztályok</a>
       </li>
       <li class="nav-item" *ngIf="isAdmin$ | async">
-        <a class="nav-link" routerLink="/new-user">Felhasználók</a>
+        <a class="nav-link" routerLink="/user">Felhasználók</a>
       </li>
       <li class="nav-item" *ngIf="isStudent$ | async">
         <a class="nav-link" routerLink="/student-quiz-page">Kvíz</a>
@@ -19,9 +19,9 @@
           <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Kvízek</a>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <a routerLink="/quiz-question-list" ngbDropdownItem>Kvízkérdések listája</a>
-            <a routerLink="/forever-quiz-list" ngbDropdownItem>Örökkvízek listája</a>
+            <a routerLink="/eternal-quiz-list" ngbDropdownItem>Örökkvízek listája</a>
             <a routerLink="/new-quiz-question" ngbDropdownItem>Új kvízkérdés létrehozása</a>
-            <a routerLink="/new-forever-quiz" ngbDropdownItem>Új örökkvíz létrehozása</a>
+            <a routerLink="/new-eternal-quiz" ngbDropdownItem>Új örökkvíz létrehozása</a>
           </div>
         </div>
       </li>

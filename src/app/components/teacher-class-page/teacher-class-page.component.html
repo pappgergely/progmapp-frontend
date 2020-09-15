@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr app-class-quiz-row *ngFor='let q of quizWithClass | filterClass: filter' [quizWithClass]="q"></tr>
+        <tr app-class-quiz-row *ngFor='let q of quizWithClass' [quizWithClass]="q"></tr>
         </tbody>
       </table>
       <div *ngIf="quizWithClass.length === 0">

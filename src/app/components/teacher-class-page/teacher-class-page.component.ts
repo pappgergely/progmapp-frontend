@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchEternalQuiz} from '../../interfaces/search-eternal-quiz';
-import {Subscription} from 'rxjs';
+import {ClassEternalQuiz} from '../../interfaces/class-eternal-quiz';
 import {EternalQuizService} from '../../services/eternal-quiz.service';
 
 @Component({
@@ -11,18 +10,15 @@ import {EternalQuizService} from '../../services/eternal-quiz.service';
 export class TeacherClassPageComponent implements OnInit {
 
   filter: string;
-  quizWithClass: SearchEternalQuiz[];
-  classSubscription: Subscription;
+  quizWithClass: ClassEternalQuiz[];
 
-  constructor(private classwithQuizService: EternalQuizService) {
+  constructor(private eternalQuizService: EternalQuizService) {
     this.quizWithClass = [];
   }
 
   ngOnInit(): void {
-    this.classSubscription = this.classwithQuizService.getQuizWithClass().subscribe(
-      classes => {
-        this.quizWithClass = classes;
-      }
+    this.eternalQuizService.getQuizWithClass().subscribe(
+      classes => {this.quizWithClass = classes;}
     );
   }
 

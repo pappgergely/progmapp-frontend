@@ -7,10 +7,10 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-new-user-page',
-  templateUrl: './new-user-page.component.html',
-  styleUrls: ['./new-user-page.component.scss']
+  templateUrl: './user-page.component.html',
+  styleUrls: ['./user-page.component.scss']
 })
-export class NewUserPageComponent implements OnInit {
+export class UserPageComponent implements OnInit {
 
   filter: string;
   users: User[];

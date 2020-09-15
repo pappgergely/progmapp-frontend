@@ -1,4 +1,4 @@
-export interface SearchEternalQuiz {
+export interface ClassEternalQuiz {
   id: string;
   schoolClasses: [
     {

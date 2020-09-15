@@ -1,15 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SearchEternalQuiz} from '../../interfaces/search-eternal-quiz';
+import {ClassEternalQuiz} from '../../interfaces/class-eternal-quiz';
 
 @Component({
-  selector: 'tr[ app-class-quiz-row ]',
+  // tslint:disable-next-line:component-selector
+  selector: '[app-class-quiz-row]',
   templateUrl: './class-quiz-row.component.html',
   styleUrls: ['./class-quiz-row.component.scss']
 })
 export class ClassQuizRowComponent implements OnInit {
 
   @Input()
-  quizWithClass: SearchEternalQuiz;
+  quizWithClass: ClassEternalQuiz;
 
   //  TODO foreverquiz add to the class method
 

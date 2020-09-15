@@ -15,7 +15,7 @@ import { StaffRegistrationComponent } from './components/staff-registration/staf
 import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
 import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
 import { NewEternalquizModalComponent } from './components/new-eternalquiz-modal/new-eternalquiz-modal.component';
-import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserRowComponent } from './components/user-row/user-row.component';
 import { NewUserModalComponent } from './components/new-user-modal/new-user-modal.component';
 import { StaffClassPageComponent } from './components/staff-class-page/staff-class-page.component';
@@ -51,7 +51,7 @@ import { QuizQuestionPipe } from './pipes/quiz-question.pipe';
     StudentQuizPageComponent,
     NewQuizQuestionModalComponent,
     NewEternalquizModalComponent,
-    NewUserPageComponent,
+    UserPageComponent,
     UserRowComponent,
     NewUserModalComponent,
     StaffClassPageComponent,

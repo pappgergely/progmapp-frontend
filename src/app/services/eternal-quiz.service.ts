@@ -4,9 +4,10 @@ import {BehaviorSubject} from 'rxjs';
 import {Eternalquiz} from '../interfaces/eternalquiz';
 import {HttpClient} from '@angular/common/http';
 import {EternalquizResponse} from '../interfaces/eternalquiz-response';
-import {SearchEternalQuiz} from '../interfaces/search-eternal-quiz';
+import {ClassEternalQuiz} from '../interfaces/class-eternal-quiz';
 import {QuestionAssignToQuiz} from '../interfaces/question-assign-to-quiz';
 import {QuizAssignToClass} from '../interfaces/quiz-assign-to-class';
+import {ClassEternalquizResponse} from '../interfaces/class-eternalquiz-response';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class EternalQuizService {
 
   private readonly SERVER_URL = environment.serverUrl + 'eternalquiz';
   private quizzez: BehaviorSubject<Eternalquiz[]>;
-  private quizWithClass: BehaviorSubject<SearchEternalQuiz[]>;
+  private quizWithClass: BehaviorSubject<ClassEternalQuiz[]>;
 
   constructor(private http: HttpClient) {
     this.quizzez = new BehaviorSubject([]);
@@ -44,14 +45,20 @@ export class EternalQuizService {
     ).subscribe(resp => this.updateQuizzes(resp));
   }
 
-  getQuizWithClass(): BehaviorSubject<SearchEternalQuiz[]> {
-    this.http.get<EternalquizResponse>(this.SERVER_URL,
-      {withCredentials: true})
-      .subscribe(resp => {
-        this.updateQuizzes(resp);
-      });
-    return this.quizWithClass;
-  }
+  // getQuizWithClass(): BehaviorSubject<ClassEternalQuiz[]> {
+  //   this.http.get<ClassEternalquizResponse>(this.SERVER_URL,
+  //     {withCredentials: true})
+  //     .subscribe(resp => {
+  //       this.updateClassQuizzez(resp);
+  //     });
+  //   return this.quizWithClass;
+  // }
+
+  // private updateClassQuizzez(response: ClassEternalquizResponse): void {
+  //   if (response.success) {
+  //     this.quizzez.next(response.classEternalQuiz);
+  //   }
+  // }
 
   assignQuestionToQuiz(q: QuestionAssignToQuiz): void {
     this.http.put<EternalquizResponse>(this.SERVER_URL + '/quiz/question',

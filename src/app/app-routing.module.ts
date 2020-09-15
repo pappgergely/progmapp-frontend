@@ -4,7 +4,7 @@ import {LoginPageComponent} from './components/login-page/login-page.component';
 import {StudentRegistrationComponent} from './components/student-registration/student-registration.component';
 import {StaffRegistrationComponent} from './components/staff-registration/staff-registration.component';
 import {StudentQuizPageComponent} from './components/student-quiz-page/student-quiz-page.component';
-import {NewUserPageComponent} from './components/new-user-page/new-user-page.component';
+import {UserPageComponent} from './components/user-page/user-page.component';
 import {StaffClassPageComponent} from './components/staff-class-page/staff-class-page.component';
 import {TeacherClassPageComponent} from './components/teacher-class-page/teacher-class-page.component';
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'student-registration', component: StudentRegistrationComponent},
   {path: 'staff-registration', component: StaffRegistrationComponent},
   {path: 'student-quiz-page', component: StudentQuizPageComponent},
-  {path: 'user', component: NewUserPageComponent},
+  {path: 'user', component: UserPageComponent},
   {path: 'staff-class', component: StaffClassPageComponent},
   {path: 'teacher-class-page', component: TeacherClassPageComponent},
   {path: 'profile', component: ProfilePageComponent},

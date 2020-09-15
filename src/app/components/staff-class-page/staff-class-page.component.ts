@@ -10,8 +10,8 @@ import {ClassService} from '../../services/class.service';
 
 export class StaffClassPageComponent implements OnInit {
 
-  classes: Class[];
   filter: string;
+  classes: Class[];
 
   constructor(private classService: ClassService) {
     this.classes = [];
