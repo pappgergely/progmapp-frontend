@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {QuizWithClass} from '../../interfaces/quiz-with-class';
+import {SearchEternalQuiz} from '../../interfaces/search-eternal-quiz';
 
 @Component({
   selector: 'tr[ app-class-quiz-row ]',
@@ -9,7 +9,7 @@ import {QuizWithClass} from '../../interfaces/quiz-with-class';
 export class ClassQuizRowComponent implements OnInit {
 
   @Input()
-  quizWithClass: QuizWithClass;
+  quizWithClass: SearchEternalQuiz;
 
   //  TODO foreverquiz add to the class method
 

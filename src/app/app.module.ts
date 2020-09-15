@@ -14,11 +14,11 @@ import { StudentRegistrationComponent } from './components/student-registration/
 import { StaffRegistrationComponent } from './components/staff-registration/staff-registration.component';
 import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
 import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
-import { NewForeverquizModalComponent } from './components/new-foreverquiz-modal/new-foreverquiz-modal.component';
+import { NewEternalquizModalComponent } from './components/new-eternalquiz-modal/new-eternalquiz-modal.component';
 import { NewUserPageComponent } from './components/new-user-page/new-user-page.component';
 import { UserRowComponent } from './components/user-row/user-row.component';
 import { NewUserModalComponent } from './components/new-user-modal/new-user-modal.component';
-import { NewClassPageComponent } from './components/new-class-page/new-class-page.component';
+import { StaffClassPageComponent } from './components/staff-class-page/staff-class-page.component';
 import { ClassRowComponent } from './components/class-row/class-row.component';
 import { NewClassModalComponent } from './components/new-class-modal/new-class-modal.component';
 import { TeacherClassPageComponent } from './components/teacher-class-page/teacher-class-page.component';
@@ -28,10 +28,10 @@ import { NewStudentModalComponent } from './components/new-student-modal/new-stu
 import { QuizStatisticModalComponent } from './components/quiz-statistic-modal/quiz-statistic-modal.component';
 import { ChangePasswordModalComponent } from './components/change-password-modal/change-password-modal.component';
 import { QuizQuestionListPageComponent } from './components/quiz-question-list-page/quiz-question-list-page.component';
-import { ForeverQuizListPageComponent } from './components/forever-quiz-list-page/forever-quiz-list-page.component';
-import { ForeverQuizRowComponent } from './components/forever-quiz-row/forever-quiz-row.component';
+import { EternalQuizListPageComponent } from './components/eternal-quiz-list-page/eternal-quiz-list-page.component';
+import { EternalQuizRowComponent } from './components/eternal-quiz-row/eternal-quiz-row.component';
 import { QuizQuestionRowComponent } from './components/quiz-question-row/quiz-question-row.component';
-import { ModifyForeverquizModalComponent } from './components/modify-foreverquiz-modal/modify-foreverquiz-modal.component';
+import { ModifyEternalquizModalComponent } from './components/modify-eternalquiz-modal/modify-eternalquiz-modal.component';
 import { ModifyQuizQuestionModalComponent } from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
 import {CsrfInterceptor} from './interceptors/csrf.interceptor';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -50,11 +50,11 @@ import { QuizQuestionPipe } from './pipes/quiz-question.pipe';
     StaffRegistrationComponent,
     StudentQuizPageComponent,
     NewQuizQuestionModalComponent,
-    NewForeverquizModalComponent,
+    NewEternalquizModalComponent,
     NewUserPageComponent,
     UserRowComponent,
     NewUserModalComponent,
-    NewClassPageComponent,
+    StaffClassPageComponent,
     ClassRowComponent,
     NewClassModalComponent,
     TeacherClassPageComponent,
@@ -64,10 +64,10 @@ import { QuizQuestionPipe } from './pipes/quiz-question.pipe';
     QuizStatisticModalComponent,
     ChangePasswordModalComponent,
     QuizQuestionListPageComponent,
-    ForeverQuizListPageComponent,
-    ForeverQuizRowComponent,
+    EternalQuizListPageComponent,
+    EternalQuizRowComponent,
     QuizQuestionRowComponent,
-    ModifyForeverquizModalComponent,
+    ModifyEternalquizModalComponent,
     ModifyQuizQuestionModalComponent,
     MainPageComponent,
     FilterClassPipe,

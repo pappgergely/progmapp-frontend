@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
 import { User } from '../interfaces/user';
 import {UserResponse} from '../interfaces/user-response';
-import {tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,32 +13,32 @@ export class LoginService {
 
   private readonly SERVER_URL = environment.serverUrl;
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
   public currentUser = new BehaviorSubject<User>(null);
-  private currentUserSubject: BehaviorSubject<User>;
   private csrfToken: string;
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.getCurrentUser();
+  constructor(private http: HttpClient) {
+    this.fetchCurrentUser();
     this.csrfToken = '';
     this.fetchCsrf().subscribe(x => {
       console.log(x);
     });
+
+    this.currentUser.subscribe(u => console.log(u));
   }
 
-  get isLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
+  get isLoggedIn$(): Observable<boolean> {
+    return this.currentUser.pipe(map(u => u !== null));
   }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+  getCurrentUser(): Observable<User> {
+    return this.currentUser.asObservable();
   }
 
-  getCurrentUser(): void{
+  fetchCurrentUser(): void{
     this.http.get<UserResponse>(
-      this.SERVER_URL,
+      this.SERVER_URL + 'me',
       {withCredentials: true}
-    ).subscribe(resp => this.setLoggedIn(resp.success, resp.user) );
+    ).subscribe(u => this.setLoggedIn(u) );
   }
 
   getCsrf(): string {
@@ -53,8 +52,7 @@ export class LoginService {
       } ));
   }
 
-  setLoggedIn(loggedIn: boolean, currentUser: User): void {
-    this.loggedIn.next(loggedIn);
+  setLoggedIn(currentUser: User): void {
     this.currentUser.next(currentUser);
   }
 
@@ -67,11 +65,13 @@ export class LoginService {
       this.SERVER_URL + 'login',
       fd,
       { withCredentials: true },
-    ).pipe(tap( () => this.fetchCsrf().subscribe(() => {}) ));
+    ).pipe(
+      tap(u => this.setLoggedIn(u as User)),
+      tap( () => this.fetchCsrf().subscribe(() => {}) )
+    );
   }
 
   logout(): void {
-    this.loggedIn.next(false);
-    this.router.navigateByUrl('login');
+    this.currentUser.next(null);
   }
 }

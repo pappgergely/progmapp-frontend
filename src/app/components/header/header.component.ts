@@ -4,8 +4,7 @@ import {LoginService} from '../../services/login.service';
 import {Roles} from '../../enum/roles.enum';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {UserService} from '../../services/user.service';
-import {first} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -14,36 +13,30 @@ import {first} from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  currentUser: User;
-  isLoggedIn$: Observable<boolean>;
-  users: User[] = [];
+  currentUser$: Observable<User>;
 
-  constructor(private router: Router, private loginService: LoginService, private userService: UserService) {
-    this.loginService.currentUser.subscribe(x => this.currentUser = x);
-    this.isLoggedIn$ = this.loginService.isLoggedIn;
+  constructor(private router: Router, private loginService: LoginService) {
+    this.currentUser$ = this.loginService.getCurrentUser();
   }
 
   ngOnInit(): void {
-    this.userService.getUsers().pipe(first()).subscribe(users => {
-      this.users = users;
-    });
   }
 
-  // get isAdmin(): any {
-  //   return this.currentUser && this.currentUser.role === Roles.admin;
-  // }
-  //
-  // get isOffice(): any {
-  //   return this.currentUser && this.currentUser.role === Roles.office;
-  // }
-  //
-  // get isTeacher(): any {
-  //   return this.currentUser && this.currentUser.role === Roles.teacher;
-  // }
-  //
-  // get isStudent(): any {
-  //   return this.currentUser && this.currentUser.role === Roles.student;
-  // }
+  get isAdmin$(): Observable<boolean> {
+    return this.currentUser$.pipe(map( u => !! u.roles.find( r => r.name === Roles.admin ) ));
+  }
+
+  get isOffice$(): Observable<boolean> {
+    return this.currentUser$.pipe(map( u => !! u.roles.find( r => r.name === Roles.office ) ));
+  }
+
+  get isTeacher$(): Observable<boolean> {
+    return this.currentUser$.pipe(map( u => !! u.roles.find( r => r.name === Roles.teacher ) ));
+  }
+
+  get isStudent$(): Observable<boolean> {
+    return this.currentUser$.pipe(map( u => !! u.roles.find( r => r.name === Roles.student ) ));
+  }
 
   logout(): void {
     this.loginService.logout();

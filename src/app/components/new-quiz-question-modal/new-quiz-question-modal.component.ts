@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NewQuizQuestionService} from '../../services/new-quiz-question.service';
+import {QuizQuestionService} from '../../services/quiz-question.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 
 @Component({
@@ -11,7 +11,7 @@ export class NewQuizQuestionModalComponent implements OnInit {
 
   textShow: boolean;
 
-  constructor(private quizQuestionService: NewQuizQuestionService) {
+  constructor(private quizQuestionService: QuizQuestionService) {
     this.quizQuestion = {
       id: '',
       text: '',

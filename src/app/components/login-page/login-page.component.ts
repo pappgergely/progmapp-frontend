@@ -37,8 +37,7 @@ export class LoginPageComponent implements OnInit {
     this.loginService.logIn(this.loginForm.value.name, this.loginForm.value.password)
       .subscribe(
         () => {
-          this.router.navigateByUrl('main-page'); // TODO main page?
-          this.loginService.setLoggedIn(true, null);
+          this.router.navigateByUrl('main-page');
         },
         error => this.error = error);
   }

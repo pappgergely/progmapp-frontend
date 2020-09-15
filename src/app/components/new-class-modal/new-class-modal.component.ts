@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NewClass} from '../../interfaces/new-class';
-import {NewClassService} from '../../services/new-class.service';
+import {Class} from '../../interfaces/class';
+import {ClassService} from '../../services/class.service';
 
 @Component({
   selector: 'app-new-class-modal',
@@ -9,10 +9,10 @@ import {NewClassService} from '../../services/new-class.service';
 })
 export class NewClassModalComponent implements OnInit {
 
-  class: NewClass;
+  class: Class;
   textShow: boolean;
 
-  constructor(private newClassService: NewClassService) {
+  constructor(private newClassService: ClassService) {
     this.class = {
       id: '',
       year: null,

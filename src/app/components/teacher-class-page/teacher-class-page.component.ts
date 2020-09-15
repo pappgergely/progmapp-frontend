@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {QuizWithClass} from '../../interfaces/quiz-with-class';
+import {SearchEternalQuiz} from '../../interfaces/search-eternal-quiz';
 import {Subscription} from 'rxjs';
-import {NewQuizService} from '../../services/new-quiz.service';
+import {EternalQuizService} from '../../services/eternal-quiz.service';
 
 @Component({
   selector: 'app-teacher-class-page',
@@ -11,10 +11,10 @@ import {NewQuizService} from '../../services/new-quiz.service';
 export class TeacherClassPageComponent implements OnInit {
 
   filter: string;
-  quizWithClass: QuizWithClass[];
+  quizWithClass: SearchEternalQuiz[];
   classSubscription: Subscription;
 
-  constructor(private classwithQuizService: NewQuizService) {
+  constructor(private classwithQuizService: EternalQuizService) {
     this.quizWithClass = [];
   }
 

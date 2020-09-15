@@ -11,6 +11,9 @@ export class AuthGuard implements CanActivate {
 
   constructor(private loginService: LoginService, private router: Router) { }
 
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any{
+  }
+
   // canActivate(
   //   next: ActivatedRouteSnapshot,
   //   state: RouterStateSnapshot
@@ -27,16 +30,16 @@ export class AuthGuard implements CanActivate {
   //     );
   // }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    const currentUser = this.loginService.currentUserValue;
-    if (currentUser) {
-      if (route.data.roles && route.data.roles.indexOf(currentUser.role) === -1) {
-        this.router.navigate(['main-page']);
-        return false;
-      }
-      return true;
-    }
-    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-    return false;
-  }
+  // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
+  //   const currentUser = this.loginService.currentUser;
+  //   if (currentUser) {
+  //     if (route.data.roles && route.data.roles.indexOf(currentUser.) === -1 && this.loginService.isLoggedIn$) {
+  //       this.router.navigate(['main-page']);
+  //       return false;
+  //     }
+  //     return true;
+  //   }
+  //   this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+  //   return false;
+  // }
 }

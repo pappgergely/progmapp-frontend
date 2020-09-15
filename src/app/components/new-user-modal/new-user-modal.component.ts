@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NewUser} from '../../interfaces/new-user';
-import {NewUserService} from '../../services/new-user.service';
+import {UserService} from '../../services/user.service';
+import {User} from '../../interfaces/user';
 
 @Component({
   selector: 'app-new-user-modal',
@@ -16,16 +16,16 @@ export class NewUserModalComponent implements OnInit {
     {id: 4, name: 'diák'},
   ];
 
-  user: NewUser;
+  user: User;
   textShow: boolean;
 
-  constructor(private newUserService: NewUserService) {
+  constructor(private userService: UserService) {
     this.user = {
       name: '',
       loginName: '',
       emailAddress: '',
       password: '',
-      roles: null,
+      roles: [],
     };
   }
 
@@ -33,7 +33,7 @@ export class NewUserModalComponent implements OnInit {
   }
 
   saveUser(): void {
-    this.newUserService.addUser(this.user);
+    this.userService.addUser(this.user);
     this.textShow = true;
     window.scroll(0, 0);
   }

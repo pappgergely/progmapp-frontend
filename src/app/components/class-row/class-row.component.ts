@@ -1,21 +1,22 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NewClass} from '../../interfaces/new-class';
-import {NewClassService} from '../../services/new-class.service';
+import {Class} from '../../interfaces/class';
+import {ClassService} from '../../services/class.service';
 
 @Component({
-  selector: 'tr[ app-class-row ]',
+  // tslint:disable-next-line:component-selector
+  selector: '[app-class-row]',
   templateUrl: './class-row.component.html',
   styleUrls: ['./class-row.component.scss']
 })
 
 export class ClassRowComponent implements OnInit {
 
+  @Input()
+  classesName: Class;
+
   //  TODO delete and modify methods
 
-  @Input()
-  class: NewClass;
-
-  constructor(private classService: NewClassService) { }
+  constructor(private classService: ClassService) { }
 
   ngOnInit(): void {
   }

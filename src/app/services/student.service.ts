@@ -3,7 +3,6 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs';
 import {Student} from '../interfaces/student';
 import {HttpClient} from '@angular/common/http';
-import {NewUserResponse} from '../interfaces/new-user-response';
 import {StudentResponse} from '../interfaces/student-response';
 
 @Injectable({
