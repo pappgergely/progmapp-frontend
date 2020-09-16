@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Eternalquiz} from '../interfaces/eternalquiz';
 import {HttpClient} from '@angular/common/http';
 import {EternalquizResponse} from '../interfaces/eternalquiz-response';
 import {ClassEternalQuiz} from '../interfaces/class-eternal-quiz';
 import {QuestionAssignToQuiz} from '../interfaces/question-assign-to-quiz';
 import {QuizAssignToClass} from '../interfaces/quiz-assign-to-class';
-import {ClassEternalquizResponse} from '../interfaces/class-eternalquiz-response';
 
 @Injectable({
   providedIn: 'root'
@@ -20,15 +19,16 @@ export class EternalQuizService {
 
   constructor(private http: HttpClient) {
     this.quizzez = new BehaviorSubject([]);
+    this.quizWithClass = new BehaviorSubject([]);
   }
 
-  getQuiz(): BehaviorSubject<Eternalquiz[]> {
-    this.http.get<EternalquizResponse>(this.SERVER_URL,
+  getQuiz(): Observable<ClassEternalQuiz[]> {
+    this.http.get<ClassEternalQuiz[]>(this.SERVER_URL,
       {withCredentials: true})
       .subscribe(resp => {
-        this.updateQuizzes(resp);
+        this.quizWithClass.next(resp);
       });
-    return this.quizzez;
+    return this.quizWithClass.asObservable();
   }
 
   private updateQuizzes(response: EternalquizResponse): void {
@@ -45,20 +45,14 @@ export class EternalQuizService {
     ).subscribe(resp => this.updateQuizzes(resp));
   }
 
-  // getQuizWithClass(): BehaviorSubject<ClassEternalQuiz[]> {
-  //   this.http.get<ClassEternalquizResponse>(this.SERVER_URL,
-  //     {withCredentials: true})
-  //     .subscribe(resp => {
-  //       this.updateClassQuizzez(resp);
-  //     });
-  //   return this.quizWithClass;
-  // }
-
-  // private updateClassQuizzez(response: ClassEternalquizResponse): void {
-  //   if (response.success) {
-  //     this.quizzez.next(response.classEternalQuiz);
-  //   }
-  // }
+  getQuizWithClass(): Observable<ClassEternalQuiz[]> {
+    this.http.get<ClassEternalQuiz[]>(this.SERVER_URL,
+      {withCredentials: true})
+      .subscribe(resp => {
+        this.quizWithClass.next(resp);
+      });
+    return this.quizWithClass.asObservable();
+  }
 
   assignQuestionToQuiz(q: QuestionAssignToQuiz): void {
     this.http.put<EternalquizResponse>(this.SERVER_URL + '/quiz/question',

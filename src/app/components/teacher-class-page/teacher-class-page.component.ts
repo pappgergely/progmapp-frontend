@@ -18,8 +18,7 @@ export class TeacherClassPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.eternalQuizService.getQuizWithClass().subscribe(
-      classes => {this.quizWithClass = classes;}
+      classes => this.quizWithClass = classes
     );
   }
-
 }

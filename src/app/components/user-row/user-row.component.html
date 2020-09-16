@@ -1,7 +1,7 @@
-<td>felh neve</td>
-<td>felh email</td>
-<td>szerepkör</td>
+<td>{{user.name}}</td>
+<td>{{user.emailAddress}}</td>
+<td *ngFor="let r of user.roles">{{r.name}}</td>
 <td>
-  <button type="button" class="btn btn-warning btn-sm edit-button">Módosít</button>
+  <button type="button" class="btn btn-warning btn-sm edit-button mr-3">Módosít</button>
   <button type="button" class="btn btn-danger btn-sm delete-button">Töröl</button>
 </td>

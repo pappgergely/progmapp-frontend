@@ -20,9 +20,15 @@ export class ClassService {
   addClass(e: Class): void {
     this.http.post<ClassResponse>(
       this.SERVER_URL,
-      e,
+      {class: e},
       { withCredentials: true }
-    ).subscribe(() => {});
+    ).subscribe(resp => this.updateClass(resp));
+  }
+
+  private updateClass(response: ClassResponse): void {
+    if (response.success) {
+      this.classes.next(response.class);
+    }
   }
 
   getClasses(): Observable<Class[]> {

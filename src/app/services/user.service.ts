@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../interfaces/user';
 import {UserResponse} from '../interfaces/user-response';
 
@@ -21,19 +21,19 @@ export class UserService {
     return this.http.post(this.SERVER_URL + 'completeregistration', user);
   }
 
-  getUsers(): BehaviorSubject<User[]> {
+  getUsers(): Observable<User[]> {
     const params = new HttpParams({
       fromObject: {
-        student: 'false',
+        student: '',
       }
     });
 
-    this.http.get<UserResponse>(this.SERVER_URL + '?' + params,
+    this.http.get<User[]>(this.SERVER_URL + '?' + params,
       {withCredentials: true})
       .subscribe(resp => {
-        this.updateUsers(resp);
+        this.user.next(resp);
       });
-    return this.user;
+    return this.user.asObservable();
   }
 
   addUser(e: User): void {

@@ -12,12 +12,12 @@ export class NewClassModalComponent implements OnInit {
   class: Class;
   textShow: boolean;
 
-  constructor(private newClassService: ClassService) {
+  constructor(private classService: ClassService) {
     this.class = {
       id: '',
       year: null,
       semester: '',
-      isActive: false,
+      isActive: true,
     };
   }
 
@@ -25,8 +25,7 @@ export class NewClassModalComponent implements OnInit {
   }
 
   saveClass(): void {
-    this.newClassService.addClass(this.class);
+    this.classService.addClass(this.class);
     this.textShow = true;
-    window.scroll(0, 0);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {QuizQuestion} from '../interfaces/quiz-question';
 import {HttpClient} from '@angular/common/http';
 import {QuizQuestionResponse} from '../interfaces/quiz-question-response';
@@ -17,13 +17,13 @@ export class QuizQuestionService {
     this.quizQuestions = new BehaviorSubject([]);
   }
 
-  getQuizQuestion(): BehaviorSubject<QuizQuestion[]> {
-    this.http.get<QuizQuestionResponse>(this.SERVER_URL + '/micimackokedvence', // + '/' + q.id
+  getQuizQuestion(): Observable<QuizQuestion[]> {
+    this.http.get<QuizQuestion[]>(this.SERVER_URL + '/micimackokedvence', // + '/' + q.id
       {withCredentials: true})
       .subscribe(resp => {
-        this.updateQuizQuestion(resp);
+        this.quizQuestions.next(resp);
       });
-    return this.quizQuestions;
+    return this.quizQuestions.asObservable();
   }
 
   private updateQuizQuestion(response: QuizQuestionResponse): void {

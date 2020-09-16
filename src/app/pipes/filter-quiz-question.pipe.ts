@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'quizQuestion'
+  name: 'filterQuizQuestion'
 })
-export class QuizQuestionPipe implements PipeTransform {
+export class FilterQuizQuestionPipe implements PipeTransform {
 
   transform(value: any, list: any): any {
     if (value !== null && list !== null) {

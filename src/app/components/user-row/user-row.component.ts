@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../../interfaces/user';
 
 @Component({
-  selector: 'app-user-row', // tr[app-user-row]
+  // tslint:disable-next-line:component-selector
+  selector: '[app-user-row]',
   templateUrl: './user-row.component.html',
   styleUrls: ['./user-row.component.scss']
 })
 export class UserRowComponent implements OnInit {
+
+  @Input()
+  user: User;
 
   //  TODO delete and modify methods
 

@@ -3,9 +3,9 @@
   <h2 class="welcome-msg">örökkvízek listája</h2>
   <div>
     <div class="form-group form-inline">
-      <label for="inputFilter" class="col-sm-1 col-form-label">Szűrő:</label>
+      <label for="search" class="col-sm-1 col-form-label">Szűrő:</label>
       <div>
-        <input class="form-control ml-2" type="text" id="inputFilter" [(ngModel)]="filter">
+        <input class="form-control ml-2" type="text" id="search" [(ngModel)]="filter">
       </div>
     </div>
     <div class="pb-3">
@@ -17,10 +17,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr app-forever-quiz-row *ngFor='let q of quiz | filterClass: filter' [quiz]="q"></tr>
+        <tr app-forever-quiz-row *ngFor='let q of quizzes' [quiz]="q"></tr>
         </tbody>
       </table>
-      <div *ngIf="quiz.length === 0">
+      <div *ngIf="quizzes.length === 0">
         Nincs örökkvíz az adatbázisban.
       </div>
     </div>

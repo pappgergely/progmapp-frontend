@@ -38,8 +38,8 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { FilterClassPipe } from './pipes/filter-class.pipe';
 import { FilterUserPipe } from './pipes/filter-user.pipe';
 import {RouterModule} from '@angular/router';
-import { QuizPipe } from './pipes/quiz.pipe';
-import { QuizQuestionPipe } from './pipes/quiz-question.pipe';
+import { FilterQuizPipe } from './pipes/filter-quiz.pipe';
+import { FilterQuizQuestionPipe } from './pipes/filter-quiz-question.pipe';
 
 @NgModule({
   declarations: [
@@ -72,8 +72,8 @@ import { QuizQuestionPipe } from './pipes/quiz-question.pipe';
     MainPageComponent,
     FilterClassPipe,
     FilterUserPipe,
-    QuizPipe,
-    QuizQuestionPipe,
+    FilterQuizPipe,
+    FilterQuizQuestionPipe,
   ],
     imports: [
         BrowserModule,
