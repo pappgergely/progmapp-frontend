@@ -11,10 +11,10 @@ import {UserResponse} from '../interfaces/user-response';
 export class UserService {
 
   private readonly SERVER_URL = environment.serverUrl + 'user';
-  private user: BehaviorSubject<User[]>;
+  private users: BehaviorSubject<User[]>;
 
   constructor(private http: HttpClient) {
-    this.user = new BehaviorSubject([]);
+    this.users = new BehaviorSubject([]);
   }
 
   register(user: User): any{
@@ -31,22 +31,23 @@ export class UserService {
     this.http.get<User[]>(this.SERVER_URL + '?' + params,
       {withCredentials: true})
       .subscribe(resp => {
-        this.user.next(resp);
+        this.users.next(resp);
       });
-    return this.user.asObservable();
+    return this.users.asObservable();
   }
 
   addUser(e: User): void {
+    const user = { ...e, roles: e.roles.map(roleString => ({ name: roleString })) };
     this.http.post<UserResponse>(
       this.SERVER_URL,
-      {user: e},
+      user,
       { withCredentials: true }
     ).subscribe(resp => this.updateUsers(resp));
   }
 
   updateUsers(response: UserResponse): void{
     if (response.success) {
-      this.user.next(response.user);
+      this.users.next(response.user);
     }
   }
 }

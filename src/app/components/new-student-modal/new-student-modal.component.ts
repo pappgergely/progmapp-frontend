@@ -9,9 +9,9 @@ import {StudentService} from '../../services/student.service';
 })
 export class NewStudentModalComponent implements OnInit {
 
-  classes = [
-    {id: 1, name: 'osztály1'},
-    {id: 2, name: 'osztály2'},
+  students = [
+    {id: 1, name: 'diák1'},
+    {id: 2, name: 'diák2'},
   ];
 
   student: Student;
@@ -36,6 +36,5 @@ export class NewStudentModalComponent implements OnInit {
   saveStudent(): void {
     this.studentService.addStudent(this.student);
     this.textShow = true;
-    window.scroll(0, 0);
   }
 }

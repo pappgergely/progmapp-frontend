@@ -35,7 +35,7 @@ export class LoginService {
   }
 
   fetchCurrentUser(): void{
-    this.http.get<UserResponse>(
+    this.http.get<User>(
       this.SERVER_URL + 'me',
       {withCredentials: true}
     ).subscribe(u => this.setLoggedIn(u) ); // TODO fix problem

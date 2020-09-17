@@ -2,7 +2,7 @@
   <div class="header">
     <img src="/assets/img/progmaticlogo.png" class="logo" alt="logo">
     <ul class="nav justify-content-center">
-      <li class="nav-item" *ngIf="isOffice$ | async">
+      <li class="nav-item" *ngIf="isAdmin$ || isOffice$ | async">
         <a class="nav-link active" routerLink="/staff-class">Osztályok</a>
       </li>
       <li class="nav-item" *ngIf="isTeacher$ | async">

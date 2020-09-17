@@ -3,7 +3,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HttpHeaders
+  HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {LoginService} from '../services/login.service';
@@ -25,8 +25,8 @@ export class CsrfInterceptor implements HttpInterceptor {
         const newHeaders = request.headers.set('X-CSRF-TOKEN', this.loginService.getCsrf());
         request = request.clone({headers: newHeaders});
       }
-      request = request.clone({withCredentials: true});
     }
+    request = request.clone({withCredentials: true});
     return next.handle(request);
   }
 }

@@ -40,6 +40,7 @@ import { FilterUserPipe } from './pipes/filter-user.pipe';
 import {RouterModule} from '@angular/router';
 import { FilterQuizPipe } from './pipes/filter-quiz.pipe';
 import { FilterQuizQuestionPipe } from './pipes/filter-quiz-question.pipe';
+import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-assign-class-modal/eternal-quiz-assign-class-modal.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { FilterQuizQuestionPipe } from './pipes/filter-quiz-question.pipe';
     FilterUserPipe,
     FilterQuizPipe,
     FilterQuizQuestionPipe,
+    EternalQuizAssignClassModalComponent,
   ],
     imports: [
         BrowserModule,

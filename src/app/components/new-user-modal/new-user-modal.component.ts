@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {User} from '../../interfaces/user';
+import {Roles} from '../../enum/roles.enum';
 
 @Component({
   selector: 'app-new-user-modal',
@@ -9,12 +10,7 @@ import {User} from '../../interfaces/user';
 })
 export class NewUserModalComponent implements OnInit {
 
-  roles = [
-    {id: 1, name: 'admin'},
-    {id: 2, name: 'irodai munkatárs'},
-    {id: 3, name: 'tanár'},
-    {id: 4, name: 'diák'},
-  ];
+  roles = [];
 
   user: User;
   textShow: boolean;
@@ -27,6 +23,7 @@ export class NewUserModalComponent implements OnInit {
       password: '',
       roles: [],
     };
+    this.roles = Object.keys(Roles).map(r => ({ id: r, name: r }));
   }
 
   ngOnInit(): void {
@@ -35,6 +32,5 @@ export class NewUserModalComponent implements OnInit {
   saveUser(): void {
     this.userService.addUser(this.user);
     this.textShow = true;
-    window.scroll(0, 0);
   }
 }

@@ -47,8 +47,8 @@ export class NewQuizQuestionModalComponent implements OnInit {
     const createDiv = document.createElement('div');
     createDiv.innerHTML = `
       <input>
-      <input type="checkbox">
-      <label>Jó válasz</label>
+
+      <label><input type="checkbox"> Jó válasz</label>
       <input type="checkbox">
       <label>Rossz válasz</label>`;
     document.getElementsByClassName('answers')[0].appendChild(createDiv);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Class} from '../interfaces/class';
 import {ClassResponse} from '../interfaces/class-response';
@@ -20,12 +20,12 @@ export class ClassService {
   addClass(e: Class): void {
     this.http.post<ClassResponse>(
       this.SERVER_URL,
-      {class: e},
+      e,
       { withCredentials: true }
-    ).subscribe(resp => this.updateClass(resp));
+    ).subscribe(resp => this.updateClasses(resp));
   }
 
-  private updateClass(response: ClassResponse): void {
+  private updateClasses(response: ClassResponse): void {
     if (response.success) {
       this.classes.next(response.class);
     }
@@ -38,8 +38,7 @@ export class ClassService {
       }
     });
 
-    this.http.get<Class[]>(this.SERVER_URL + '?' + params,
-      {withCredentials: true})
+    this.http.get<Class[]>(this.SERVER_URL + '?' + params)
       .subscribe(resp => {
         this.classes.next(resp);
       });
