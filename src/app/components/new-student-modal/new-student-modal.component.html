@@ -13,9 +13,9 @@
                    bindValue="id"
                    [multiple]="true"
                    placeholder="Válassz..."
-                   [(ngModel)]="selectedClassIds"
+                   [(ngModel)]="student.name"
                    name="student"
-                   id="inputNewStudent">
+                   id="inputNewStudent">{{student.name}}
         </ng-select>
       </div>
     </div>

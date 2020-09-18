@@ -12,7 +12,6 @@ export class QuizQuestionService {
 
   private readonly SERVER_URL = environment.serverUrl + 'question';
   private quizQuestions: BehaviorSubject<QuizQuestion[]>;
-  private question: QuizQuestion;
 
   constructor(private http: HttpClient) {
     this.quizQuestions = new BehaviorSubject([]);

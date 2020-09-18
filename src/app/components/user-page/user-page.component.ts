@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {NewUserModalComponent} from '../new-user-modal/new-user-modal.component';
 import {User} from '../../interfaces/user';
 import {UserService} from '../../services/user.service';
 
@@ -23,9 +22,5 @@ export class UserPageComponent implements OnInit {
       users => { this.users = users;
       }
     );
-  }
-
-  createNewUser(): void {
-    this.modalService.open(NewUserModalComponent, { windowClass: 'new-user'});
   }
 }

@@ -3,7 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../interfaces/user';
-import {UserResponse} from '../interfaces/user-response';
+import {UsersResponse} from '../interfaces/users-response';
 
 @Injectable({
   providedIn: 'root'
@@ -36,16 +36,31 @@ export class UserService {
     return this.users.asObservable();
   }
 
+  getStudents(): Observable<User[]> {
+    const params = new HttpParams({
+      fromObject: {
+        student: 'true',
+      }
+    });
+
+    this.http.get<User[]>(this.SERVER_URL + '?' + params,
+      {withCredentials: true})
+      .subscribe(resp => {
+        this.users.next(resp);
+      });
+    return this.users.asObservable();
+  }
+
   addUser(e: User): void {
     const user = { ...e, roles: e.roles.map(roleString => ({ name: roleString })) };
-    this.http.post<UserResponse>(
+    this.http.post<UsersResponse>(
       this.SERVER_URL,
       user,
       { withCredentials: true }
     ).subscribe(resp => this.updateUsers(resp));
   }
 
-  updateUsers(response: UserResponse): void{
+  updateUsers(response: UsersResponse): void{
     if (response.success) {
       this.users.next(response.user);
     }

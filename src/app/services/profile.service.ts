@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {BehaviorSubject} from 'rxjs';
-import {Student} from '../interfaces/student';
+import {Observable} from 'rxjs';
+import {UserResponse} from '../interfaces/user-response';
+import {User} from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,10 @@ import {Student} from '../interfaces/student';
 export class ProfileService {
 
   private readonly SERVER_URL = environment.serverUrl + 'me';
-  private profile: BehaviorSubject<Student[]>;
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
+
+  getProfile(): Observable<UserResponse> {
+    return this.http.get<UserResponse>(this.SERVER_URL, {withCredentials: true});
+  }
 }

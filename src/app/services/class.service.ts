@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Class} from '../interfaces/class';
 import {ClassResponse} from '../interfaces/class-response';
+import {Student} from '../interfaces/student';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,13 @@ export class ClassService {
         this.classes.next(resp);
       });
     return this.classes.asObservable();
+  }
+
+  assignStudent(s: Student): void {
+    this.http.put<ClassResponse>(
+      this.SERVER_URL + '/',
+      {student: s},
+      {withCredentials: true})
+      .subscribe(resp => this.updateClasses(resp));
   }
 }

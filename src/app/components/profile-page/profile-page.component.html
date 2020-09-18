@@ -4,22 +4,22 @@
   <div class="col-md-9">
     <h3 class="pb-4">Személyes adatok</h3>
     <form>
-      <div class="form-group row">
+      <div class="form-group row" *ngIf="(currentUser$ | async) !== null">
         <label for="inputName" class="col-lg-3 control-label">Teljes név:</label>
         <div class="col-lg-8">
-          <input class="form-control" type="text" value="Teszt Elek" id="inputName">
+          <p id="inputName">{{(currentUser$ | async).name}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputLoginName" class="col-lg-3 control-label">Felhasználó név:</label>
+        <div class="col-lg-8">
+          <p id="inputLoginName">{{(currentUser$ | async).loginName}}</p>
         </div>
       </div>
       <div class="form-group row">
         <label for="inputEmail" class="col-lg-3 control-label">Email cím:</label>
         <div class="col-lg-8">
-          <input class="form-control" type="text" value="tesztelek@gmail.com" id="inputEmail">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPhoneNumber" class="col-lg-3 control-label">Telefonszám:</label>
-        <div class="col-lg-8">
-          <input class="form-control" type="text" value="123456789" id="inputPhoneNumber">
+          <p id="inputEmail">{{(currentUser$ | async).emailAddress}}</p>
         </div>
       </div>
       <div class="form-group">

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Student} from '../../interfaces/student';
 import {StudentService} from '../../services/student.service';
+import {ClassService} from '../../services/class.service';
+import {User} from '../../interfaces/user';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-new-student-modal',
@@ -9,19 +12,15 @@ import {StudentService} from '../../services/student.service';
 })
 export class NewStudentModalComponent implements OnInit {
 
-  students = [
-    {id: 1, name: 'diák1'},
-    {id: 2, name: 'diák2'},
-  ];
-
   student: Student;
   textShow: boolean;
+  students: User[];
 
   selectedClassIds: number[];
 
   public expanded = false;
 
-  constructor(private studentService: StudentService) {
+  constructor(private studentService: StudentService, private classService: ClassService, private userService: UserService) {
     this.student = {
       name: '',
       loginName: '',
@@ -31,10 +30,15 @@ export class NewStudentModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.getStudents().subscribe(resp => this.students = resp);
   }
 
   saveStudent(): void {
     this.studentService.addStudent(this.student);
     this.textShow = true;
+  }
+
+  assignStudentToClass(): void {
+    this.classService.assignStudent(this.student);
   }
 }
