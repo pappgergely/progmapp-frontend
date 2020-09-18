@@ -1,6 +1,8 @@
+import {Semester} from '../enum/semester.enum';
+
 export interface Class {
   id: string;
   year: Date;
-  semester: string;
+  semester: Semester;
   isActive?: boolean;
 }

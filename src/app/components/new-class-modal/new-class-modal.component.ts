@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Class} from '../../interfaces/class';
 import {ClassService} from '../../services/class.service';
+import {Semester} from '../../enum/semester.enum';
 
 @Component({
   selector: 'app-new-class-modal',
@@ -16,7 +17,7 @@ export class NewClassModalComponent implements OnInit {
     this.class = {
       id: '',
       year: null,
-      semester: '',
+      semester: Semester.spring,
       isActive: true,
     };
   }
