@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../interfaces/user';
 import {UsersResponse} from '../interfaces/users-response';
+import {Student} from '../interfaces/student';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,11 @@ export class UserService {
 
   private readonly SERVER_URL = environment.serverUrl + 'user';
   private users: BehaviorSubject<User[]>;
+  private students: BehaviorSubject<Student[]>;
 
   constructor(private http: HttpClient) {
     this.users = new BehaviorSubject([]);
+    this.students = new BehaviorSubject([]);
   }
 
   register(user: User): any{
@@ -36,19 +39,27 @@ export class UserService {
     return this.users.asObservable();
   }
 
-  getStudents(): Observable<User[]> {
+  sendRegLink(): void {
+    this.http.put<UsersResponse>(
+      this.SERVER_URL + '/newreglink/nyilasypeter',
+      {},
+      {withCredentials: true}
+    ).subscribe(resp => this.updateUsers(resp));
+  }
+
+  getStudents(): Observable<Student[]> {
     const params = new HttpParams({
       fromObject: {
         student: 'true',
       }
     });
 
-    this.http.get<User[]>(this.SERVER_URL + '?' + params,
+    this.http.get<Student[]>(this.SERVER_URL + '?' + params,
       {withCredentials: true})
       .subscribe(resp => {
-        this.users.next(resp);
+        this.students.next(resp);
       });
-    return this.users.asObservable();
+    return this.students.asObservable();
   }
 
   addUser(e: User): void {

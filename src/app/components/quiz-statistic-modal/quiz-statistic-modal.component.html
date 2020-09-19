@@ -2,28 +2,34 @@
 <div class="container main-container">
   <h1 class="welcome-msg">Statisztika</h1>
   <form class="p-3">
-    <div class="form-group row">
+    <div class="form-group row" *ngIf="statistic.userId">
       <label for="inputQuestionNumber" class="col-lg-3 control-label">Kérdések száma:</label>
       <div class="col-lg-8">
-        <label id="inputQuestionNumber">10</label>
+        <label id="inputQuestionNumber">{{statistic.nrOfAllQuestions}}</label>
       </div>
     </div>
     <div class="form-group row">
       <label for="inputRightAnswers" class="col-lg-3 control-label">Helyes válaszok száma:</label>
       <div class="col-lg-8">
-        <label id="inputRightAnswers">5</label>
+        <label id="inputRightAnswers">{{statistic.nrOfRightAnswers}}</label>
       </div>
     </div>
     <div class="form-group row">
-      <label for="inputAllAnswers" class="col-lg-3 control-label">Össz válaszok száma:</label>
+      <label for="inputWrongAnswers" class="col-lg-3 control-label">Helytelen válaszok száma:</label>
       <div class="col-lg-8">
-        <label id="inputAllAnswers">8</label>
+        <label id="inputWrongAnswers">{{statistic.nrOfBadAnswers}}</label>
       </div>
     </div>
     <div class="form-group row">
-      <label for="inputPercent" class="col-md-3 control-label">Százalék (elérendő: 80%):</label>
+      <label for="inputGoalPercentage" class="col-lg-3 control-label">Elérendő százalék:</label>
+      <div class="col-lg-8">
+        <label id="inputGoalPercentage">{{statistic.targetPercentage}}</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPercent" class="col-md-3 control-label">Elért százalék:</label>
       <div class="col-md-8">
-        <label id="inputPercent">50%</label>
+        <label id="inputPercent">{{statistic.achievedPercentage}}%</label>
       </div>
     </div>
   </form>

@@ -8,6 +8,7 @@ import {ClassEternalQuiz} from '../interfaces/class-eternal-quiz';
 import {QuestionAssignToQuiz} from '../interfaces/question-assign-to-quiz';
 import {QuizAssignToClass} from '../interfaces/quiz-assign-to-class';
 import {QuizAssignToClassResponse} from '../interfaces/quiz-assign-to-class-response';
+import {Statistic} from '../interfaces/statistic';
 
 @Injectable({
   providedIn: 'root'
@@ -75,5 +76,9 @@ export class EternalQuizService {
     if (response.success) {
       this.quizAssignToClass.next(response.quizToClass);
     }
+  }
+
+  getStatistic(): Observable<Statistic> {
+    return this.http.get<Statistic>(this.SERVER_URL + '/me/statistics', {withCredentials: true});
   }
 }

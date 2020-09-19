@@ -25,7 +25,7 @@ export class StudentService {
     ).subscribe(resp => this.updateStudent(resp));
   }
 
-  private updateStudent(response: StudentResponse): void {
+  updateStudent(response: StudentResponse): void {
     if (response.success) {
       this.student.next(response.student);
     }

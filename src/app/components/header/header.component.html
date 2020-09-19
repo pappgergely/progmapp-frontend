@@ -33,7 +33,7 @@
         <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
           <a routerLink="/profile" ngbDropdownItem>Profilom</a>
           <a routerLink="/change-password" ngbDropdownItem>Jelszó megváltoztatása</a>
-          <a routerLink="/statistic" ngbDropdownItem>Statisztikám</a>
+          <a routerLink="/statistic" ngbDropdownItem *ngIf="isStudent$ | async">Statisztikám</a>
           <button ngbDropdownItem (click)="logout()">Kijelentkezés</button>
         </div>
       </div>

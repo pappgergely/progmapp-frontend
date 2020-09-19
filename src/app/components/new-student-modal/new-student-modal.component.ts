@@ -14,9 +14,7 @@ export class NewStudentModalComponent implements OnInit {
 
   student: Student;
   textShow: boolean;
-  students: User[];
-
-  selectedClassIds: number[];
+  students: Student[];
 
   public expanded = false;
 
@@ -26,6 +24,8 @@ export class NewStudentModalComponent implements OnInit {
       loginName: '',
       emailAddress: '',
       password: '',
+      roles: [],
+      classes: []
     };
   }
 
@@ -38,7 +38,7 @@ export class NewStudentModalComponent implements OnInit {
     this.textShow = true;
   }
 
-  assignStudentToClass(): void {
+  addStudentToClass(): void {
     this.classService.assignStudent(this.student);
   }
 }

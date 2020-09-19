@@ -31,6 +31,7 @@ export class NewUserModalComponent implements OnInit {
 
   saveUser(): void {
     this.userService.addUser(this.user);
+    this.userService.sendRegLink();
     this.textShow = true;
   }
 }

@@ -5,6 +5,8 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Class} from '../interfaces/class';
 import {ClassResponse} from '../interfaces/class-response';
 import {Student} from '../interfaces/student';
+import {StudentService} from './student.service';
+import {StudentResponse} from '../interfaces/student-response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class ClassService {
   private readonly SERVER_URL = environment.serverUrl + 'class';
   private classes: BehaviorSubject<Class[]>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private studentService: StudentService) {
     this.classes = new BehaviorSubject([]);
   }
 
@@ -47,10 +49,10 @@ export class ClassService {
   }
 
   assignStudent(s: Student): void {
-    this.http.put<ClassResponse>(
-      this.SERVER_URL + '/',
-      {student: s},
+    this.http.put<StudentResponse>(
+      this.SERVER_URL + '/progmatic2020-ősz/students',
+      s,
       {withCredentials: true})
-      .subscribe(resp => this.updateClasses(resp));
+      .subscribe(resp => this.studentService.updateStudent(resp));
   }
 }
