@@ -27,8 +27,8 @@ export class QuizQuestionService {
   //   return this.quizQuestions.asObservable();
   // }
 
-  getQuizQuestion(): Observable<QuizQuestionResponse> {
-    return this.http.get<QuizQuestionResponse>(this.SERVER_URL + '/micimackókedvence', {withCredentials: true});
+  getQuizQuestion(): Observable<QuizQuestion> {
+    return this.http.get<QuizQuestion>(this.SERVER_URL + '/micimackókedvence', {withCredentials: true});
   }
 
   private updateQuizQuestion(response: QuizQuestionsResponse): void {
@@ -40,7 +40,7 @@ export class QuizQuestionService {
   addQuizQuestion(q: QuizQuestion): void {
     this.http.post<QuizQuestionsResponse>(
       this.SERVER_URL,
-      {quizQuestion: q},
+      q,
       { withCredentials: true }
     ).subscribe(resp => this.updateQuizQuestion(resp));
   }

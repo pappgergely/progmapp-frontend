@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
+import {PossibleAnswerValues} from '../../interfaces/possible-answer-values';
+import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answers';
 
 @Component({
   selector: 'app-new-quiz-question-modal',
@@ -10,25 +12,15 @@ import {QuizQuestion} from '../../interfaces/quiz-question';
 export class NewQuizQuestionModalComponent implements OnInit {
 
   textShow: boolean;
+  question: QuizQuestion;
 
   constructor(private quizQuestionService: QuizQuestionService) {
-    this.quizQuestion = {
+    this.question = {
       id: '',
       text: '',
       explanationAfter: '',
       feedbackType: '',
-      possibleAnswers: [
-        {
-          textBefore: '',
-          type: '',
-          possibleAnswerValues: [
-            {
-              text: '',
-              isRightAnswer: false
-            }
-          ]
-        }
-      ]
+      possibleAnswers: [],
     };
   }
 
@@ -38,24 +30,11 @@ export class NewQuizQuestionModalComponent implements OnInit {
     attribution: false
   };
 
-  quizQuestion: QuizQuestion;
-
   ngOnInit(): void {
   }
 
-  generateNewAnswer(): void {
-    const createDiv = document.createElement('div');
-    createDiv.innerHTML = `
-      <input>
-
-      <label><input type="checkbox"> Jó válasz</label>
-      <input type="checkbox">
-      <label>Rossz válasz</label>`;
-    document.getElementsByClassName('answers')[0].appendChild(createDiv);
-  }
-
   saveQuizQuestion(): void {
-    this.quizQuestionService.addQuizQuestion(this.quizQuestion);
+    this.quizQuestionService.addQuizQuestion(this.question);
     this.textShow = true;
     window.scroll(0, 0);
   }

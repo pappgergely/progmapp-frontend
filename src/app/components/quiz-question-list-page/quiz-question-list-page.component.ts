@@ -28,7 +28,7 @@ export class QuizQuestionListPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizQuestionService.getQuizQuestion().subscribe(
-      question => { this.question = question.quizQuestion;
+      question => { this.question = question;
       }
     );
   }
