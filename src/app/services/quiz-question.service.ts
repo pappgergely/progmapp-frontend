@@ -3,8 +3,8 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {QuizQuestion} from '../interfaces/quiz-question';
 import {HttpClient} from '@angular/common/http';
-import {QuizQuestionResponse} from '../interfaces/quiz-question-response';
 import {QuizQuestionsResponse} from '../interfaces/quiz-questions-response';
+import {UploadImageResponse} from '../interfaces/upload-image-response';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +43,11 @@ export class QuizQuestionService {
       q,
       { withCredentials: true }
     ).subscribe(resp => this.updateQuizQuestion(resp));
+  }
+
+  uploadImage(image: FormData): Observable<UploadImageResponse> {
+    return this.http.post<UploadImageResponse>(this.SERVER_URL + '/micimackokedvence/imagefile',
+      image,
+      {withCredentials: true});
   }
 }

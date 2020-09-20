@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-import {PossibleAnswerValues} from '../../interfaces/possible-answer-values';
-import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answers';
+import {UploadImage} from '../../interfaces/upload-image';
 
 @Component({
   selector: 'app-new-quiz-question-modal',
@@ -14,13 +13,27 @@ export class NewQuizQuestionModalComponent implements OnInit {
   textShow: boolean;
   question: QuizQuestion;
 
+  @Input()
+  image: UploadImage;
+
   constructor(private quizQuestionService: QuizQuestionService) {
     this.question = {
       id: '',
       text: '',
       explanationAfter: '',
       feedbackType: '',
-      possibleAnswers: [],
+      possibleAnswers: [
+        {
+          textBefore: '',
+          type: '',
+          possibleAnswerValues: [
+            {
+              text: '',
+              isRightAnswer: false
+            }
+          ]
+        }
+      ],
     };
   }
 
@@ -37,5 +50,13 @@ export class NewQuizQuestionModalComponent implements OnInit {
     this.quizQuestionService.addQuizQuestion(this.question);
     this.textShow = true;
     window.scroll(0, 0);
+  }
+
+  saveImage(pic): void {
+    const img = new FormData();
+    img.append('image', pic.target.files[0]);
+    this.quizQuestionService.uploadImage(img)
+      .subscribe(resp => this.image.id = resp.picture.id,
+        error => alert('Nem megfelelő formátumú a kép.'));
   }
 }
