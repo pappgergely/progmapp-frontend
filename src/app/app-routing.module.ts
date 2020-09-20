@@ -42,7 +42,7 @@ const routes: Routes = [
   {path: 'new-class-modal', component: NewClassModalComponent},
   {path: 'new-student-modal', component: NewStudentModalComponent},
   {path: 'new-user-modal', component: NewUserModalComponent},
-  {path: 'eternal-quiz-class', component: EternalQuizAssignClassModalComponent}
+  {path: 'eternal-quiz-class', component: EternalQuizAssignClassModalComponent},
 ];
 
 @NgModule({

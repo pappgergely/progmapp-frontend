@@ -5,6 +5,8 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../interfaces/user';
 import {UsersResponse} from '../interfaces/users-response';
 import {Student} from '../interfaces/student';
+import {Register} from '../interfaces/register';
+import {ChangePassword} from '../interfaces/change-password';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +14,19 @@ import {Student} from '../interfaces/student';
 export class UserService {
 
   private readonly SERVER_URL = environment.serverUrl + 'user';
+  private readonly SERVER_URL2 = environment.serverUrl;
   private users: BehaviorSubject<User[]>;
   private students: BehaviorSubject<Student[]>;
+  psw: ChangePassword;
 
   constructor(private http: HttpClient) {
     this.users = new BehaviorSubject([]);
     this.students = new BehaviorSubject([]);
   }
 
-  register(user: User): any{
-    return this.http.post(this.SERVER_URL + 'completeregistration', user);
+  register(reg: Register): any{
+    return this.http.post(
+      this.SERVER_URL + 'completeregistration', reg);
   }
 
   getUsers(): Observable<User[]> {
@@ -60,6 +65,14 @@ export class UserService {
         this.students.next(resp);
       });
     return this.students.asObservable();
+  }
+
+  modifyStudent(): void {
+    this.http.put<UsersResponse>(
+      this.SERVER_URL2 + '/me',
+      { psw: this.psw },
+      { withCredentials: true }
+    ).subscribe(resp => this.updateUsers(resp));
   }
 
   addUser(e: User): void {

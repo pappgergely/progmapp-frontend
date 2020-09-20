@@ -6,7 +6,7 @@
         <a class="nav-link active" routerLink="/staff-class">Osztályok</a>
       </li>
       <li class="nav-item" *ngIf="isTeacher$ | async">
-        <a class="nav-link active" routerLink="/teacher-class-page">Osztályok</a>
+        <a class="nav-link active" routerLink="/teacher-class-page">Osztályok és kvízek</a>
       </li>
       <li class="nav-item" *ngIf="isAdmin$ || isOffice$ | async">
         <a class="nav-link" routerLink="/user">Felhasználók</a>

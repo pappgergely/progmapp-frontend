@@ -11,8 +11,6 @@ import {LoginService} from '../../services/login.service';
 })
 export class ProfilePageComponent implements OnInit {
 
-  // TODO data modify method
-
   user: User;
   currentUser$: Observable<User>;
 

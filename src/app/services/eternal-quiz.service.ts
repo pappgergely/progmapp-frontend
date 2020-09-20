@@ -44,7 +44,7 @@ export class EternalQuizService {
   addQuiz(q: Eternalquiz): void {
     this.http.post<EternalquizResponse>(
       this.SERVER_URL,
-      {quiz: q},
+      q,
       { withCredentials: true }
     ).subscribe(resp => this.updateQuizzes(resp));
   }

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {ChangePassword} from '../../interfaces/change-password';
+import {Student} from '../../interfaces/student';
 
 @Component({
   selector: 'app-change-password-modal',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChangePasswordModalComponent implements OnInit {
 
-  constructor() { }
+  password: ChangePassword;
+  textShow: boolean;
+  form: FormGroup;
+  submitted = false;
+  error = '';
+  student: Student;
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private userService: UserService) {
   }
 
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      name: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      newPassword: ['', [Validators.required]]
+    });
+  }
+
+  get f(): any {
+    return this.form.controls;
+  }
+
+  onSubmit(): boolean {
+    if (this.form.valid) {
+      this.userService.modifyStudent();
+    } else {
+      return false;
+    }
+  }
 }

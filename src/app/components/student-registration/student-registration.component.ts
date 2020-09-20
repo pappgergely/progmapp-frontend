@@ -16,11 +16,13 @@ export class StudentRegistrationComponent implements OnInit {
   submitted = false;
   loading = false;
   registrationSuccess = false;
+  error: '';
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, public router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
+      token: ['', [Validators.required]],
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]

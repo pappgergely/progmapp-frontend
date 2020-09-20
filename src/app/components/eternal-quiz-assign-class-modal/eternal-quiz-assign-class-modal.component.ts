@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Eternalquiz} from '../../interfaces/eternalquiz';
+import {Component, OnInit} from '@angular/core';
+import {EternalQuizService} from '../../services/eternal-quiz.service';
+import {QuizAssignToClass} from '../../interfaces/quiz-assign-to-class';
+import {Class} from '../../interfaces/class';
+import {Semester} from '../../enum/semester.enum';
+import {ClassService} from '../../services/class.service';
 
 @Component({
   selector: 'app-eternal-quiz-assign-class-modal',
@@ -8,12 +12,26 @@ import {Eternalquiz} from '../../interfaces/eternalquiz';
 })
 export class EternalQuizAssignClassModalComponent implements OnInit {
 
-  constructor() { }
-
-  quizzez: Eternalquiz;
   textShow: boolean;
+  classQuiz: QuizAssignToClass;
+  class: Class;
+  classes: Class[];
+
+  constructor(private quizService: EternalQuizService, private classService: ClassService) {
+    this.class = {
+      id: '',
+      year: null,
+      semester: Semester.spring,
+      isActive: true,
+    };
+  }
 
   ngOnInit(): void {
+    this.classService.getClasses().subscribe(resp => this.classes = resp);
+  }
+
+  assignClass(): void {
+    this.quizService.assignQuizToClass(this.classQuiz);
   }
 
 }

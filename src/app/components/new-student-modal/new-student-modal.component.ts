@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Student} from '../../interfaces/student';
 import {StudentService} from '../../services/student.service';
 import {ClassService} from '../../services/class.service';
-import {User} from '../../interfaces/user';
 import {UserService} from '../../services/user.service';
 
 @Component({
