@@ -10,8 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { HeaderComponent } from './components/header/header.component';
-import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
-import { StaffRegistrationComponent } from './components/staff-registration/staff-registration.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { StudentQuizPageComponent } from './components/student-quiz-page/student-quiz-page.component';
 import { NewQuizQuestionModalComponent } from './components/new-quiz-question-modal/new-quiz-question-modal.component';
 import { NewEternalquizModalComponent } from './components/new-eternalquiz-modal/new-eternalquiz-modal.component';
@@ -47,8 +46,7 @@ import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-
     AppComponent,
     LoginPageComponent,
     HeaderComponent,
-    StudentRegistrationComponent,
-    StaffRegistrationComponent,
+    RegistrationComponent,
     StudentQuizPageComponent,
     NewQuizQuestionModalComponent,
     NewEternalquizModalComponent,

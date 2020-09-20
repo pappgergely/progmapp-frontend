@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {EternalQuizService} from '../../services/eternal-quiz.service';
+import {QuizQuestion} from '../../interfaces/quiz-question';
+import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answers';
 
 @Component({
   selector: 'app-student-quiz-page',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentQuizPageComponent implements OnInit {
 
-  constructor() { }
+  newQuiestion: QuizQuestion;
+
+  constructor(private eternalQuizService: EternalQuizService) {
+    this.newQuiestion = {
+      id: '',
+      text: '',
+      explanationAfter: '',
+      feedbackType: '',
+      possibleAnswers: []
+    };
+  }
 
   ngOnInit(): void {
   }
 
+  getNewQuiz(): void {
+    this.eternalQuizService.getStudentQuiz();
+  }
 }

@@ -9,6 +9,7 @@ import {QuestionAssignToQuiz} from '../interfaces/question-assign-to-quiz';
 import {QuizAssignToClass} from '../interfaces/quiz-assign-to-class';
 import {QuizAssignToClassResponse} from '../interfaces/quiz-assign-to-class-response';
 import {Statistic} from '../interfaces/statistic';
+import {QuizQuestion} from '../interfaces/quiz-question';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,13 @@ export class EternalQuizService {
   private eternalQuiz: BehaviorSubject<Eternalquiz[]>;
   private classEternalQuiz: BehaviorSubject<ClassEternalQuiz[]>;
   private quizAssignToClass: BehaviorSubject<QuizAssignToClass[]>;
+  private studentQuiz: BehaviorSubject<QuizQuestion[]>;
 
   constructor(private http: HttpClient) {
     this.eternalQuiz = new BehaviorSubject([]);
     this.classEternalQuiz = new BehaviorSubject([]);
     this.quizAssignToClass = new BehaviorSubject([]);
+    this.studentQuiz = new BehaviorSubject([]);
   }
 
   getQuiz(): Observable<ClassEternalQuiz[]> {
@@ -80,5 +83,14 @@ export class EternalQuizService {
 
   getStatistic(): Observable<Statistic> {
     return this.http.get<Statistic>(this.SERVER_URL + '/me/statistics', {withCredentials: true});
+  }
+
+  getStudentQuiz(): Observable<QuizQuestion[]> {
+    this.http.get<QuizQuestion[]>(this.SERVER_URL + '/question',
+      {withCredentials: true})
+      .subscribe(resp => {
+        this.studentQuiz.next(resp);
+      });
+    return this.studentQuiz.asObservable();
   }
 }

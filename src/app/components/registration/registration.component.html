@@ -7,7 +7,7 @@
           <h5 class="card-title text-center">Regisztráció</h5>
           <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-label-group">
-              <input type="text" formControlName="token" id="inputToken" class="form-control"
+              <input type="text" formControlName="token" id="inputToken" class="form-control" name="token"
                      placeholder="Token" required autofocus
                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
               <div *ngIf="submitted && f.token.errors" class="invalid-feedback">
@@ -15,17 +15,8 @@
               </div>
               <label for="inputToken">Token</label>
             </div>
-<!--            <div class="form-label-group">-->
-<!--              <input type="text" formControlName="name" id="inputUsername" class="form-control"-->
-<!--                     placeholder="Felhasználónév" required autofocus-->
-<!--                     [ngClass]="{ 'is-invalid': submitted && f.name.errors }">-->
-<!--              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">-->
-<!--                <div *ngIf="f.name.errors.required">Név megadása kötelező</div>-->
-<!--              </div>-->
-<!--              <label for="inputUsername">Felhasználónév</label>-->
-<!--            </div>-->
             <div class="form-label-group">
-              <input type="password" formControlName="password" id="inputPassword" class="form-control"
+              <input type="password" formControlName="password" id="inputPassword" class="form-control" name="password"
                      placeholder="Jelszó" required
                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
               <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -34,18 +25,8 @@
               </div>
               <label for="inputPassword">Jelszó</label>
             </div>
-<!--            <div class="form-label-group">-->
-<!--              <input type="password" formControlName="confirmPassword" id="inputPassword2" class="form-control"-->
-<!--                     placeholder="Jelszó újra" required-->
-<!--                     [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">-->
-<!--              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">-->
-<!--                <div *ngIf="f.confirmPassword.errors.required">Jelszó megerősítése kötelező</div>-->
-<!--                <div *ngIf="f.confirmPassword.errors.mustMatch">Jelszó nem egyezik</div>-->
-<!--              </div>-->
-<!--              <label for="inputPassword2">Jelszó újra</label>-->
-<!--            </div>-->
             <div class="form-label-group">
-              <input type="text" formControlName="birthDate" id="inputBirthDate" class="form-control"
+              <input type="text" formControlName="birthDate" id="inputBirthDate" class="form-control" name="birthDate"
                      placeholder="Születési dátum" required>
               <label for="inputBirthDate">Születési dátum</label>
             </div>

@@ -7,10 +7,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-student-registration',
-  templateUrl: './student-registration.component.html',
-  styleUrls: ['./student-registration.component.scss']
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class StudentRegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
@@ -23,11 +23,8 @@ export class StudentRegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       token: ['', [Validators.required]],
-      username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
-    }, {
-      validator: MustMatch('password', 'confirmPassword')
+      birthDate: ['', Validators.required]
     });
   }
 
@@ -44,11 +41,7 @@ export class StudentRegistrationComponent implements OnInit {
     this.userService
       .register(this.registerForm.value)
       .pipe(first())
-      .subscribe(data => { this.registrationSuccess = true; },
+      .subscribe(data => { this.registrationSuccess = true; this.router.navigateByUrl('/login'); },
         error => { alert(error); });
-
-    if (this.registrationSuccess === true) {
-      this.router.navigateByUrl('/login');
-    }
   }
 }

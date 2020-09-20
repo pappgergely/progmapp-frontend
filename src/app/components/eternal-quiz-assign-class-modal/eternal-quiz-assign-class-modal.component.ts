@@ -24,6 +24,10 @@ export class EternalQuizAssignClassModalComponent implements OnInit {
       semester: Semester.spring,
       isActive: true,
     };
+    this.classQuiz = {
+      eternalQuizId: '',
+      schoolClassId: '',
+    };
   }
 
   ngOnInit(): void {

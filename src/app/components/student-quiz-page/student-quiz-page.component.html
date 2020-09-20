@@ -2,15 +2,15 @@
 <div class="container main-container">
   <h1 class="welcome-msg">kvíz</h1>
   <div class="ml-5">
-    <button class="btn btn-primary">Kérek egy új kvízkérdést</button>
-    <h2 class="mt-5">Ide jön majd a kvízkérdés</h2>
+    <button class="btn btn-primary" (click)="getNewQuiz()">Kérek egy új kvízkérdést</button>
+    <h2 class="mt-5">{{newQuiestion.text}}</h2>
     <p class="mt-5"><label>
       <input type="checkbox" class="mr-2">
-    </label>Ide jönnek a válasz lehetőségek</p>
+    </label>{{newQuiestion.possibleAnswers}}</p>
     <button class="btn btn-primary">Ok</button>
     <div>
       <hr>
-      <p class="pb-4">Ide jönne a válasz/magyarázat</p>
+      <p class="pb-4">{{newQuiestion.explanationAfter}}</p>
     </div>
   </div>
   <div class="container">

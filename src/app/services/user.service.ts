@@ -26,7 +26,7 @@ export class UserService {
 
   register(reg: Register): any{
     return this.http.post(
-      this.SERVER_URL + 'completeregistration', reg);
+      this.SERVER_URL2 + 'completeregistration', reg);
   }
 
   getUsers(): Observable<User[]> {

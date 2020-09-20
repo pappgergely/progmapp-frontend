@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginPageComponent} from './components/login-page/login-page.component';
-import {StudentRegistrationComponent} from './components/student-registration/student-registration.component';
-import {StaffRegistrationComponent} from './components/staff-registration/staff-registration.component';
+import {RegistrationComponent} from './components/registration/registration.component';
 import {StudentQuizPageComponent} from './components/student-quiz-page/student-quiz-page.component';
 import {UserPageComponent} from './components/user-page/user-page.component';
 import {StaffClassPageComponent} from './components/staff-class-page/staff-class-page.component';
@@ -26,8 +25,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'login', component: LoginPageComponent},
   {path: 'main-page', component: MainPageComponent},
-  {path: 'student-registration', component: StudentRegistrationComponent},
-  {path: 'staff-registration', component: StaffRegistrationComponent},
+  {path: 'registration', component: RegistrationComponent},
   {path: 'student-quiz-page', component: StudentQuizPageComponent},
   {path: 'user', component: UserPageComponent},
   {path: 'staff-class', component: StaffClassPageComponent},
