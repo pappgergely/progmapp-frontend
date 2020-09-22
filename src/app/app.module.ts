@@ -40,6 +40,8 @@ import {RouterModule} from '@angular/router';
 import { FilterQuizPipe } from './pipes/filter-quiz.pipe';
 import { FilterQuizQuestionPipe } from './pipes/filter-quiz-question.pipe';
 import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-assign-class-modal/eternal-quiz-assign-class-modal.component';
+import {BASE_PATH} from '../../build/openapi';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,8 @@ import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-
     ],
   entryComponents: [],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true },
+    { provide: BASE_PATH, useValue: environment.serverUrl.substring(0, environment.serverUrl.length - 1) }
   ],
   bootstrap: [AppComponent]
 })

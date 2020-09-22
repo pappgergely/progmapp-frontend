@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {User} from '../../interfaces/user';
 import {Roles} from '../../enum/roles.enum';
+import {OfficeAdminControllerService, UserDTO} from '../../../../build/openapi';
 
 @Component({
   selector: 'app-new-user-modal',
@@ -12,10 +11,10 @@ export class NewUserModalComponent implements OnInit {
 
   roles = [];
 
-  user: User;
+  user: UserDTO;
   textShow: boolean;
 
-  constructor(private userService: UserService) {
+  constructor(private officeService: OfficeAdminControllerService) {
     this.user = {
       name: '',
       loginName: '',
@@ -30,8 +29,12 @@ export class NewUserModalComponent implements OnInit {
   }
 
   saveUser(): void {
-    this.userService.addUser(this.user);
-    this.userService.sendRegLink();
-    this.textShow = true;
+    console.log('saveUser called');
+    this.officeService.createStudent(this.user)
+      .subscribe(
+        res => {
+          this.textShow = true;
+        }
+      );
   }
 }

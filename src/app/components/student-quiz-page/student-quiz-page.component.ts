@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EternalQuizService} from '../../services/eternal-quiz.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answers';
+import {EternalQuizControllerService, OfficeAdminControllerService, QuestionDTO, UserDTO} from '../../../../build/openapi';
 
 @Component({
   selector: 'app-student-quiz-page',
@@ -10,22 +11,20 @@ import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answ
 })
 export class StudentQuizPageComponent implements OnInit {
 
-  newQuiestion: QuizQuestion;
+  question: QuestionDTO;
 
-  constructor(private eternalQuizService: EternalQuizService) {
-    this.newQuiestion = {
-      id: '',
-      text: '',
-      explanationAfter: '',
-      feedbackType: '',
-      possibleAnswers: []
-    };
+  constructor(private es: EternalQuizControllerService) {
   }
 
   ngOnInit(): void {
   }
 
   getNewQuiz(): void {
-    this.eternalQuizService.getStudentQuiz();
+    this.es.getNextEternalQiuzQuestion().subscribe(
+      questionDto => {
+        this.question = questionDto;
+      }
+    );
+
   }
 }
