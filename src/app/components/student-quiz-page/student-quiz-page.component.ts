@@ -6,13 +6,14 @@ import {
   AnswerFeedbackDTO,
   AnswerResponseDTO,
   EternalQuizControllerService,
-  OfficeAdminControllerService, PossibleAnswerResponseDTO,
+  OfficeAdminControllerService, PossibleAnswerDTO, PossibleAnswerResponseDTO,
   QuestionDTO,
   UserDTO
 } from '../../../../build/openapi';
 import {PossibleAnswerDropdownComponent} from '../possible-answer-dropdown/possible-answer-dropdown.component';
 import {PossibleAnswerResponseProvider} from '../possible-answer-response-provider';
 import {EqStatisticsComponent} from '../eq-statistics/eq-statistics.component';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-student-quiz-page',
@@ -42,6 +43,20 @@ export class StudentQuizPageComponent implements OnInit {
         this.answerFeedback = null;
       }
     );
+  }
+
+  getQuesiontImageUrl(): string{
+    if (this.question.hasImage){
+      return environment.serverUrl + 'question/' + this.question.id + '/imagefile';
+    }
+    return null;
+  }
+
+  getPosibleAnswerImageUrl(po: PossibleAnswerDTO): string{
+    if (po.hasImage){
+      return environment.serverUrl + 'question/possibleanswer/' + po.id + '/imagefile';
+    }
+    return null;
   }
 
   sendAnswer(): void {

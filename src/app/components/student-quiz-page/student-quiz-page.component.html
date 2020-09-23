@@ -44,7 +44,25 @@
         <div *ngIf="question">
 
           <h2 >{{question.text}}</h2>
+          <div  *ngIf="question.hasImage" class="row justify-content-center mt-3 mb-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <img [src]="getQuesiontImageUrl()" class="img-fluid">
+            </div>
+            <div class="col-md-2"></div>
+          </div>
           <div *ngFor="let po of question.possibleAnswers">
+            <div>{{po.textBefore}}</div>
+            <div *ngIf="po.hasImage" class="row justify-content-center mt-3">
+              <div class="col-md-2"></div>
+              <div class="col-md-6">
+                <img [src]="getPosibleAnswerImageUrl(po)" class="img-fluid">
+
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <div>{{po.textAfter}}</div>
+
             <app-possible-answer-radio  *ngIf="po.type == 'radioButtons'" [possibleAnswer]="po"></app-possible-answer-radio>
             <app-possible-answer-dropdown *ngIf="po.type == 'dropdown'" [possibleAnswer]="po"></app-possible-answer-dropdown>
             <app-possible-answer-checkboxlist *ngIf="po.type == 'checkboxList'" [possibleAnswer]="po"></app-possible-answer-checkboxlist>
