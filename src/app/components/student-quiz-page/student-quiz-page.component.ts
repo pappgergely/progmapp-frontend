@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {EternalQuizService} from '../../services/eternal-quiz.service';
-import {QuizQuestion} from '../../interfaces/quiz-question';
-import {PossibleQuestionAnswers} from '../../interfaces/possible-question-answers';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {
+  AnswerFeedbackDTO,
+  AnswerResponseDTO,
+  EternalQuizControllerService,
+  PossibleAnswerResponseDTO,
+  QuestionDTO,
+} from '../../../../build/openapi';
+import {PossibleAnswerResponseProvider} from '../possible-answer-response-provider';
+import {EqStatisticsComponent} from '../eq-statistics/eq-statistics.component';
 
 @Component({
   selector: 'app-student-quiz-page',
@@ -10,22 +16,50 @@ import {PossibleQuestionAnswers} from '../../interfaces/possible-question-answer
 })
 export class StudentQuizPageComponent implements OnInit {
 
-  newQuiestion: QuizQuestion;
+  question: QuestionDTO;
+  answerFeedback: AnswerFeedbackDTO;
+  errorMessage: string;
 
-  constructor(private eternalQuizService: EternalQuizService) {
-    this.newQuiestion = {
-      id: '',
-      text: '',
-      explanationAfter: '',
-      feedbackType: '',
-      possibleAnswers: []
-    };
+  @ViewChildren(PossibleAnswerResponseProvider) responseProviders: QueryList<PossibleAnswerResponseProvider>;
+
+  @ViewChild(EqStatisticsComponent) statisticsComponent: EqStatisticsComponent;
+
+  constructor(private es: EternalQuizControllerService) {
   }
 
   ngOnInit(): void {
   }
 
   getNewQuiz(): void {
-    this.eternalQuizService.getStudentQuiz();
+    this.es.getNextEternalQiuzQuestion().subscribe(
+      questionDto => {
+        this.question = questionDto;
+        this.answerFeedback = null;
+      }
+    );
+  }
+
+  sendAnswer(): void {
+    console.log('sendAnswer called');
+    console.log('child.length: ' + this.responseProviders.length);
+    const anwerRespDto: AnswerResponseDTO = {
+      questionId: this.question.id,
+      answers: new Array<PossibleAnswerResponseDTO>()
+    };
+    this.responseProviders.forEach(po => anwerRespDto.answers.push(po.getSelectedAnswers()));
+    this.es.acceptEternalQuizAnswer(anwerRespDto).subscribe(
+      feedback => {
+        this.question = null;
+        this.answerFeedback = feedback;
+        this.errorMessage = null;
+        this.statisticsComponent.refresh();
+      },
+      error => {
+        console.log('error');
+        this.errorMessage = error.toString();
+        this.question = null;
+        this.answerFeedback = null;
+      }
+    );
   }
 }

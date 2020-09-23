@@ -40,6 +40,12 @@ import {RouterModule} from '@angular/router';
 import { FilterQuizPipe } from './pipes/filter-quiz.pipe';
 import { FilterQuizQuestionPipe } from './pipes/filter-quiz-question.pipe';
 import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-assign-class-modal/eternal-quiz-assign-class-modal.component';
+import {BASE_PATH} from '../../build/openapi';
+import { environment } from 'src/environments/environment';
+import { PossibleAnswerRadioComponent } from './components/possible-answer-radio/possible-answer-radio.component';
+import { PossibleAnswerDropdownComponent } from './components/possible-answer-dropdown/possible-answer-dropdown.component';
+import { EqStatisticsComponent } from './components/eq-statistics/eq-statistics.component';
+import { PossibleAnswerCheckboxlistComponent } from './components/possible-answer-checkboxlist/possible-answer-checkboxlist.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +80,10 @@ import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-
     FilterQuizPipe,
     FilterQuizQuestionPipe,
     EternalQuizAssignClassModalComponent,
+    PossibleAnswerRadioComponent,
+    PossibleAnswerDropdownComponent,
+    EqStatisticsComponent,
+    PossibleAnswerCheckboxlistComponent,
   ],
     imports: [
         BrowserModule,
@@ -89,7 +99,8 @@ import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-
     ],
   entryComponents: [],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true },
+    { provide: BASE_PATH, useValue: environment.serverUrl.substring(0, environment.serverUrl.length - 1) }
   ],
   bootstrap: [AppComponent]
 })
