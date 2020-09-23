@@ -1,16 +1,15 @@
 import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {EternalQuizService} from '../../services/eternal-quiz.service';
-import {QuizQuestion} from '../../interfaces/quiz-question';
-import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answers';
 import {
   AnswerFeedbackDTO,
   AnswerResponseDTO,
   EternalQuizControllerService,
+<<<<<<< HEAD
+  PossibleAnswerResponseDTO,
+=======
   OfficeAdminControllerService, PossibleAnswerDTO, PossibleAnswerResponseDTO,
+>>>>>>> d94d150b8093ca40055b2ee073637bc1e4476996
   QuestionDTO,
-  UserDTO
 } from '../../../../build/openapi';
-import {PossibleAnswerDropdownComponent} from '../possible-answer-dropdown/possible-answer-dropdown.component';
 import {PossibleAnswerResponseProvider} from '../possible-answer-response-provider';
 import {EqStatisticsComponent} from '../eq-statistics/eq-statistics.component';
 import {environment} from '../../../environments/environment';

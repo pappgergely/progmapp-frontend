@@ -22,30 +22,46 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="inputAnswer" class="col-sm-2 col-form-label">Válaszok</label>
       <div class="col-sm-10">
-        <textarea type="text" name="answer" [(ngModel)]="question.possibleAnswers"></textarea>
-        <label><input class="ml-2" type="checkbox" id="inputAnswer" [(ngModel)]="question.possibleAnswers">
-          Jó válasz
-        </label>
+        Szöveg előtte
+        <input type="text" class="form-control" [(ngModel)]="question.possibleAnswers[0].textBefore">
       </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        Kérdés típusa
+        <select [(ngModel)]="question.possibleAnswers[0].type">
+          <option value="buttons">Gombok</option>
+          <option value="dropdown">Legördülő</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputAnswer" class="col-sm-2 col-form-label">Válaszok</label>
+      <div class="col-sm-10" *ngFor="let a of question.possibleAnswers[0].possibleAnswerValues; let f = first">
+        <textarea id="inputAnswer" name="answer" cols="50"
+                  [(ngModel)]="a.text"></textarea>
+          <label><input class="ml-2" type="checkbox" [(ngModel)]="a.isRightAnswer">Jó válasz</label>
+        <button class="btn btn-danger" *ngIf="!f">Del</button>
+      </div>
+      <button class="btn btn-outline-success" (click)="addNewPossibleAnswer()">Új válaszlehetőség hozzáadása</button>
     </div>
     <div class="form-group row">
       <label for="inputFeedbackType" class="col-sm-2 col-form-label">Visszajelzés típusa</label>
       <div class="col-sm-10">
         <select class="form-control" id="inputFeedbackType" [(ngModel)]="question.feedbackType">
           <option selected disabled>Válassz...</option>
-          <option>Nincs visszajelzés</option>
-          <option>Helyes válasz</option>
-          <option>Helytelen válasz</option>
-          <option>Helyes válasz megmutatása</option>
+          <option value="">Nincs visszajelzés</option>
+          <option value="trueFalseFeedback">Helyes/helytelen válasz</option>
+          <option value="">Helyes válasz megmutatása</option>
         </select>
       </div>
     </div>
     <div class="form-group row">
       <label for="inputExplain" class="col-sm-2 col-form-label">Magyarázat</label>
-      <div class="col-sm-10" [(ngModel)]="question.explanationAfter">
-        <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="5" cols="10" name="explanation">
+      <div class="col-sm-10">
+        <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="5" cols="10" name="explanation"
+                  [(ngModel)]="question.explanationAfter">
         </textarea>
       </div>
     </div>
