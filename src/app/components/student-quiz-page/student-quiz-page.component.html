@@ -3,8 +3,10 @@
   <div class="ml-5">
 
     <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
+      <div class="col-md-2">
+        <app-eq-statistics></app-eq-statistics>
+      </div>
+      <div class="col-md-10">
         <div *ngIf="answerFeedback" class="row justify-content-center align-items-center">
           <div *ngIf="answerFeedback.successFullResult" class="centeredtext">
             <div *ngIf="answerFeedback.result">
@@ -12,38 +14,45 @@
                 <i class="fas fa-smile fa-3x feedback-right-color"></i>
                 <div>Helyes válasz!</div>
               </div>
+              <div *ngIf="answerFeedback.result == 'falseAnswer'">
+                <i class="fas fa-frown fa-3x feedback-wrong-color"></i>
+                <div>Rossz válasz.</div>
+              </div>
+              <div *ngIf="answerFeedback.result == 'partiallyRightAnswer'">
+                <i class="fas fa-surprise fa-3x feedback-partially-right-color"></i>
+                <div>Részben jó válasz (a bejelölt válaszok helyesek, de nem jelöltél be minden helyes választ).</div>
+              </div>
+              <div *ngIf="answerFeedback.result == 'lateAnswer'">
+                <i class="fas fa-clock fa-3x feedback-partially-right-color"></i>
+                <div>Lejárt a válaszadásra szánt idő.</div>
+              </div>
             </div>
-
-
+            <div *ngIf="answerFeedback.feedback">
+              <label for="feedbackTExt"><em>Megjegyzés:</em></label><span id="feedbackTExt"> {{answerFeedback.feedback}}</span>
+            </div>
           </div>
-
         </div>
+
         <div *ngIf="errorMessage" class="row justify-content-center align-items-center">
           <div>Nem várt hiba történt a kérdés beküldésekor</div>
           <div>{{errorMessage}}</div>
         </div>
+        <div class="row justify-content-center align-items-center">
+          <button class="btn btn-primary" (click)="getNewQuiz()" *ngIf="! question">Kérek egy új kvízkérdést</button>
+        </div>
+
+        <div *ngIf="question">
+
+          <h2 >{{question.text}}</h2>
+          <div *ngFor="let po of question.possibleAnswers">
+            <app-possible-answer-radio  *ngIf="po.type == 'radioButtons'"></app-possible-answer-radio>
+            <app-possible-answer-dropdown *ngIf="po.type == 'dropdown'" [possibleAnswer]="po"></app-possible-answer-dropdown>
+          </div>
+
+          <button type="button" class="btn btn-primary float-right" (click)="sendAnswer()">Bekülkdöm</button>
+
+        </div>
       </div>
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-2">
-        <app-eq-statistics></app-eq-statistics>
-      </div>
-    </div>
-
-
-    <div class="row justify-content-center align-items-center">
-      <button class="btn btn-primary" (click)="getNewQuiz()" *ngIf="! question">Kérek egy új kvízkérdést</button>
-    </div>
-
-    <div *ngIf="question">
-
-      <h2 class="mt-5" >{{question.text}}</h2>
-      <div *ngFor="let po of question.possibleAnswers">
-        <app-possible-answer-radio  *ngIf="po.type == 'radioButtons'"></app-possible-answer-radio>
-        <app-possible-answer-dropdown *ngIf="po.type == 'dropdown'" [possibleAnswer]="po"></app-possible-answer-dropdown>
-      </div>
-
-      <button type="button" class="btn btn-primary float-right" (click)="sendAnswer()">Bekülkdöm</button>
 
     </div>
 

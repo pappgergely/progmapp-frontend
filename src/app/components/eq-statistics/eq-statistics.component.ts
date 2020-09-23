@@ -19,6 +19,7 @@ export class EqStatisticsComponent implements OnInit {
     this.eqService.getMyEternalQuizStatistics().subscribe(
       value => {
         this.statistics = value;
+        this.statistics.achievedPercentage = Number(this.statistics.achievedPercentage.toFixed(2));
       }
     );
   }

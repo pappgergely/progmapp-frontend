@@ -22,7 +22,7 @@ export class PossibleAnswerDropdownComponent extends PossibleAnswerResponseProvi
   getSelectedAnswers(): PossibleAnswerResponseDTO{
     const ret: PossibleAnswerResponseDTO  = {
       id: this.possibleAnswer.id,
-      selectedAnswerIds: new Array(this.selectedPoValue)
+      selectedAnswerIds: this.selectedPoValue ? new Array(this.selectedPoValue) : new Array()
     };
     return ret;
   }
