@@ -1,17 +1,52 @@
 <app-header></app-header>
 <div class="container main-container">
-  <h1 class="welcome-msg">kvíz</h1>
   <div class="ml-5">
-    <button class="btn btn-primary" (click)="getNewQuiz()">Kérek egy új kvízkérdést</button>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div *ngIf="answerFeedback" class="row justify-content-center align-items-center">
+          <div *ngIf="answerFeedback.successFullResult" class="centeredtext">
+            <div *ngIf="answerFeedback.result">
+              <div *ngIf="answerFeedback.result == 'rightAnswer'">
+                <i class="fas fa-smile fa-3x feedback-right-color"></i>
+                <div>Helyes válasz!</div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+        <div *ngIf="errorMessage" class="row justify-content-center align-items-center">
+          <div>Nem várt hiba történt a kérdés beküldésekor</div>
+          <div>{{errorMessage}}</div>
+        </div>
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2">
+        <app-eq-statistics></app-eq-statistics>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center align-items-center">
+      <button class="btn btn-primary" (click)="getNewQuiz()" *ngIf="! question">Kérek egy új kvízkérdést</button>
+    </div>
+
     <div *ngIf="question">
 
       <h2 class="mt-5" >{{question.text}}</h2>
-      <button class="btn btn-primary">Ok</button>
-      <div>
-        <hr>
-        <p class="pb-4">{{question.explanationAfter}}</p>
+      <div *ngFor="let po of question.possibleAnswers">
+        <app-possible-answer-radio  *ngIf="po.type == 'radioButtons'"></app-possible-answer-radio>
+        <app-possible-answer-dropdown *ngIf="po.type == 'dropdown'" [possibleAnswer]="po"></app-possible-answer-dropdown>
       </div>
+
+      <button type="button" class="btn btn-primary float-right" (click)="sendAnswer()">Bekülkdöm</button>
+
     </div>
+
   </div>
   <div class="container">
     <p class="lead"></p>

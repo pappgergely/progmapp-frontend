@@ -42,6 +42,9 @@ import { FilterQuizQuestionPipe } from './pipes/filter-quiz-question.pipe';
 import { EternalQuizAssignClassModalComponent } from './components/eternal-quiz-assign-class-modal/eternal-quiz-assign-class-modal.component';
 import {BASE_PATH} from '../../build/openapi';
 import { environment } from 'src/environments/environment';
+import { PossibleAnswerRadioComponent } from './components/possible-answer-radio/possible-answer-radio.component';
+import { PossibleAnswerDropdownComponent } from './components/possible-answer-dropdown/possible-answer-dropdown.component';
+import { EqStatisticsComponent } from './components/eq-statistics/eq-statistics.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,9 @@ import { environment } from 'src/environments/environment';
     FilterQuizPipe,
     FilterQuizQuestionPipe,
     EternalQuizAssignClassModalComponent,
+    PossibleAnswerRadioComponent,
+    PossibleAnswerDropdownComponent,
+    EqStatisticsComponent,
   ],
     imports: [
         BrowserModule,

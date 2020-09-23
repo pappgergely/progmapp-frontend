@@ -9,13 +9,29 @@ body {
 }
 
 .main-container {
-  background-color: white;
+
   margin-top: 50px;
   margin-bottom: 50px;
+  overflow: hidden;
 }
 
 .welcome-msg {
   text-transform: uppercase;
   text-align: center;
   padding: 30px;
+}
+
+.feedback-right-color{
+  color: goldenrod;
+}
+
+.feedback-partially-right-color{
+  color: darkgoldenrod;
+}
+
+.feedback-wrong-color{
+  color: darkcyan;
+}
+.centeredtext{
+  text-align: center;
 }
