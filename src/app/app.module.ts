@@ -45,6 +45,7 @@ import { environment } from 'src/environments/environment';
 import { PossibleAnswerRadioComponent } from './components/possible-answer-radio/possible-answer-radio.component';
 import { PossibleAnswerDropdownComponent } from './components/possible-answer-dropdown/possible-answer-dropdown.component';
 import { EqStatisticsComponent } from './components/eq-statistics/eq-statistics.component';
+import { PossibleAnswerCheckboxlistComponent } from './components/possible-answer-checkboxlist/possible-answer-checkboxlist.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { EqStatisticsComponent } from './components/eq-statistics/eq-statistics.
     PossibleAnswerRadioComponent,
     PossibleAnswerDropdownComponent,
     EqStatisticsComponent,
+    PossibleAnswerCheckboxlistComponent,
   ],
     imports: [
         BrowserModule,
