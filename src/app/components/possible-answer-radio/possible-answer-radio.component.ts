@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PossibleAnswerDTO, PossibleAnswerResponseDTO} from '../../../../build/openapi';
 import {PossibleAnswerResponseProvider} from '../possible-answer-response-provider';
+import {PossibleAnswerDropdownComponent} from '../possible-answer-dropdown/possible-answer-dropdown.component';
 
 @Component({
   selector: 'app-possible-answer-radio',
@@ -8,18 +8,6 @@ import {PossibleAnswerResponseProvider} from '../possible-answer-response-provid
   styleUrls: ['./possible-answer-radio.component.scss'],
   providers: [{provide : PossibleAnswerResponseProvider, useExisting: PossibleAnswerRadioComponent}]
 })
-export class PossibleAnswerRadioComponent extends PossibleAnswerResponseProvider implements OnInit {
-  @Input() possibleAnswer: PossibleAnswerDTO;
-
-  constructor() {
-    super();
-  }
-
-  ngOnInit(): void {
-  }
-
-  getSelectedAnswers(): PossibleAnswerResponseDTO {
-    return null;
-  }
+export class PossibleAnswerRadioComponent extends PossibleAnswerDropdownComponent implements OnInit {
 
 }

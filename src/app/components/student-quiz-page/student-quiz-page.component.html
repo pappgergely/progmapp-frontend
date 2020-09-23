@@ -45,7 +45,7 @@
 
           <h2 >{{question.text}}</h2>
           <div *ngFor="let po of question.possibleAnswers">
-            <app-possible-answer-radio  *ngIf="po.type == 'radioButtons'"></app-possible-answer-radio>
+            <app-possible-answer-radio  *ngIf="po.type == 'radioButtons'" [possibleAnswer]="po"></app-possible-answer-radio>
             <app-possible-answer-dropdown *ngIf="po.type == 'dropdown'" [possibleAnswer]="po"></app-possible-answer-dropdown>
           </div>
 

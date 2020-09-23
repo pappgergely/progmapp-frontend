@@ -1,8 +1,7 @@
-
-  <div class="form-group">
-    <label>{{possibleAnswer.textBefore}}</label>
-    <select class="form-control"  [(ngModel)]="selectedPoValue">
-      <option *ngFor="let pv of possibleAnswer.possibleAnswerValues" [ngValue]="pv.id" >{{pv.text}}</option>
-    </select>
-  </div>
+<div class="form-group">
+  <label>{{possibleAnswer.textBefore}}</label>
+  <select class="form-control" [(ngModel)]="selectedPoValue">
+    <option *ngFor="let pv of possibleAnswer.possibleAnswerValues" [ngValue]="pv.id">{{pv.text}}</option>
+  </select>
+</div>
 
