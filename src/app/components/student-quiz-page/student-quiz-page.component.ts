@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EternalQuizService} from '../../services/eternal-quiz.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answers';
+import {PossibleQuestionAnswers} from '../../interfaces/possible-question-answers';
 
 @Component({
   selector: 'app-student-quiz-page',

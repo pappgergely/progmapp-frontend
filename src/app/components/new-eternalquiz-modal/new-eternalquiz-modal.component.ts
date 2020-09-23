@@ -3,7 +3,7 @@ import {Eternalquiz} from '../../interfaces/eternalquiz';
 import {EternalQuizService} from '../../services/eternal-quiz.service';
 import {QuestionAssignToQuiz} from '../../interfaces/question-assign-to-quiz';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-import {PossibleQuiestionAnswers} from '../../interfaces/possible-quiestion-answers';
+import {PossibleQuestionAnswers} from '../../interfaces/possible-question-answers';
 
 @Component({
   selector: 'app-new-foreverquiz-modal',

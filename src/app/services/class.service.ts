@@ -6,7 +6,7 @@ import {Class} from '../interfaces/class';
 import {ClassResponse} from '../interfaces/class-response';
 import {Student} from '../interfaces/student';
 import {StudentService} from './student.service';
-import {StudentResponse} from '../interfaces/student-response';
+import {StudentAssignToClass} from '../interfaces/student-assign-to-class';
 
 @Injectable({
   providedIn: 'root'
@@ -49,10 +49,10 @@ export class ClassService {
   }
 
   assignStudent(s: Student): void {
-    this.http.put<StudentResponse>(
-      this.SERVER_URL + '/progmatic2020-ősz/students',
-      s,
-      {withCredentials: true})
-      .subscribe(resp => this.studentService.updateStudent(resp));
+    // this.http.put<StudentAssignToClass>(
+    //   this.SERVER_URL + '/progmatic2020-ősz/students',
+    //   s.loginName,
+    //   {withCredentials: true})
+    //   .subscribe(resp => this.studentService.updateStudent(resp));
   }
 }

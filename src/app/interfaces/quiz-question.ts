@@ -1,9 +1,9 @@
-import {PossibleQuiestionAnswers} from './possible-quiestion-answers';
+import {PossibleQuestionAnswers} from './possible-question-answers';
 
 export interface QuizQuestion {
   id: string;
   text: string;
   explanationAfter: string;
   feedbackType: string;
-  possibleAnswers: PossibleQuiestionAnswers[];
+  possibleAnswers: PossibleQuestionAnswers[];
 }

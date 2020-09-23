@@ -59,4 +59,8 @@ export class NewQuizQuestionModalComponent implements OnInit {
       .subscribe(resp => this.image.id = resp.picture.id,
         error => alert('Nem megfelelő formátumú a kép.'));
   }
+
+  addNewPossibleAnswer(): void {
+    this.question.possibleAnswers[0].possibleAnswerValues.push({ text: '', isRightAnswer: false });
+  }
 }
