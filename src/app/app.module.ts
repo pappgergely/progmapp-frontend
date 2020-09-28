@@ -46,6 +46,7 @@ import { PossibleAnswerRadioComponent } from './components/possible-answer-radio
 import { PossibleAnswerDropdownComponent } from './components/possible-answer-dropdown/possible-answer-dropdown.component';
 import { EqStatisticsComponent } from './components/eq-statistics/eq-statistics.component';
 import { PossibleAnswerCheckboxlistComponent } from './components/possible-answer-checkboxlist/possible-answer-checkboxlist.component';
+import { PossibleAnswerOrdercodeSimpleComponent } from './components/possible-answer-ordercode-simple/possible-answer-ordercode-simple.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { PossibleAnswerCheckboxlistComponent } from './components/possible-answe
     PossibleAnswerDropdownComponent,
     EqStatisticsComponent,
     PossibleAnswerCheckboxlistComponent,
+    PossibleAnswerOrdercodeSimpleComponent,
   ],
     imports: [
         BrowserModule,

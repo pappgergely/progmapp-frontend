@@ -28,7 +28,8 @@
               </div>
             </div>
             <div *ngIf="answerFeedback.feedback">
-              <label for="feedbackTExt"><em>Megjegyzés:</em></label><span id="feedbackTExt"> {{answerFeedback.feedback}}</span>
+              <label for="feedbackTExt"><em>Megjegyzés:</em></label><span
+              id="feedbackTExt"> {{answerFeedback.feedback}}</span>
             </div>
           </div>
         </div>
@@ -43,29 +44,30 @@
 
         <div *ngIf="question">
 
-          <h2 >{{question.text}}</h2>
-          <div  *ngIf="question.hasImage" class="row justify-content-center mt-3 mb-3">
+          <h2>{{question.text}}</h2>
+          <div *ngIf="question.hasImage" class="row justify-content-center mt-3 mb-3">
             <div class="col-md-2"></div>
             <div class="col-md-6">
               <img [src]="getQuesiontImageUrl()" class="img-fluid">
             </div>
             <div class="col-md-2"></div>
           </div>
-            <div *ngFor="let po of question.possibleAnswers">
-              <div>{{po.textBefore}}</div>
-              <div *ngIf="po.hasImage" class="row justify-content-center mt-3">
-                <div class="col-md-2"></div>
-                <div class="col-md-6">
-                  <img [src]="getPosibleAnswerImageUrl(po)" class="img-fluid">
-                </div>
-                <div class="col-md-2"></div>
+          <div *ngFor="let po of question.possibleAnswers">
+            <div>{{po.textBefore}}</div>
+            <div *ngIf="po.hasImage" class="row justify-content-center mt-3">
+              <div class="col-md-2"></div>
+              <div class="col-md-6">
+                <img [src]="getPosibleAnswerImageUrl(po)" class="img-fluid">
               </div>
-              <div>{{po.textAfter}}</div>
+              <div class="col-md-2"></div>
+            </div>
+            <div>{{po.textAfter}}</div>
 
-            <app-possible-answer-radio  *ngIf="po.type == 'radioButtons'" [possibleAnswer]="po"></app-possible-answer-radio>
+            <app-possible-answer-radio *ngIf="po.type == 'radioButtons'" [possibleAnswer]="po"></app-possible-answer-radio>
             <app-possible-answer-dropdown *ngIf="po.type == 'dropdown'" [possibleAnswer]="po"></app-possible-answer-dropdown>
-            <app-possible-answer-checkboxlist *ngIf="po.type == 'checkboxList'" [possibleAnswer]="po"></app-possible-answer-checkboxlist>
-            <app-possible-answer-checkboxlist *ngIf="po.type == 'trueFalseCheckbox'" [possibleAnswer]="po"></app-possible-answer-checkboxlist>
+            <app-possible-answer-checkboxlist *ngIf="po.type == 'checkboxList'"[possibleAnswer]="po"></app-possible-answer-checkboxlist>
+            <app-possible-answer-checkboxlist *ngIf="po.type == 'trueFalseCheckbox'"[possibleAnswer]="po"></app-possible-answer-checkboxlist>
+            <app-possible-answer-ordercode-simple *ngIf="po.type == 'soruceCodeToOrder_EvalByCompare'"[possibleAnswer]="po"></app-possible-answer-ordercode-simple>
           </div>
 
           <button type="button" class="btn btn-primary float-right" (click)="sendAnswer()">Bekülkdöm</button>
