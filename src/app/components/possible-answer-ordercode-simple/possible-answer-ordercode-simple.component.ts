@@ -23,12 +23,18 @@ export class PossibleAnswerOrdercodeSimpleComponent extends PossibleAnswerRespon
   }
 
   getSelectedAnswers(): PossibleAnswerResponseDTO {
-    return null;
+    const ret: PossibleAnswerResponseDTO  = {
+      id: this.possibleAnswer.id,
+      selectedAnswerIds: new Array()
+    };
+    for (let possibleAnswerValue of this.possibleAnswer.possibleAnswerValues) {
+      ret.selectedAnswerIds.push(possibleAnswerValue.id);
+    }
+    return ret;
   }
 
   drop(event: CdkDragDrop<string[]>): void {
     console.log(event.previousIndex);
-    //this.possibleAnswer;
     moveItemInArray(this.possibleAnswer.possibleAnswerValues, event.previousIndex, event.currentIndex);
   }
 

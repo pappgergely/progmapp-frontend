@@ -47,6 +47,8 @@ import { PossibleAnswerDropdownComponent } from './components/possible-answer-dr
 import { EqStatisticsComponent } from './components/eq-statistics/eq-statistics.component';
 import { PossibleAnswerCheckboxlistComponent } from './components/possible-answer-checkboxlist/possible-answer-checkboxlist.component';
 import { PossibleAnswerOrdercodeSimpleComponent } from './components/possible-answer-ordercode-simple/possible-answer-ordercode-simple.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import { PossibleAnswerOrdercodeSimpleComponent } from './components/possible-an
         NgSelectModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        BrowserAnimationsModule,
+        DragDropModule
     ],
   entryComponents: [],
   providers: [
