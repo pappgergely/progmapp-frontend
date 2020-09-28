@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {UploadImage} from '../../interfaces/upload-image';
+import {FeedbackType} from '../../enum/feedback-type.enum';
+import {QuestionType} from '../../enum/question-type.enum';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-new-quiz-question-modal',
@@ -12,20 +15,21 @@ export class NewQuizQuestionModalComponent implements OnInit {
 
   textShow: boolean;
   question: QuizQuestion;
+  public environment = environment;
 
   @Input()
   image: UploadImage;
 
   constructor(private quizQuestionService: QuizQuestionService) {
     this.question = {
-      id: '',
+      id: null,
       text: '',
       explanationAfter: '',
-      feedbackType: '',
+      feedbackType: FeedbackType.default,
       possibleAnswers: [
         {
           textBefore: '',
-          type: '',
+          type: QuestionType.default,
           possibleAnswerValues: [
             {
               text: '',
@@ -40,7 +44,7 @@ export class NewQuizQuestionModalComponent implements OnInit {
   options = {
     placeholderText: 'Kérdés szövege...',
     charCounterCount: false,
-    attribution: false
+    attribution: false,
   };
 
   ngOnInit(): void {
@@ -52,11 +56,11 @@ export class NewQuizQuestionModalComponent implements OnInit {
     window.scroll(0, 0);
   }
 
-  saveImage(pic): void {
-    const img = new FormData();
-    img.append('image', pic.target.files[0]);
-    this.quizQuestionService.uploadImage(img)
-      .subscribe(resp => this.image.id = resp.picture.id,
+  saveImage(event): void {
+    const uploadImage = new FormData();
+    uploadImage.append('picture', event.target.files[0]);
+    this.quizQuestionService.uploadImage(uploadImage)
+      .subscribe(resp => resp.picture.id,
         error => alert('Nem megfelelő formátumú a kép.'));
   }
 

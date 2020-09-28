@@ -35,7 +35,7 @@ export class EternalQuizAssignClassModalComponent implements OnInit {
   }
 
   assignClass(): void {
-    this.quizService.assignQuizToClass(this.classQuiz);
+    this.quizService.assignQuizToClass();
   }
 
 }

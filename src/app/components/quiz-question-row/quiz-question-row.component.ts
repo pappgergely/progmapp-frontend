@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-import {QuizQuestionService} from '../../services/quiz-question.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -10,26 +9,13 @@ import {QuizQuestionService} from '../../services/quiz-question.service';
 })
 export class QuizQuestionRowComponent implements OnInit {
 
-  question1: QuizQuestion;
-
   @Input()
   question: QuizQuestion;
 
-  constructor(private quizQuestionService: QuizQuestionService) {
-    this.question1 = {
-      id: '',
-      text: '',
-      explanationAfter: '',
-      feedbackType: '',
-      possibleAnswers: []
-    };
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.quizQuestionService.getQuizQuestion().subscribe(
-      question => { this.question = question;
-      }
-    );
   }
 
 }

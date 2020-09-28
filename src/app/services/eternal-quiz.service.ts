@@ -61,16 +61,18 @@ export class EternalQuizService {
     return this.classEternalQuiz.asObservable();
   }
 
-  assignQuestionToQuiz(q: QuestionAssignToQuiz): void {
+  assignQuestionToQuiz(): void {
     this.http.put<EternalquizResponse>(this.SERVER_URL + '/quiz/question',
-      {quiz: q},
+      {eternalQuizId: '',
+            questionId: ''},
       {withCredentials: true})
       .subscribe(resp => this.updateQuizzes(resp));
   }
 
-  assignQuizToClass(q: QuizAssignToClass): void {
+  assignQuizToClass(): void {
     this.http.put<QuizAssignToClassResponse>(this.SERVER_URL + '/quiz/class',
-      {quiz: q},
+      {eternalQuizId: '',
+            schoolClassId: ''},
       {withCredentials: true})
       .subscribe(resp => this.updateQuizToClass(resp));
   }

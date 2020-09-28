@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {QuizQuestionService} from '../../services/quiz-question.service';
-import {Observable} from 'rxjs';
-import {User} from '../../interfaces/user';
-import {LoginService} from '../../services/login.service';
+
 
 @Component({
   selector: 'app-quiz-question-list-page',
@@ -14,21 +12,15 @@ import {LoginService} from '../../services/login.service';
 export class QuizQuestionListPageComponent implements OnInit {
 
   filter: string;
-  question: QuizQuestion;
+  questions: QuizQuestion[];
 
   constructor(private quizQuestionService: QuizQuestionService) {
-    this.question = {
-      id: '',
-      text: '',
-      explanationAfter: '',
-      feedbackType: '',
-      possibleAnswers: []
-    };
+    this.questions = [];
   }
 
   ngOnInit(): void {
-    this.quizQuestionService.getQuizQuestion().subscribe(
-      question => { this.question = question;
+    this.quizQuestionService.getQuizQuestions().subscribe(
+      question => { this.questions = question;
       }
     );
   }

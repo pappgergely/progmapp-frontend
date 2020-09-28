@@ -18,17 +18,16 @@ export class QuizQuestionService {
     this.quizQuestions = new BehaviorSubject([]);
   }
 
-  // getQuizQuestion(): Observable<QuizQuestion[]> {
-  //   this.http.get<QuizQuestion[]>(this.SERVER_URL + '/micimackókedvence', // + '/' + q.id
-  //     {withCredentials: true})
-  //     .subscribe(resp => {
-  //       this.quizQuestions.next(resp);
-  //     });
-  //   return this.quizQuestions.asObservable();
-  // }
-
-  getQuizQuestion(): Observable<QuizQuestion> {
-    return this.http.get<QuizQuestion>(this.SERVER_URL + '/micimackókedvence', {withCredentials: true});
+  getQuizQuestions(): Observable<QuizQuestion[]> {
+    this.http.post<QuizQuestion[]>(this.SERVER_URL + '/search',
+      { questionText: '',
+        uploader: null,
+        notInEternalQuiz: null,
+        uploadTimeFrom: '',
+        uploadTimeTo: ''},
+      {withCredentials: true}
+      ).subscribe(resp => this.quizQuestions.next(resp));
+    return this.quizQuestions.asObservable();
   }
 
   private updateQuizQuestion(response: QuizQuestionsResponse): void {

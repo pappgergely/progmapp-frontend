@@ -6,54 +6,66 @@
       Kvízkérdés sikeresen létrehozva
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Kérdés szövege</label>
-      <div class="col-sm-10" [(ngModel)]="question.text">
-        <pre [froalaEditor]="options"><code></code></pre>
+      <label class="col-sm-2 col-form-label" for="inputText">Kérdés szövege</label>
+      <div class="col-sm-10">
+        <div [froalaEditor]="options" [(froalaModel)]="question.text" id="inputText"></div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-form-label col-sm-2 pt-0">Kép (opcionális)</div>
       <div class="col-sm-10">
-        <img src="/assets/img/empty.jpg" alt="" class="question-picture">
+        <img src="{{environment.serverUrl}}/micimackokedvence/imagefile" alt="" class="question-picture">
         <div>
           <input style="display: none" type="file" (change)="saveImage($event)" #fileInput>
-          <button class="btn btn-primary mt-2" (click)="fileInput.click()">Kép feltöltése</button>
+          <button class="btn btn-primary mt-2" value="upload" (click)="fileInput.click()">Kép feltöltése</button>
         </div>
       </div>
     </div>
     <div class="form-group row">
+      <label for="inputTextBefore" class="col-sm-2 col-form-label">Szöveg előtte</label>
       <div class="col-sm-10">
-        Szöveg előtte
-        <input type="text" class="form-control" [(ngModel)]="question.possibleAnswers[0].textBefore">
+        <input type="text" class="form-control" id="inputTextBefore" name="textBefore"
+               [(ngModel)]="question.possibleAnswers[0].textBefore">
       </div>
     </div>
     <div class="form-group row">
+      <label for="inputQuestionType" class="col-sm-2 col-form-label">Kérdés típusa</label>
       <div class="col-sm-10">
-        Kérdés típusa
-        <select [(ngModel)]="question.possibleAnswers[0].type">
-          <option value="buttons">Gombok</option>
+        <select class="form-control" id="inputQuestionType" name="type"
+                [(ngModel)]="question.possibleAnswers[0].type">
+          <option value="default" selected disabled>Válassz...</option>
+          <option value="shortText">Rövid szöveg</option>
+          <option value="longText">Hosszú szüveg</option>
           <option value="dropdown">Legördülő</option>
+          <option value="radioButtons">Radio gombok</option>
+          <option value="trueFalseCheckbox">Igaz/hamis checkbox</option>
+          <option value="checkboxList">Checkbox lista</option>
         </select>
       </div>
     </div>
     <div class="form-group row">
       <label for="inputAnswer" class="col-sm-2 col-form-label">Válaszok</label>
       <div class="col-sm-10" *ngFor="let a of question.possibleAnswers[0].possibleAnswerValues; let f = first">
-        <textarea id="inputAnswer" name="answer" cols="50"
+        <textarea id="inputAnswer" name="text" cols="50"
                   [(ngModel)]="a.text"></textarea>
-          <label><input class="ml-2" type="checkbox" [(ngModel)]="a.isRightAnswer">Jó válasz</label>
-        <button class="btn btn-danger" *ngIf="!f">Del</button>
+        <label><input class="ml-2" type="checkbox" name="isRightAnswer" [(ngModel)]="a.isRightAnswer">Jó
+          válasz</label>
+        <button class="btn btn-danger ml-3 mb-4" *ngIf="!f">Törlés</button>
       </div>
-      <button class="btn btn-outline-success" (click)="addNewPossibleAnswer()">Új válaszlehetőség hozzáadása</button>
+      <div class="col-sm-2 col-form-label"></div>
+      <div class="col-sm-10">
+        <button class="btn btn-outline-success" (click)="addNewPossibleAnswer()">Új válaszlehetőség hozzáadása
+        </button>
+      </div>
     </div>
     <div class="form-group row">
       <label for="inputFeedbackType" class="col-sm-2 col-form-label">Visszajelzés típusa</label>
       <div class="col-sm-10">
-        <select class="form-control" id="inputFeedbackType" [(ngModel)]="question.feedbackType">
-          <option selected disabled>Válassz...</option>
-          <option value="">Nincs visszajelzés</option>
+        <select class="form-control" id="inputFeedbackType" name="feedbackType" [(ngModel)]="question.feedbackType">
+          <option value="default" selected disabled>Válassz...</option>
+          <option value="noFeedback">Nincs visszajelzés</option>
           <option value="trueFalseFeedback">Helyes/helytelen válasz</option>
-          <option value="">Helyes válasz megmutatása</option>
+          <option value="showRightAnswer">Jó válasz megmutatása</option>
         </select>
       </div>
     </div>
@@ -67,7 +79,8 @@
     </div>
     <div class="form-group row">
       <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary mb-4" (click)="saveQuizQuestion()">Kvízkérdés létrehozása</button>
+        <button type="submit" class="btn btn-primary mb-4" (click)="saveQuizQuestion()">Kvízkérdés létrehozása
+        </button>
       </div>
     </div>
   </form>

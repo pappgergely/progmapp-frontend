@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Class} from '../../interfaces/class';
-import {ClassService} from '../../services/class.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,9 +13,7 @@ export class ClassRowComponent implements OnInit {
   @Input()
   classesName: Class;
 
-  //  TODO delete and modify methods
-
-  constructor(private classService: ClassService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

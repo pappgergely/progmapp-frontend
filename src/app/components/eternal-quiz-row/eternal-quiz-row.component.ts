@@ -22,6 +22,6 @@ export class EternalQuizRowComponent implements OnInit {
   }
 
   addToClass(): void {
-    this.eternalQuizService.assignQuizToClass(this.quizToClass);
+    this.eternalQuizService.assignQuizToClass();
   }
 }

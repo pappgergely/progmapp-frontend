@@ -15,9 +15,11 @@ export class ClassService {
 
   private readonly SERVER_URL = environment.serverUrl + 'class';
   private classes: BehaviorSubject<Class[]>;
+  private class: Class[];
 
   constructor(private http: HttpClient, private studentService: StudentService) {
     this.classes = new BehaviorSubject([]);
+    this.class = [];
   }
 
   addClass(e: Class): void {
@@ -54,5 +56,9 @@ export class ClassService {
     //   s.loginName,
     //   {withCredentials: true})
     //   .subscribe(resp => this.studentService.updateStudent(resp));
+  }
+
+  checkClassExistence(id: string): boolean {
+    return this.class.some(classId => classId.id.includes(id));
   }
 }

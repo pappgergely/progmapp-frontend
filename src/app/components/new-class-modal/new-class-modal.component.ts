@@ -11,6 +11,7 @@ import {Semester} from '../../enum/semester.enum';
 export class NewClassModalComponent implements OnInit {
 
   class: Class;
+  classes: Class[];
   textShow: boolean;
 
   constructor(private classService: ClassService) {
@@ -20,6 +21,7 @@ export class NewClassModalComponent implements OnInit {
       semester: Semester.spring,
       isActive: true,
     };
+    this.classes = [];
   }
 
   ngOnInit(): void {
@@ -27,6 +29,14 @@ export class NewClassModalComponent implements OnInit {
 
   saveClass(): void {
     this.classService.addClass(this.class);
-    this.textShow = true;
+  }
+
+  checkClass(): void {
+    this.textShow = this.classService.checkClassExistence(this.class.id);
+  }
+
+  submit(): void {
+    this.saveClass();
+    this.checkClass();
   }
 }
