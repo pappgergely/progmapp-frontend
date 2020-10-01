@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-import {UploadImage} from '../../interfaces/upload-image';
 import {FeedbackType} from '../../enum/feedback-type.enum';
 import {QuestionType} from '../../enum/question-type.enum';
 import {environment} from '../../../environments/environment';
@@ -17,23 +16,22 @@ export class NewQuizQuestionModalComponent implements OnInit {
   question: QuizQuestion;
   public environment = environment;
 
-  @Input()
-  image: UploadImage;
-
   constructor(private quizQuestionService: QuizQuestionService) {
     this.question = {
       id: null,
       text: '',
       explanationAfter: '',
       feedbackType: FeedbackType.default,
+      hasImage: null,
       possibleAnswers: [
         {
           textBefore: '',
           type: QuestionType.default,
+          hasImage: null,
           possibleAnswerValues: [
             {
               text: '',
-              isRightAnswer: false
+              isRightAnswer: null
             }
           ]
         }
@@ -58,13 +56,17 @@ export class NewQuizQuestionModalComponent implements OnInit {
 
   saveImage(event): void {
     const uploadImage = new FormData();
-    uploadImage.append('picture', event.target.files[0]);
+    uploadImage.append('image', event.target.files[0]);
     this.quizQuestionService.uploadImage(uploadImage)
-      .subscribe(resp => resp.picture.id,
+      .subscribe(resp => this.question.hasImage = resp.picture.id,
         error => alert('Nem megfelelő formátumú a kép.'));
   }
 
   addNewPossibleAnswer(): void {
     this.question.possibleAnswers[0].possibleAnswerValues.push({ text: '', isRightAnswer: false });
+  }
+
+  remove(i: number): void {
+    this. question.possibleAnswers[0].possibleAnswerValues.splice(i, 1);
   }
 }

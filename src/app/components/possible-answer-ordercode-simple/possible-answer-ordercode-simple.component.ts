@@ -27,7 +27,7 @@ export class PossibleAnswerOrdercodeSimpleComponent extends PossibleAnswerRespon
       id: this.possibleAnswer.id,
       selectedAnswerIds: new Array()
     };
-    for (let possibleAnswerValue of this.possibleAnswer.possibleAnswerValues) {
+    for (const possibleAnswerValue of this.possibleAnswer.possibleAnswerValues) {
       ret.selectedAnswerIds.push(possibleAnswerValue.id);
     }
     return ret;

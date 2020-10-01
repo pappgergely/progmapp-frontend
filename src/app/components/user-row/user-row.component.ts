@@ -12,8 +12,6 @@ export class UserRowComponent implements OnInit {
   @Input()
   user: User;
 
-  //  TODO delete and modify methods
-
   constructor() { }
 
   ngOnInit(): void {

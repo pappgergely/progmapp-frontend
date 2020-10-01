@@ -5,11 +5,11 @@ import {Eternalquiz} from '../interfaces/eternalquiz';
 import {HttpClient} from '@angular/common/http';
 import {EternalquizResponse} from '../interfaces/eternalquiz-response';
 import {ClassEternalQuiz} from '../interfaces/class-eternal-quiz';
-import {QuestionAssignToQuiz} from '../interfaces/question-assign-to-quiz';
 import {QuizAssignToClass} from '../interfaces/quiz-assign-to-class';
 import {QuizAssignToClassResponse} from '../interfaces/quiz-assign-to-class-response';
 import {Statistic} from '../interfaces/statistic';
 import {QuizQuestion} from '../interfaces/quiz-question';
+import {Class} from '../interfaces/class';
 
 @Injectable({
   providedIn: 'root'
@@ -44,10 +44,12 @@ export class EternalQuizService {
     }
   }
 
-  addQuiz(q: Eternalquiz): void {
+  addQuiz(quizName: Eternalquiz, questionId: QuizQuestion): void {
     this.http.post<EternalquizResponse>(
       this.SERVER_URL,
-      q,
+      {id: quizName.id,
+        questionIds: questionId.id
+      },
       { withCredentials: true }
     ).subscribe(resp => this.updateQuizzes(resp));
   }
@@ -61,18 +63,18 @@ export class EternalQuizService {
     return this.classEternalQuiz.asObservable();
   }
 
-  assignQuestionToQuiz(): void {
+  assignQuestionToQuiz(quiz: Eternalquiz, question: QuizQuestion): void {
     this.http.put<EternalquizResponse>(this.SERVER_URL + '/quiz/question',
-      {eternalQuizId: '',
-            questionId: ''},
+      {eternalQuizId: quiz.id,
+            questionId: question.id},
       {withCredentials: true})
       .subscribe(resp => this.updateQuizzes(resp));
   }
 
-  assignQuizToClass(): void {
+  assignQuizToClass(quiz: Eternalquiz, className: Class): void {
     this.http.put<QuizAssignToClassResponse>(this.SERVER_URL + '/quiz/class',
-      {eternalQuizId: '',
-            schoolClassId: ''},
+      {eternalQuizId: quiz.id,
+            schoolClassId: className.id},
       {withCredentials: true})
       .subscribe(resp => this.updateQuizToClass(resp));
   }
@@ -87,12 +89,12 @@ export class EternalQuizService {
     return this.http.get<Statistic>(this.SERVER_URL + '/me/statistics', {withCredentials: true});
   }
 
-  getStudentQuiz(): Observable<QuizQuestion[]> {
-    this.http.get<QuizQuestion[]>(this.SERVER_URL + '/question',
-      {withCredentials: true})
-      .subscribe(resp => {
-        this.studentQuiz.next(resp);
-      });
-    return this.studentQuiz.asObservable();
-  }
+  // getStudentQuiz(): Observable<QuizQuestion[]> {
+  //   this.http.get<QuizQuestion[]>(this.SERVER_URL + '/question',
+  //     {withCredentials: true})
+  //     .subscribe(resp => {
+  //       this.studentQuiz.next(resp);
+  //     });
+  //   return this.studentQuiz.asObservable();
+  // }
 }

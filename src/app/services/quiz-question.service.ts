@@ -45,7 +45,7 @@ export class QuizQuestionService {
   }
 
   uploadImage(image: FormData): Observable<UploadImageResponse> {
-    return this.http.post<UploadImageResponse>(this.SERVER_URL + '/micimackokedvence/imagefile',
+    return this.http.post<UploadImageResponse>(this.SERVER_URL + '/micimac1/imagefile',
       image,
       {withCredentials: true});
   }

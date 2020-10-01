@@ -4,6 +4,7 @@ import {QuizAssignToClass} from '../../interfaces/quiz-assign-to-class';
 import {Class} from '../../interfaces/class';
 import {Semester} from '../../enum/semester.enum';
 import {ClassService} from '../../services/class.service';
+import {Eternalquiz} from '../../interfaces/eternalquiz';
 
 @Component({
   selector: 'app-eternal-quiz-assign-class-modal',
@@ -13,7 +14,7 @@ import {ClassService} from '../../services/class.service';
 export class EternalQuizAssignClassModalComponent implements OnInit {
 
   textShow: boolean;
-  classQuiz: QuizAssignToClass;
+  quiz: Eternalquiz;
   class: Class;
   classes: Class[];
 
@@ -24,9 +25,10 @@ export class EternalQuizAssignClassModalComponent implements OnInit {
       semester: Semester.spring,
       isActive: true,
     };
-    this.classQuiz = {
-      eternalQuizId: '',
-      schoolClassId: '',
+
+    this.quiz = {
+      id: '',
+      questionIds: []
     };
   }
 
@@ -35,7 +37,7 @@ export class EternalQuizAssignClassModalComponent implements OnInit {
   }
 
   assignClass(): void {
-    this.quizService.assignQuizToClass();
+    this.quizService.assignQuizToClass(this.quiz, this.class);
   }
 
 }

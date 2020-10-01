@@ -12,8 +12,6 @@ export class ClassQuizRowComponent implements OnInit {
   @Input()
   quizWithClass: ClassEternalQuiz;
 
-  //  TODO foreverquiz add to the class method
-
   constructor() { }
 
   ngOnInit(): void {

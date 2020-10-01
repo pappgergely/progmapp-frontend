@@ -21,7 +21,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr app-user-row *ngFor='let u of users' [user]="u" ></tr> <!-- | filterUser: filter-->
+      <tr app-user-row *ngFor='let u of users | filterUser: filter' [user]="u"></tr>
       </tbody>
     </table>
     <div *ngIf="users.length === 0">

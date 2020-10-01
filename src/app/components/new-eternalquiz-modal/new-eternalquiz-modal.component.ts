@@ -17,31 +17,32 @@ export class NewEternalquizModalComponent implements OnInit {
   textShow: boolean;
   question: QuizQuestion;
   questions: QuizQuestion[];
-  quizWithQuestions: QuestionAssignToQuiz;
 
   public expanded = false;
 
-  constructor(private quizService: EternalQuizService, private qiestionService: QuizQuestionService) {
+  constructor(private quizService: EternalQuizService, private questionService: QuizQuestionService) {
     this.quiz = {
       id: '',
-      questionIds: '',
+      questionIds: [],
     };
+
     this.question = {
       id: '',
       text: '',
       explanationAfter: '',
       feedbackType: FeedbackType.default,
+      hasImage: null,
       possibleAnswers: [],
     };
   }
 
   ngOnInit(): void {
-    this.qiestionService.getQuizQuestions().subscribe(resp => this.questions = resp);
+    this.questionService.getQuizQuestions().subscribe(resp => this.questions = resp);
   }
 
   saveQuiz(): void {
-    this.quizService.addQuiz(this.quiz);
-    this.quizService.assignQuestionToQuiz();
+    this.quizService.addQuiz(this.quiz, this.question);
+    this.quizService.assignQuestionToQuiz(this.quiz, this.question);
     this.textShow = true;
   }
 }

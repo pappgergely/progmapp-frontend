@@ -1,4 +1,4 @@
 export interface Eternalquiz {
   id: string;
-  questionIds: string;
+  questionIds: string[];
 }
