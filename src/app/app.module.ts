@@ -23,7 +23,7 @@ import { NewClassModalComponent } from './components/new-class-modal/new-class-m
 import { TeacherClassPageComponent } from './components/teacher-class-page/teacher-class-page.component';
 import { ClassQuizRowComponent } from './components/class-quiz-row/class-quiz-row.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
-import { NewStudentModalComponent } from './components/new-student-modal/new-student-modal.component';
+import { StudentAssignToClassComponent } from './components/student-assign-to-class/student-assign-to-class.component';
 import { QuizStatisticModalComponent } from './components/quiz-statistic-modal/quiz-statistic-modal.component';
 import { ChangePasswordModalComponent } from './components/change-password-modal/change-password-modal.component';
 import { QuizQuestionListPageComponent } from './components/quiz-question-list-page/quiz-question-list-page.component';
@@ -49,6 +49,7 @@ import { PossibleAnswerCheckboxlistComponent } from './components/possible-answe
 import { PossibleAnswerOrdercodeSimpleComponent } from './components/possible-answer-ordercode-simple/possible-answer-ordercode-simple.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { NewStudentComponent } from './components/new-student/new-student.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     TeacherClassPageComponent,
     ClassQuizRowComponent,
     ProfilePageComponent,
-    NewStudentModalComponent,
+    StudentAssignToClassComponent,
     QuizStatisticModalComponent,
     ChangePasswordModalComponent,
     QuizQuestionListPageComponent,
@@ -88,6 +89,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     EqStatisticsComponent,
     PossibleAnswerCheckboxlistComponent,
     PossibleAnswerOrdercodeSimpleComponent,
+    NewStudentComponent,
   ],
     imports: [
         BrowserModule,

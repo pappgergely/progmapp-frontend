@@ -4,15 +4,13 @@ import {StudentService} from '../../services/student.service';
 import {ClassService} from '../../services/class.service';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Class} from '../../interfaces/class';
-import {Semester} from '../../enum/semester.enum';
 
 @Component({
   selector: 'app-new-student-modal',
-  templateUrl: './new-student-modal.component.html',
-  styleUrls: ['./new-student-modal.component.scss']
+  templateUrl: './student-assign-to-class.component.html',
+  styleUrls: ['./student-assign-to-class.component.scss']
 })
-export class NewStudentModalComponent implements OnInit {
+export class StudentAssignToClassComponent implements OnInit {
 
   student: Student;
   textShow: boolean;
@@ -28,7 +26,6 @@ export class NewStudentModalComponent implements OnInit {
       loginName: '',
       emailAddress: '',
       password: '',
-      roles: [],
       classes: []
     };
   }
@@ -37,7 +34,7 @@ export class NewStudentModalComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.classId = params.class;
     });
-    this.userService.getStudents().subscribe(resp => this.students = resp);
+    this.studentService.getStudents().subscribe(resp => this.students = resp);
   }
 
   saveStudent(): void {

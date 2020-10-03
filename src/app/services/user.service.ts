@@ -16,12 +16,10 @@ export class UserService {
   private readonly SERVER_URL = environment.serverUrl + 'user';
   private readonly SERVER_URL2 = environment.serverUrl;
   private users: BehaviorSubject<User[]>;
-  private students: BehaviorSubject<Student[]>;
   psw: ChangePassword;
 
   constructor(private http: HttpClient) {
     this.users = new BehaviorSubject([]);
-    this.students = new BehaviorSubject([]);
   }
 
   register(reg: Register): any{
@@ -32,7 +30,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     const params = new HttpParams({
       fromObject: {
-        student: '',
+        student: 'false',
       }
     });
 
@@ -44,22 +42,7 @@ export class UserService {
     return this.users.asObservable();
   }
 
-  getStudents(): Observable<Student[]> {
-    const params = new HttpParams({
-      fromObject: {
-        student: '',
-      }
-    });
-
-    this.http.get<Student[]>(this.SERVER_URL + '?' + params,
-      {withCredentials: true})
-      .subscribe(resp => {
-        this.students.next(resp);
-      });
-    return this.students.asObservable();
-  }
-
-  modifyStudent(): void {
+  modifyUser(): void {
     this.http.put<UsersResponse>(
       this.SERVER_URL2 + '/me',
       { psw: this.psw },

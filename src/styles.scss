@@ -36,6 +36,7 @@ $progmapp-frontend-theme: mat-light-theme((
 @import 'scss/variables';
 
 /* Importing Bootstrap SCSS file. */
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bootstrap/scss/bootstrap';
 @import "~@ng-select/ng-select/themes/default.theme.css";
 

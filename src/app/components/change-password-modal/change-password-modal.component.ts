@@ -35,7 +35,7 @@ export class ChangePasswordModalComponent implements OnInit {
 
   onSubmit(): boolean {
     if (this.form.valid) {
-      this.userService.modifyStudent();
+      this.userService.modifyUser();
     } else {
       return false;
     }

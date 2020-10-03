@@ -1,4 +1,3 @@
-import {Roles} from '../enum/roles.enum';
 import {Class} from './class';
 
 export interface Student {
@@ -6,6 +5,5 @@ export interface Student {
   loginName: string;
   emailAddress: string;
   password: string;
-  roles: Roles[];
   classes: Class[];
 }
