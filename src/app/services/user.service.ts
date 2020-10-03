@@ -4,7 +4,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../interfaces/user';
 import {UsersResponse} from '../interfaces/users-response';
-import {Student} from '../interfaces/student';
 import {Register} from '../interfaces/register';
 import {ChangePassword} from '../interfaces/change-password';
 

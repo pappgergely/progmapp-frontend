@@ -22,7 +22,7 @@ export class StudentService {
   addStudent(s: Student): void {
     this.http.post<StudentResponse>(
       this.SERVER_URL,
-      {student: s},
+      s,
       { withCredentials: true }
     ).subscribe(resp => this.updateStudent(resp));
   }
