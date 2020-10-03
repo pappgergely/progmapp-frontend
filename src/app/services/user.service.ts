@@ -44,18 +44,10 @@ export class UserService {
     return this.users.asObservable();
   }
 
-  sendRegLink(): void {
-    this.http.put<UsersResponse>(
-      this.SERVER_URL + '/newreglink/nyilasypeter',
-      {},
-      {withCredentials: true}
-    ).subscribe(resp => this.updateUsers(resp));
-  }
-
   getStudents(): Observable<Student[]> {
     const params = new HttpParams({
       fromObject: {
-        student: 'true',
+        student: '',
       }
     });
 

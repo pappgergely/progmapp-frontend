@@ -41,11 +41,14 @@ export class QuizQuestionService {
       this.SERVER_URL,
       q,
       { withCredentials: true }
-    ).subscribe(resp => this.updateQuizQuestion(resp));
+    ).subscribe(resp => {
+      this.updateQuizQuestion(resp);
+      // this.uploadImage(resp.quizQuestion)
+    });
   }
 
-  uploadImage(image: FormData): Observable<UploadImageResponse> {
-    return this.http.post<UploadImageResponse>(this.SERVER_URL + '/micimac1/imagefile',
+  uploadImage(image: FormData, questionId: string): Observable<UploadImageResponse> {
+    return this.http.post<UploadImageResponse>(this.SERVER_URL + ' /' + questionId + '/imagefile',
       image,
       {withCredentials: true});
   }

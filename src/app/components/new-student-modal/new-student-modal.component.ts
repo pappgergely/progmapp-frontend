@@ -3,6 +3,9 @@ import {Student} from '../../interfaces/student';
 import {StudentService} from '../../services/student.service';
 import {ClassService} from '../../services/class.service';
 import {UserService} from '../../services/user.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Class} from '../../interfaces/class';
+import {Semester} from '../../enum/semester.enum';
 
 @Component({
   selector: 'app-new-student-modal',
@@ -13,11 +16,13 @@ export class NewStudentModalComponent implements OnInit {
 
   student: Student;
   textShow: boolean;
+  classId: string;
   students: Student[];
 
   public expanded = false;
 
-  constructor(private studentService: StudentService, private classService: ClassService, private userService: UserService) {
+  constructor(private studentService: StudentService, private classService: ClassService, private userService: UserService,
+              private route: ActivatedRoute, private router: Router) {
     this.student = {
       name: '',
       loginName: '',
@@ -29,6 +34,9 @@ export class NewStudentModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.classId = params.class;
+    });
     this.userService.getStudents().subscribe(resp => this.students = resp);
   }
 
@@ -38,6 +46,8 @@ export class NewStudentModalComponent implements OnInit {
   }
 
   addStudentToClass(): void {
-    this.classService.assignStudent(this.student);
+    this.classService.assignStudent(this.student).subscribe( () => {
+      this.router.navigateByUrl('/staff-class');
+    });
   }
 }

@@ -10,6 +10,7 @@ import {QuizAssignToClassResponse} from '../interfaces/quiz-assign-to-class-resp
 import {Statistic} from '../interfaces/statistic';
 import {QuizQuestion} from '../interfaces/quiz-question';
 import {Class} from '../interfaces/class';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -63,20 +64,20 @@ export class EternalQuizService {
     return this.classEternalQuiz.asObservable();
   }
 
-  assignQuestionToQuiz(quiz: Eternalquiz, question: QuizQuestion): void {
-    this.http.put<EternalquizResponse>(this.SERVER_URL + '/quiz/question',
+  assignQuestionToQuiz(quiz: Eternalquiz, question: QuizQuestion): Observable<EternalquizResponse> {
+    return this.http.put<EternalquizResponse>(this.SERVER_URL + '/quiz/question',
       {eternalQuizId: quiz.id,
-            questionId: question.id},
+            questionIds: question.id},
       {withCredentials: true})
-      .subscribe(resp => this.updateQuizzes(resp));
+      .pipe(tap(resp => this.updateQuizzes(resp)));
   }
 
-  assignQuizToClass(quiz: Eternalquiz, className: Class): void {
-    this.http.put<QuizAssignToClassResponse>(this.SERVER_URL + '/quiz/class',
-      {eternalQuizId: quiz.id,
+  assignQuizToClass(quizId: string, className: Class): Observable<QuizAssignToClassResponse> {
+    return this.http.put<QuizAssignToClassResponse>(this.SERVER_URL + '/quiz/class',
+      {eternalQuizId: quizId,
             schoolClassId: className.id},
       {withCredentials: true})
-      .subscribe(resp => this.updateQuizToClass(resp));
+      .pipe(tap(resp => this.updateQuizToClass(resp)));
   }
 
   private updateQuizToClass(response: QuizAssignToClassResponse): void {

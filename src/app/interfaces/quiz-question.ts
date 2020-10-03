@@ -6,6 +6,6 @@ export interface QuizQuestion {
   text: string;
   explanationAfter: string;
   feedbackType: FeedbackType;
+  hasImage: string;
   possibleAnswers: PossibleQuestionAnswers[];
-  hasImage: number;
 }

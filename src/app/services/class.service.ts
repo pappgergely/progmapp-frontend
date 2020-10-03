@@ -6,8 +6,8 @@ import {Class} from '../interfaces/class';
 import {ClassResponse} from '../interfaces/class-response';
 import {Student} from '../interfaces/student';
 import {StudentService} from './student.service';
-import {StudentAssignToClass} from '../interfaces/student-assign-to-class';
 import {StudentResponse} from '../interfaces/student-response';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -51,12 +51,13 @@ export class ClassService {
     return this.classes.asObservable();
   }
 
-  assignStudent(s: Student): void {
-    this.http.put<StudentResponse>(
+  // TODO use class id in the router
+  assignStudent(s: Student): Observable<StudentResponse> {
+    return this.http.put<StudentResponse>(
       this.SERVER_URL + '/progmatic2020-ősz/students',
       {idList: s.loginName},
       {withCredentials: true})
-      .subscribe(resp => this.studentService.updateStudent(resp));
+      .pipe(tap (resp => this.studentService.updateStudent(resp)));
   }
 
   checkClassExistence(id: string): boolean {

@@ -1,4 +1,4 @@
 export interface UploadImage {
-  id: number;
+  id: string;
   file?: string;
 }

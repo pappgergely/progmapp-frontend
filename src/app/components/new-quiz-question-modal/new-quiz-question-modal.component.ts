@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {FeedbackType} from '../../enum/feedback-type.enum';
@@ -22,12 +22,11 @@ export class NewQuizQuestionModalComponent implements OnInit {
       text: '',
       explanationAfter: '',
       feedbackType: FeedbackType.default,
-      hasImage: null,
+      hasImage: '',
       possibleAnswers: [
         {
           textBefore: '',
           type: QuestionType.default,
-          hasImage: null,
           possibleAnswerValues: [
             {
               text: '',
@@ -55,11 +54,11 @@ export class NewQuizQuestionModalComponent implements OnInit {
   }
 
   saveImage(event): void {
-    const uploadImage = new FormData();
-    uploadImage.append('image', event.target.files[0]);
-    this.quizQuestionService.uploadImage(uploadImage)
-      .subscribe(resp => this.question.hasImage = resp.picture.id,
-        error => alert('Nem megfelelő formátumú a kép.'));
+    // const uploadImage = new FormData();
+    // uploadImage.append('file', event.target.files[0]);
+    // this.quizQuestionService.uploadImage(uploadImage)
+    //   .subscribe(resp => this.question.hasImage = resp.picture.id,
+    //     error => alert('Nem megfelelő formátumú a kép.'));
   }
 
   addNewPossibleAnswer(): void {

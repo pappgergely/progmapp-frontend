@@ -5,6 +5,7 @@ import {Class} from '../../interfaces/class';
 import {Semester} from '../../enum/semester.enum';
 import {ClassService} from '../../services/class.service';
 import {Eternalquiz} from '../../interfaces/eternalquiz';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-eternal-quiz-assign-class-modal',
@@ -14,30 +15,32 @@ import {Eternalquiz} from '../../interfaces/eternalquiz';
 export class EternalQuizAssignClassModalComponent implements OnInit {
 
   textShow: boolean;
-  quiz: Eternalquiz;
+  quizId: string;
   class: Class;
   classes: Class[];
 
-  constructor(private quizService: EternalQuizService, private classService: ClassService) {
+  constructor(private quizService: EternalQuizService, private classService: ClassService, private route: ActivatedRoute,
+              private router: Router) {
     this.class = {
       id: '',
       year: null,
       semester: Semester.spring,
       isActive: true,
     };
-
-    this.quiz = {
-      id: '',
-      questionIds: []
-    };
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.quizId = params.quiz;
+    });
+    // TODO validate quiz id from url
     this.classService.getClasses().subscribe(resp => this.classes = resp);
   }
 
   assignClass(): void {
-    this.quizService.assignQuizToClass(this.quiz, this.class);
+    this.quizService.assignQuizToClass(this.quizId, this.class).subscribe(() => {
+      this.router.navigateByUrl('/teacher-class-page');
+    });
   }
 
 }
