@@ -5,7 +5,7 @@
     "ng": "ng",
     "generate:api": "openapi-generator generate -g typescript-angular -i ./doc/progmappopenapi.json -o ./build/openapi",
     "prestart": "npm run generate:api",
-    "start": "node server.js",
+    "start:prod": "node server.js",
     "prebuild": "npm run generate:api",
     "build": "ng build",
     "test": "ng test",
