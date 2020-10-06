@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import 'froala-editor/js/plugins.pkgd.min.js';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

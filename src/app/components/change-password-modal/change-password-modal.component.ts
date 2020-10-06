@@ -19,6 +19,11 @@ export class ChangePasswordModalComponent implements OnInit {
   student: Student;
 
   constructor(private fb: FormBuilder, private userService: UserService) {
+    this.password = {
+      name: '',
+      oldPassword: '',
+      password: ''
+    };
   }
 
   ngOnInit(): void {
@@ -35,7 +40,7 @@ export class ChangePasswordModalComponent implements OnInit {
 
   onSubmit(): boolean {
     if (this.form.valid) {
-      this.userService.modifyUser();
+      this.userService.modifyPassword(this.password);
     } else {
       return false;
     }

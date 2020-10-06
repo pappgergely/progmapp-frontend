@@ -41,10 +41,12 @@ export class UserService {
     return this.users.asObservable();
   }
 
-  modifyUser(): void {
+  modifyPassword(psw: ChangePassword): void {
     this.http.put<UsersResponse>(
       this.SERVER_URL2 + '/me',
-      { psw: this.psw },
+      { name:  psw.name,
+            oldPsw: psw.oldPassword,
+            newPsw: psw.password},
       { withCredentials: true }
     ).subscribe(resp => this.updateUsers(resp));
   }

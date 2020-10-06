@@ -42,6 +42,7 @@ export class NewQuizQuestionModalComponent implements OnInit {
     placeholderText: 'Kérdés szövege...',
     charCounterCount: false,
     attribution: false,
+    fontSize: ['8', '10', '12', '14', '18', '30', '60', '96']
   };
 
   ngOnInit(): void {
