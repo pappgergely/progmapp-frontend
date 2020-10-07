@@ -36,19 +36,21 @@ export class QuizQuestionService {
     }
   }
 
-  addQuizQuestion(q: QuizQuestion): void {
+  addQuizQuestion(q: QuizQuestion, imageFormData: FormData): void {
     this.http.post<QuizQuestionsResponse>(
       this.SERVER_URL,
       q,
       { withCredentials: true }
     ).subscribe(resp => {
       this.updateQuizQuestion(resp);
-      // this.uploadImage(resp.quizQuestion)
+      if (imageFormData) {
+        this.uploadImage(imageFormData, resp.idOfCreatedEntity).subscribe(() => {});
+      }
     });
   }
 
   uploadImage(image: FormData, questionId: string): Observable<UploadImageResponse> {
-    return this.http.post<UploadImageResponse>(this.SERVER_URL + ' /' + questionId + '/imagefile',
+    return this.http.post<UploadImageResponse>(this.SERVER_URL + '/' + questionId + '/imagefile',
       image,
       {withCredentials: true});
   }

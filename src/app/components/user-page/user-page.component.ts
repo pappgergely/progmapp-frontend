@@ -18,6 +18,8 @@ export class UserPageComponent implements OnInit {
 
   constructor(private modalService: NgbModal, private studentService: StudentService, private userService: UserService) {
     this.users = [];
+    this.students = [];
+    this.filter = '';
   }
 
   ngOnInit(): void {

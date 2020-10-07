@@ -1,19 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {User} from '../interfaces/user';
 
 @Pipe({
   name: 'filterUser'
 })
 export class FilterUserPipe implements PipeTransform {
 
-  transform(value: any, list: any): any {
-    if (value != null && list != null) {
-      const filteredUser = value.filter((user) => user.name.search(new RegExp(list, 'i')) >= 0);
-      if (filteredUser !== 0) {
-        return filteredUser;
-      }
-    }
-    else {
-      return value;
+  transform(list: User[], value: string): User[] {
+    if (value !== '' && list.length > 0) {
+      return  list.filter((user) => user.name.search(new RegExp(value, 'i')) >= 0);
+    } else {
+      return list;
     }
   }
 }

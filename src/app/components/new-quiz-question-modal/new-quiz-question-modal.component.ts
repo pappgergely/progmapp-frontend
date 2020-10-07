@@ -15,6 +15,7 @@ export class NewQuizQuestionModalComponent implements OnInit {
   textShow: boolean;
   question: QuizQuestion;
   public environment = environment;
+  private imageFormData: FormData;
 
   constructor(private quizQuestionService: QuizQuestionService) {
     this.question = {
@@ -22,7 +23,7 @@ export class NewQuizQuestionModalComponent implements OnInit {
       text: '',
       explanationAfter: '',
       feedbackType: FeedbackType.default,
-      hasImage: '',
+      hasImage: null,
       possibleAnswers: [
         {
           textBefore: '',
@@ -30,7 +31,7 @@ export class NewQuizQuestionModalComponent implements OnInit {
           possibleAnswerValues: [
             {
               text: '',
-              isRightAnswer: null
+              isRightAnswer: true
             }
           ]
         }
@@ -42,23 +43,21 @@ export class NewQuizQuestionModalComponent implements OnInit {
     placeholderText: 'Kérdés szövege...',
     charCounterCount: false,
     attribution: false,
+    language: 'hu'
   };
 
   ngOnInit(): void {
   }
 
   saveQuizQuestion(): void {
-    this.quizQuestionService.addQuizQuestion(this.question);
+    this.quizQuestionService.addQuizQuestion(this.question, this.imageFormData);
     this.textShow = true;
     window.scroll(0, 0);
   }
 
-  saveImage(event): void {
-    // const uploadImage = new FormData();
-    // uploadImage.append('file', event.target.files[0]);
-    // this.quizQuestionService.uploadImage(uploadImage)
-    //   .subscribe(resp => this.question.hasImage = resp.picture.id,
-    //     error => alert('Nem megfelelő formátumú a kép.'));
+  processImage(event): void {
+    this.imageFormData = new FormData();
+    this.imageFormData.append('file', event.target.files[0]);
   }
 
   addNewPossibleAnswer(): void {

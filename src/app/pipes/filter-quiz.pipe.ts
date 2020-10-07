@@ -1,19 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {Eternalquiz} from '../interfaces/eternalquiz';
 
 @Pipe({
   name: 'filterQuiz'
 })
 export class FilterQuizPipe implements PipeTransform {
 
-  transform(value: any, list: any): any {
-    if (value !== null && list !== null) {
-      const filteredQuiz = value.filter( (quizName) => quizName.name.search(new RegExp(list, 'i')) >= 0);
-      if (filteredQuiz !== 0) {
-        return filteredQuiz;
-      }
-    }
-    else {
-      return value;
+  transform(list: Eternalquiz[], value: string): Eternalquiz[] {
+    if (value !== '' && list.length > 0) {
+      return list.filter((quiz) => quiz.id.search(new RegExp(value, 'i')) >= 0);
+    } else {
+      return list;
     }
   }
 

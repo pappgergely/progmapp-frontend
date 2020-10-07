@@ -1,19 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {Class} from '../interfaces/class';
 
 @Pipe({
   name: 'filterClass'
 })
 export class FilterClassPipe implements PipeTransform {
 
-  transform(value: any, list: any): any {
-    if (value !== null && list !== null) {
-      const filteredClass = value.filter( (className) => className.name.search(new RegExp(list, 'i')) >= 0);
-      if (filteredClass !== 0) {
-        return filteredClass;
-      }
-    }
-    else {
-      return value;
+  transform(list: Class[], value: string): Class[] {
+    if (value !== '' && list.length > 0) {
+      return  list.filter((classes) => classes.id.search(new RegExp(value, 'i')) >= 0);
+    } else {
+      return list;
     }
   }
 }

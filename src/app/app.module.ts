@@ -51,6 +51,8 @@ import { PossibleAnswerOrdercodeSimpleComponent } from './components/possible-an
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { NewStudentComponent } from './components/new-student/new-student.component';
+import { StudentFilterPipe } from './pipes/student-filter.pipe';
+import { StudentRowComponent } from './components/student-row/student-row.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { NewStudentComponent } from './components/new-student/new-student.compon
     PossibleAnswerCheckboxlistComponent,
     PossibleAnswerOrdercodeSimpleComponent,
     NewStudentComponent,
+    StudentFilterPipe,
+    StudentRowComponent,
   ],
     imports: [
         BrowserModule,

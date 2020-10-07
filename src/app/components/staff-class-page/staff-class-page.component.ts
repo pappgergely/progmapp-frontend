@@ -15,6 +15,7 @@ export class StaffClassPageComponent implements OnInit {
 
   constructor(private classService: ClassService) {
     this.classes = [];
+    this.filter = '';
   }
 
   ngOnInit(): void {

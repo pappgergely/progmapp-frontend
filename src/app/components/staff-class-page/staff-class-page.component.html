@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-          <tr app-class-row *ngFor="let c of classes" [classesName]="c"></tr>
+          <tr app-class-row *ngFor="let c of classes | filterClass: filter" [classesName]="c"></tr>
         </tbody>
       </table>
       <div *ngIf="classes.length === 0">

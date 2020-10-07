@@ -16,6 +16,7 @@ export class QuizQuestionListPageComponent implements OnInit {
 
   constructor(private quizQuestionService: QuizQuestionService) {
     this.questions = [];
+    this.filter = '';
   }
 
   ngOnInit(): void {

@@ -47,19 +47,17 @@
           Nincs felhasználó az adatbázisban.
         </div>
       </div>
-
       <div class="tab2">
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
             <th scope="col">Név</th>
             <th scope="col">E-mail cím</th>
-            <th scope="col">Szerepkör</th>
             <th scope="col"></th>
           </tr>
           </thead>
           <tbody>
-          <tr app-user-row *ngFor='let s of students | filterUser: filter' [user]="s"></tr>
+          <tr app-student-row *ngFor='let s of students | studentFilter: filter' [student]="s"></tr>
           </tbody>
         </table>
         <div *ngIf="students.length === 0">

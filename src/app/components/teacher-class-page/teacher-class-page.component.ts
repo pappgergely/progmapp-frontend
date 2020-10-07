@@ -14,6 +14,7 @@ export class TeacherClassPageComponent implements OnInit {
 
   constructor(private eternalQuizService: EternalQuizService) {
     this.quizWithClass = [];
+    this.filter = '';
   }
 
   ngOnInit(): void {
