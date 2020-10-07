@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'https://progmappbe.herokuapp.com/'
+  serverUrl: 'https://progmappbelive.herokuapp.com/'
+  // 'https://progmappbe.herokuapp.com/'
+  // 'https://progmappbelive.herokuapp.com/'
 };
 
 /*

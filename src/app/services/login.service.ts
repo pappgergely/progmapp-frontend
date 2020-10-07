@@ -38,7 +38,7 @@ export class LoginService {
     this.http.get<User>(
       this.SERVER_URL + 'me',
       {withCredentials: true}
-    ).subscribe(u => this.setLoggedIn(u) ); // TODO fix problem
+    ).subscribe(u => this.setLoggedIn(u) );
   }
 
   getCsrf(): string {

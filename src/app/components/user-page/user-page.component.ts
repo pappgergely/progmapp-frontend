@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {User} from '../../interfaces/user';
 import {UserService} from '../../services/user.service';
 import {Student} from '../../interfaces/student';
@@ -16,7 +15,7 @@ export class UserPageComponent implements OnInit {
   users: User[];
   students: Student[];
 
-  constructor(private modalService: NgbModal, private studentService: StudentService, private userService: UserService) {
+  constructor(private studentService: StudentService, private userService: UserService) {
     this.users = [];
     this.students = [];
     this.filter = '';
