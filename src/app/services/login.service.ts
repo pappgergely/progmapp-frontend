@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { User } from '../interfaces/user';
-import {UsersResponse} from '../interfaces/users-response';
 import {map, tap} from 'rxjs/operators';
 
 @Injectable({
@@ -71,7 +70,18 @@ export class LoginService {
     );
   }
 
-  logout(): void {
+  logout(): void { // send post request
     this.currentUser.next(null);
   }
+
+  // logout2(username: string, password: string): Observable<object> {
+  //   const fd = new FormData();
+  //   fd.append('username', username);
+  //   fd.append('password', password);
+  //   return this.http.post<object>(
+  //     this.SERVER_URL + 'logout',
+  //     fd,
+  //     {withCredentials: true}
+  //   );
+  // }
 }

@@ -51,10 +51,9 @@ export class ClassService {
     return this.classes.asObservable();
   }
 
-  // TODO use class id in the router
-  assignStudent(s: Student): Observable<StudentResponse> {
+  assignStudent(s: Student, classId: string): Observable<StudentResponse> {
     return this.http.put<StudentResponse>(
-      this.SERVER_URL + '/progmatic2020-ősz/students',
+      this.SERVER_URL + '/' + classId + '/students',
       {idList: s.loginName},
       {withCredentials: true})
       .pipe(tap (resp => this.studentService.updateStudent(resp)));

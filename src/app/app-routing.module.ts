@@ -39,7 +39,7 @@ const routes: Routes = [
   {path: 'quiz-question-list', component: QuizQuestionListPageComponent},
   {path: 'eternal-quiz-list', component: EternalQuizListPageComponent}, // canActivate: [AuthGuard], data: { roles: [Roles.teacher]}
   {path: 'new-class-modal', component: NewClassModalComponent},
-  {path: 'student-assign-to-class', component: StudentAssignToClassComponent},
+  {path: 'student-assign-to-class/:id', component: StudentAssignToClassComponent},
   {path: 'new-user-modal', component: NewUserModalComponent},
   {path: 'eternal-quiz-class/:quiz', component: EternalQuizAssignClassModalComponent},
   {path: 'new-student', component: NewStudentComponent}

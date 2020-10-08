@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {EternalQuizService} from '../../services/eternal-quiz.service';
-import {QuizAssignToClass} from '../../interfaces/quiz-assign-to-class';
 import {Class} from '../../interfaces/class';
 import {Semester} from '../../enum/semester.enum';
 import {ClassService} from '../../services/class.service';
-import {Eternalquiz} from '../../interfaces/eternalquiz';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

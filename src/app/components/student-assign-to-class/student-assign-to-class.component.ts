@@ -4,6 +4,8 @@ import {StudentService} from '../../services/student.service';
 import {ClassService} from '../../services/class.service';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Class} from '../../interfaces/class';
+import {Semester} from '../../enum/semester.enum';
 
 @Component({
   selector: 'app-new-student-modal',
@@ -16,6 +18,7 @@ export class StudentAssignToClassComponent implements OnInit {
   textShow: boolean;
   classId: string;
   students: Student[];
+  class: Class;
 
   public expanded = false;
 
@@ -43,7 +46,8 @@ export class StudentAssignToClassComponent implements OnInit {
   }
 
   addStudentToClass(): void {
-    this.classService.assignStudent(this.student).subscribe( () => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.classService.assignStudent(this.student, id).subscribe( () => {
       this.router.navigateByUrl('/staff-class');
     });
   }
