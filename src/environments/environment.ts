@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'https://progmappbelive.herokuapp.com/'
+  serverUrl: 'https://progmappbe.herokuapp.com/'
   // 'https://progmappbe.herokuapp.com/'
   // 'https://progmappbelive.herokuapp.com/'
 };

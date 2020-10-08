@@ -30,13 +30,13 @@ export class EternalQuizService {
     this.studentQuiz = new BehaviorSubject([]);
   }
 
-  getQuiz(): Observable<ClassEternalQuiz[]> {
-    this.http.get<ClassEternalQuiz[]>(this.SERVER_URL,
+  getQuiz(): Observable<Eternalquiz[]> {
+    this.http.get<Eternalquiz[]>(this.SERVER_URL,
       {withCredentials: true})
       .subscribe(resp => {
-        this.classEternalQuiz.next(resp);
+        this.eternalQuiz.next(resp);
       });
-    return this.classEternalQuiz.asObservable();
+    return this.eternalQuiz.asObservable();
   }
 
   private updateQuizzes(response: EternalquizResponse): void {

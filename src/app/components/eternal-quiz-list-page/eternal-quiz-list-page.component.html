@@ -17,7 +17,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr app-forever-quiz-row *ngFor='let q of quizzes' [quiz]="q"></tr>
+        <tr app-forever-quiz-row *ngFor='let q of quizzes | filterQuiz: filter' [quiz]="q"></tr>
         </tbody>
       </table>
       <div *ngIf="quizzes.length === 0">

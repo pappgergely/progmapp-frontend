@@ -53,6 +53,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { NewStudentComponent } from './components/new-student/new-student.component';
 import { StudentFilterPipe } from './pipes/student-filter.pipe';
 import { StudentRowComponent } from './components/student-row/student-row.component';
+import { FilterClassQuizPipe } from './pipes/filter-class-quiz.pipe';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { StudentRowComponent } from './components/student-row/student-row.compon
     NewStudentComponent,
     StudentFilterPipe,
     StudentRowComponent,
+    FilterClassQuizPipe,
   ],
     imports: [
         BrowserModule,
