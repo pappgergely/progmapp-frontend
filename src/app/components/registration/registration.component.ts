@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
-import {MustMatch} from '../_password-validator/must-match.validator';
 import {first} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {Registration} from '../../interfaces/registration';
 
 @Component({
   selector: 'app-student-registration',
@@ -14,34 +14,46 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
-  loading = false;
   registrationSuccess = false;
   error: '';
+  regData: Registration;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, public router: Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, public router: Router) {
+    this.regData = {
+      token: '',
+      password: '',
+      birthDate: '',
+    };
+  }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
+    this.createRegisterForm();
+  }
+
+  createRegisterForm(): void {
+    this.registerForm = this.fb.group({
       token: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      birthDate: ['', Validators.required]
+      password: ['', [Validators.required]],
+      birthDate: ['', [Validators.required]]
     });
   }
 
   get f(): any { return this.registerForm.controls; }
 
-  onSubmit(): void {
+  onSubmit(): boolean {
     this.submitted = true;
     if (this.registerForm.invalid) {
       return;
     }
 
-    this.loading = true;
-
-    this.userService
-      .register(this.registerForm.value)
-      .pipe(first())
-      .subscribe(data => { this.registrationSuccess = true; this.router.navigateByUrl('/login'); },
-        error => { alert(error); });
+    if (this.registerForm.valid) {
+      this.userService
+        .register(this.registerForm.value)
+        .pipe(first())
+        .subscribe(data => { this.registrationSuccess = true; this.router.navigateByUrl('/login'); },
+          error => { alert(error); });
+    } else {
+      return false;
+    }
   }
 }

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {ChangePassword} from '../../interfaces/change-password';
-import {Student} from '../../interfaces/student';
 
 @Component({
   selector: 'app-change-password-modal',
@@ -13,10 +12,9 @@ export class ChangePasswordModalComponent implements OnInit {
 
   password: ChangePassword;
   textShow: boolean;
-  form: FormGroup;
+  passwordForm: FormGroup;
   submitted = false;
   error = '';
-  student: Student;
 
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.password = {
@@ -27,22 +25,27 @@ export class ChangePasswordModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      newPassword: ['', [Validators.required]]
+    this.createForm();
+  }
+
+  private createForm(): void {
+    this.passwordForm = this.fb.group({
+      name: this.fb.control(this.password.name, Validators.required),
+      oldPassword: this.fb.control(this.password.oldPassword, Validators.required),
+      password: this.fb.control(this.password.password, Validators.required)
     });
   }
 
   get f(): any {
-    return this.form.controls;
+    return this.passwordForm.controls;
   }
 
   onSubmit(): boolean {
-    if (this.form.valid) {
-      this.userService.modifyPassword(this.password);
-    } else {
-      return false;
+    this.submitted = true;
+    if (this.passwordForm.invalid) {
+      return;
     }
+
+    this.userService.modifyPassword(this.password).subscribe(() => {});
   }
 }

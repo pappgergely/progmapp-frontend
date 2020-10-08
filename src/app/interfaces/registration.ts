@@ -1,4 +1,4 @@
-export interface Register {
+export interface Registration {
   token: string;
   password: string;
   birthDate: string;

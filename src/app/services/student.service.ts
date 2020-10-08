@@ -4,7 +4,6 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Student} from '../interfaces/student';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {StudentResponse} from '../interfaces/student-response';
-import {User} from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'

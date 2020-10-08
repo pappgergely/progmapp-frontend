@@ -4,8 +4,10 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../interfaces/user';
 import {UsersResponse} from '../interfaces/users-response';
-import {Register} from '../interfaces/register';
+import {Registration} from '../interfaces/registration';
 import {ChangePassword} from '../interfaces/change-password';
+import {ChangePasswordResponse} from '../interfaces/change-password-response';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +17,14 @@ export class UserService {
   private readonly SERVER_URL = environment.serverUrl + 'user';
   private readonly SERVER_URL2 = environment.serverUrl;
   private users: BehaviorSubject<User[]>;
-  psw: ChangePassword;
+  private password: BehaviorSubject<ChangePassword[]>;
 
   constructor(private http: HttpClient) {
     this.users = new BehaviorSubject([]);
+    this.password = new BehaviorSubject([]);
   }
 
-  register(reg: Register): any{
+  register(reg: Registration): any{
     return this.http.post(
       this.SERVER_URL2 + 'completeregistration', reg);
   }
@@ -41,14 +44,20 @@ export class UserService {
     return this.users.asObservable();
   }
 
-  modifyPassword(psw: ChangePassword): void {
-    this.http.put<UsersResponse>(
-      this.SERVER_URL2 + '/me',
+  modifyPassword(psw: ChangePassword): Observable<ChangePasswordResponse> {
+    return this.http.put<ChangePasswordResponse>(
+      this.SERVER_URL2 + 'me',
       { name:  psw.name,
-            oldPsw: psw.oldPassword,
-            newPsw: psw.password},
-      { withCredentials: true }
-    ).subscribe(resp => this.updateUsers(resp));
+            oldPassword: psw.oldPassword,
+            password: psw.password},
+      { withCredentials: true })
+      .pipe(tap(resp => this.updatePassword(resp)));
+  }
+
+  updatePassword(response: ChangePasswordResponse): void {
+    if (response.success){
+      this.password.next(response.password);
+    }
   }
 
   addUser(e: User): void {
