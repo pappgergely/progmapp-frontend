@@ -18,9 +18,7 @@ export class LoginService {
   constructor(private http: HttpClient) {
     this.fetchCurrentUser();
     this.csrfToken = '';
-    this.fetchCsrf().subscribe(x => {
-      console.log(x);
-    });
+    this.fetchCsrf().subscribe(() => {});
 
     this.currentUser.subscribe(u => console.log(u));
   }
@@ -70,18 +68,14 @@ export class LoginService {
     );
   }
 
-  logout(): void { // send post request
-    this.currentUser.next(null);
-  }
-
-  // logout2(username: string, password: string): Observable<object> {
-  //   const fd = new FormData();
-  //   fd.append('username', username);
-  //   fd.append('password', password);
-  //   return this.http.post<object>(
-  //     this.SERVER_URL + 'logout',
-  //     fd,
-  //     {withCredentials: true}
-  //   );
+  // logout(): void { // send post request, without data
+  //   this.currentUser.next(null);
   // }
+
+  logout(): void {
+    this.http.post<User>(
+      this.SERVER_URL + 'logout',
+      {withCredentials: true}
+    );
+  }
 }

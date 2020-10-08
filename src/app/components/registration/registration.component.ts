@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
-import {first} from 'rxjs/operators';
+import {first, tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {Registration} from '../../interfaces/registration';
+import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {RegistrationService} from '../../services/registration.service';
 
 @Component({
   selector: 'app-student-registration',
@@ -18,7 +22,8 @@ export class RegistrationComponent implements OnInit {
   error: '';
   regData: Registration;
 
-  constructor(private fb: FormBuilder, private userService: UserService, public router: Router) {
+  constructor(private fb: FormBuilder, private userService: UserService, public router: Router,
+              private registrationService: RegistrationService) {
     this.regData = {
       token: '',
       password: '',
@@ -28,6 +33,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.createRegisterForm();
+    this.registrationService.getCsrf();
   }
 
   createRegisterForm(): void {
