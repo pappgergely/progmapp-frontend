@@ -19,7 +19,6 @@ export class LoginService {
     this.fetchCurrentUser();
     this.csrfToken = '';
     this.fetchCsrf().subscribe(() => {});
-
     this.currentUser.subscribe(u => console.log(u));
   }
 
@@ -68,14 +67,13 @@ export class LoginService {
     );
   }
 
-  // logout(): void { // send post request, without data
-  //   this.currentUser.next(null);
-  // }
-
-  logout(): void {
-    this.http.post<User>(
+  logout(): Observable<any> {
+    return this.http.post(
       this.SERVER_URL + 'logout',
+      {},
       {withCredentials: true}
-    );
+    ).pipe(tap(() => {
+      this.fetchCsrf();
+    }));
   }
 }

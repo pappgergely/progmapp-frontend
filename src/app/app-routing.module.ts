@@ -23,7 +23,7 @@ import {EternalQuizAssignClassModalComponent} from './components/eternal-quiz-as
 import {NewStudentComponent} from './components/new-student/new-student.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: '', pathMatch: 'full', redirectTo: 'login',  canActivate: [AuthGuard]},
   {path: 'login', component: LoginPageComponent},
   {path: 'main-page', component: MainPageComponent},
   {path: 'registration', component: RegistrationComponent},
@@ -34,10 +34,10 @@ const routes: Routes = [
   {path: 'profile', component: ProfilePageComponent},
   {path: 'new-quiz-question', component: NewQuizQuestionModalComponent},
   {path: 'new-eternal-quiz', component: NewEternalquizModalComponent},
-  {path: 'change-password', component: ChangePasswordModalComponent}, // TODO role?
-  {path: 'statistic', component: QuizStatisticModalComponent}, // TODO role?
+  {path: 'change-password', component: ChangePasswordModalComponent},
+  {path: 'statistic', component: QuizStatisticModalComponent},
   {path: 'quiz-question-list', component: QuizQuestionListPageComponent},
-  {path: 'eternal-quiz-list', component: EternalQuizListPageComponent}, // canActivate: [AuthGuard], data: { roles: [Roles.teacher]}
+  {path: 'eternal-quiz-list', component: EternalQuizListPageComponent},
   {path: 'new-class-modal', component: NewClassModalComponent},
   {path: 'student-assign-to-class/:id', component: StudentAssignToClassComponent},
   {path: 'new-user-modal', component: NewUserModalComponent},
