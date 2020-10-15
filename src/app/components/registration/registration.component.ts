@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
-import {first, tap} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {Registration} from '../../interfaces/registration';
-import {Observable} from 'rxjs';
-import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
 import {RegistrationService} from '../../services/registration.service';
 
 @Component({
@@ -38,9 +35,9 @@ export class RegistrationComponent implements OnInit {
 
   createRegisterForm(): void {
     this.registerForm = this.fb.group({
-      token: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      birthDate: ['', [Validators.required]]
+      token: this.fb.control(this.regData.token, Validators.required),
+      password: this.fb.control(this.regData.password, Validators.required),
+      birthDate: this.fb.control(this.regData.birthDate, Validators.required)
     });
   }
 

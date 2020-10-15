@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {QuizQuestionService} from '../../services/quiz-question.service';
+import {Component, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {FeedbackType} from '../../enum/feedback-type.enum';
 import {QuestionType} from '../../enum/question-type.enum';
@@ -12,12 +11,10 @@ import {environment} from '../../../environments/environment';
 })
 export class NewQuizQuestionModalComponent implements OnInit {
 
-  textShow: boolean;
   question: QuizQuestion;
   public environment = environment;
-  private imageFormData: FormData;
 
-  constructor(private quizQuestionService: QuizQuestionService) {
+  constructor() {
     this.question = {
       id: null,
       text: '',
@@ -39,32 +36,10 @@ export class NewQuizQuestionModalComponent implements OnInit {
     };
   }
 
-  options = {
-    placeholderText: 'Kérdés szövege...',
-    charCounterCount: false,
-    attribution: false,
-    language: 'hu'
-  };
-
   ngOnInit(): void {
-  }
-
-  saveQuizQuestion(): void {
-    this.quizQuestionService.addQuizQuestion(this.question, this.imageFormData);
-    this.textShow = true;
-    window.scroll(0, 0);
-  }
-
-  processImage(event): void {
-    this.imageFormData = new FormData();
-    this.imageFormData.append('file', event.target.files[0]);
   }
 
   addNewPossibleAnswer(): void {
     this.question.possibleAnswers[0].possibleAnswerValues.push({ text: '', isRightAnswer: false });
-  }
-
-  remove(i: number): void {
-    this. question.possibleAnswers[0].possibleAnswerValues.splice(i, 1);
   }
 }
