@@ -6,11 +6,11 @@ import {environment} from '../../../environments/environment';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 
 @Component({
-  selector: 'app-checkbox-list-question',
-  templateUrl: './checkbox-list-question.component.html',
-  styleUrls: ['./checkbox-list-question.component.scss']
+  selector: 'app-question-checkbox-list',
+  templateUrl: './question-checkbox-list.component.html',
+  styleUrls: ['./question-checkbox-list.component.scss']
 })
-export class CheckboxListQuestionComponent implements OnInit {
+export class QuestionCheckboxListComponent implements OnInit {
 
   textShow: boolean;
   question: QuizQuestion;

@@ -54,7 +54,7 @@ import { NewStudentComponent } from './components/new-student/new-student.compon
 import { StudentFilterPipe } from './pipes/student-filter.pipe';
 import { StudentRowComponent } from './components/student-row/student-row.component';
 import { FilterClassQuizPipe } from './pipes/filter-class-quiz.pipe';
-import { CheckboxListQuestionComponent } from './components/checkbox-list-question/checkbox-list-question.component';
+import { QuestionCheckboxListComponent } from './components/question-checkbox-list/question-checkbox-list.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +98,7 @@ import { CheckboxListQuestionComponent } from './components/checkbox-list-questi
     StudentFilterPipe,
     StudentRowComponent,
     FilterClassQuizPipe,
-    CheckboxListQuestionComponent,
+    QuestionCheckboxListComponent,
   ],
     imports: [
         BrowserModule,
