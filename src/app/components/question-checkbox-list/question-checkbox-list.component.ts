@@ -33,7 +33,7 @@ export class QuestionCheckboxListComponent implements OnInit {
           possibleAnswerValues: [
             {
               text: '',
-              isRightAnswer: true
+              isRightAnswer: false
             }
           ]
         }

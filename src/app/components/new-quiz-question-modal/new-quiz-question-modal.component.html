@@ -11,8 +11,8 @@
         <select class="form-control" id="inputQuestionType" name="type"
                 [(ngModel)]="question.possibleAnswers[0].type">
           <option value="default" selected disabled>Válassz...</option>
-          <option value="shortText">Rövid szöveg</option>
-          <option value="longText">Hosszú szüveg</option>
+<!--          <option value="shortText">Rövid szöveg</option>-->
+<!--          <option value="longText">Hosszú szüveg</option>-->
           <option value="dropdown">Legördülő</option>
           <option value="radioButtons">Radio gombok</option>
           <option value="trueFalseCheckbox">Igaz/hamis checkbox</option>
@@ -25,6 +25,9 @@
     </div>
     <div *ngIf="question.possibleAnswers[0].type === 'radioButtons'">
       <app-question-radio></app-question-radio>
+    </div>
+    <div *ngIf="question.possibleAnswers[0].type === 'trueFalseCheckbox'">
+      <app-question-true-false-checkbox></app-question-true-false-checkbox>
     </div>
   </form>
   <div class="container">

@@ -57,6 +57,7 @@ import {StudentRowComponent} from './components/student-row/student-row.componen
 import {FilterClassQuizPipe} from './pipes/filter-class-quiz.pipe';
 import {QuestionCheckboxListComponent} from './components/question-checkbox-list/question-checkbox-list.component';
 import { QuestionRadioComponent } from './components/question-radio/question-radio.component';
+import { QuestionTrueFalseCheckboxComponent } from './components/question-true-false-checkbox/question-true-false-checkbox.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { QuestionRadioComponent } from './components/question-radio/question-rad
     FilterClassQuizPipe,
     QuestionCheckboxListComponent,
     QuestionRadioComponent,
+    QuestionTrueFalseCheckboxComponent,
   ],
   imports: [
     BrowserModule,

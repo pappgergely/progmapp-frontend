@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {environment} from '../../../environments/environment';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {AnswerType} from '../../enum/question-type.enum';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {FeedbackType} from '../../enum/feedback-type.enum';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
-import {environment} from '../../../environments/environment';
+
 
 @Component({
-  selector: 'app-question-radio',
-  templateUrl: './question-radio.component.html',
-  styleUrls: ['./question-radio.component.scss']
+  selector: 'app-question-true-false-checkbox',
+  templateUrl: './question-true-false-checkbox.component.html',
+  styleUrls: ['./question-true-false-checkbox.component.scss']
 })
-export class QuestionRadioComponent implements OnInit {
+export class QuestionTrueFalseCheckboxComponent implements OnInit {
 
   textShow: boolean;
   question: QuizQuestion;
@@ -29,7 +30,7 @@ export class QuestionRadioComponent implements OnInit {
       possibleAnswers: [
         {
           textBefore: '',
-          type: AnswerType.radioButtons,
+          type: AnswerType.trueFalseCheckbox,
           possibleAnswerValues: [
             {
               text: '',
@@ -41,29 +42,29 @@ export class QuestionRadioComponent implements OnInit {
     };
   }
 
-  // config: AngularEditorConfig = {
-  //   editable: true,
-  //   spellcheck: true,
-  //   height: '15rem',
-  //   minHeight: '5rem',
-  //   placeholder: 'Enter text here...',
-  //   translate: 'no',
-  //   customClasses: [
-  //     {
-  //       name: 'quote',
-  //       class: 'quote',
-  //     },
-  //     {
-  //       name: 'redText',
-  //       class: 'redText'
-  //     },
-  //     {
-  //       name: 'titleText',
-  //       class: 'titleText',
-  //       tag: 'h1',
-  //     },
-  //   ]
-  // };
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ]
+  };
 
   options = {
     placeholderText: 'Kérdés szövege...',
@@ -89,9 +90,4 @@ export class QuestionRadioComponent implements OnInit {
   addNewPossibleAnswer(): void {
     this.question.possibleAnswers[0].possibleAnswerValues.push({ text: '', isRightAnswer: false });
   }
-
-  remove(i: number): void {
-    this. question.possibleAnswers[0].possibleAnswerValues.splice(i, 1);
-  }
-
 }
