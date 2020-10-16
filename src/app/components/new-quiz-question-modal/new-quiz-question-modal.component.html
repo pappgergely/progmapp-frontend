@@ -23,6 +23,9 @@
     <div *ngIf="question.possibleAnswers[0].type === 'checkboxList'">
       <app-question-checkbox-list></app-question-checkbox-list>
     </div>
+    <div *ngIf="question.possibleAnswers[0].type === 'radioButtons'">
+      <app-question-radio></app-question-radio>
+    </div>
   </form>
   <div class="container">
     <p class="lead"></p>

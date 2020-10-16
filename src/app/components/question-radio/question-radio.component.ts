@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-import {FeedbackType} from '../../enum/feedback-type.enum';
 import {AnswerType} from '../../enum/question-type.enum';
-import {environment} from '../../../environments/environment';
 import {QuizQuestionService} from '../../services/quiz-question.service';
+import {FeedbackType} from '../../enum/feedback-type.enum';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
+import {environment} from '../../../environments/environment';
 
 @Component({
-  selector: 'app-question-checkbox-list',
-  templateUrl: './question-checkbox-list.component.html',
-  styleUrls: ['./question-checkbox-list.component.scss']
+  selector: 'app-question-radio',
+  templateUrl: './question-radio.component.html',
+  styleUrls: ['./question-radio.component.scss']
 })
-export class QuestionCheckboxListComponent implements OnInit {
+export class QuestionRadioComponent implements OnInit {
 
   textShow: boolean;
   question: QuizQuestion;
@@ -29,7 +29,7 @@ export class QuestionCheckboxListComponent implements OnInit {
       possibleAnswers: [
         {
           textBefore: '',
-          type: AnswerType.checkboxList,
+          type: AnswerType.radioButtons,
           possibleAnswerValues: [
             {
               text: '',
@@ -41,29 +41,29 @@ export class QuestionCheckboxListComponent implements OnInit {
     };
   }
 
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '15rem',
-    minHeight: '5rem',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ]
-  };
+  // config: AngularEditorConfig = {
+  //   editable: true,
+  //   spellcheck: true,
+  //   height: '15rem',
+  //   minHeight: '5rem',
+  //   placeholder: 'Enter text here...',
+  //   translate: 'no',
+  //   customClasses: [
+  //     {
+  //       name: 'quote',
+  //       class: 'quote',
+  //     },
+  //     {
+  //       name: 'redText',
+  //       class: 'redText'
+  //     },
+  //     {
+  //       name: 'titleText',
+  //       class: 'titleText',
+  //       tag: 'h1',
+  //     },
+  //   ]
+  // };
 
   options = {
     placeholderText: 'Kérdés szövege...',

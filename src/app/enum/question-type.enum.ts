@@ -1,4 +1,4 @@
-export enum QuestionType {
+export enum AnswerType {
   default = 'default',
   shortText = 'shortText',
   longText = 'longText',

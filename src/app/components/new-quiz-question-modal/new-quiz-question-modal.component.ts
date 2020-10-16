@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {FeedbackType} from '../../enum/feedback-type.enum';
-import {QuestionType} from '../../enum/question-type.enum';
+import {AnswerType} from '../../enum/question-type.enum';
 import {environment} from '../../../environments/environment';
 
 @Component({
@@ -24,7 +24,7 @@ export class NewQuizQuestionModalComponent implements OnInit {
       possibleAnswers: [
         {
           textBefore: '',
-          type: QuestionType.default,
+          type: AnswerType.default,
           possibleAnswerValues: [
             {
               text: '',
