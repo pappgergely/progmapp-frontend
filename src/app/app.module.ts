@@ -3,8 +3,9 @@ import {NgModule} from '@angular/core';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-// import 'froala-editor/js/plugins.pkgd.min.js';
+import 'froala-editor/js/plugins.pkgd.min.js';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import {NgxEditorModule} from 'ngx-editor';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -109,21 +110,22 @@ import { QuestionOrdercodeComponent } from './components/question-ordercode/ques
     QuestionDropdownComponent,
     QuestionOrdercodeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgbModule,
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
-    NgSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    DragDropModule,
-    AngularEditorModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NgbModule,
+        FroalaEditorModule.forRoot(),
+        FroalaViewModule.forRoot(),
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        DragDropModule,
+        AngularEditorModule,
+        NgxEditorModule,
+    ],
   entryComponents: [],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true},
