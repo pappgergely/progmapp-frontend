@@ -28,10 +28,17 @@
   <label for="inputAnswer" class="col-sm-2 col-form-label">Válaszok</label>
   <div class="col-sm-10" *ngFor="let a of question.possibleAnswers[0].possibleAnswerValues; let f = first;
         let i = index;">
-        <textarea id="inputAnswer" name="a.text" cols="50"
-                  [(ngModel)]="a.text" [ngClass]="{newElement: !f}"></textarea>
-    <label><input class="ml-2" type="checkbox" name="isRightAnswer" [(ngModel)]="a.isRightAnswer">Jó válasz</label>
-    <button class="btn btn-danger ml-3 mb-4" *ngIf="!f" (click)="remove(i)">Törlés</button>
+    <div class="input-group mb-3">
+      <textarea id="inputAnswer" name="a.text" cols="70"
+                [(ngModel)]="a.text" [ngClass]="{newElement: !f}" aria-label="Text input with checkbox"></textarea>
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input class="ml-2" type="checkbox" name="isRightAnswer" [(ngModel)]="a.isRightAnswer"
+                 aria-label="Checkbox for following text input">
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-danger mb-4" *ngIf="!f" (click)="remove(i)">Törlés</button>
   </div>
   <div class="col-sm-2 col-form-label"></div>
   <div class="col-sm-10">

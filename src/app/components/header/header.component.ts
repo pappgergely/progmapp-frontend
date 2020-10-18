@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.loginService.logout().subscribe(() => {
+      this.loginService.getCsrf();
       this.router.navigateByUrl('/login');
     });
   }

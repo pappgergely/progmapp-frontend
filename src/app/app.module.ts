@@ -58,6 +58,8 @@ import {FilterClassQuizPipe} from './pipes/filter-class-quiz.pipe';
 import {QuestionCheckboxListComponent} from './components/question-checkbox-list/question-checkbox-list.component';
 import { QuestionRadioComponent } from './components/question-radio/question-radio.component';
 import { QuestionTrueFalseCheckboxComponent } from './components/question-true-false-checkbox/question-true-false-checkbox.component';
+import { QuestionDropdownComponent } from './components/question-dropdown/question-dropdown.component';
+import { QuestionOrdercodeComponent } from './components/question-ordercode/question-ordercode.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +106,8 @@ import { QuestionTrueFalseCheckboxComponent } from './components/question-true-f
     QuestionCheckboxListComponent,
     QuestionRadioComponent,
     QuestionTrueFalseCheckboxComponent,
+    QuestionDropdownComponent,
+    QuestionOrdercodeComponent,
   ],
   imports: [
     BrowserModule,
