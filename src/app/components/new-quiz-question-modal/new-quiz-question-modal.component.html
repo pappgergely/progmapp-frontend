@@ -17,7 +17,7 @@
           <option value="radioButtons">Radio gombok</option>
           <option value="trueFalseCheckbox">Igaz/hamis checkbox</option>
           <option value="checkboxList">Checkbox lista</option>
-          <option value="soruceCodeToOrder_EvalByCompare">Kód rendezés</option>
+          <option value="soruceCodeToOrder_EvalByRun">Kód rendezés</option>
         </select>
       </div>
     </div>
@@ -33,7 +33,7 @@
     <div *ngIf="question.possibleAnswers[0].type === 'checkboxList'">
       <app-question-checkbox-list></app-question-checkbox-list>
     </div>
-    <div *ngIf="question.possibleAnswers[0].type === 'soruceCodeToOrder_EvalByCompare'">
+    <div *ngIf="question.possibleAnswers[0].type === 'soruceCodeToOrder_EvalByRun'">
       <app-question-ordercode></app-question-ordercode>
     </div>
   </form>

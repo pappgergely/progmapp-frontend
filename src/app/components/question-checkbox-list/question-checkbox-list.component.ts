@@ -4,7 +4,6 @@ import {FeedbackType} from '../../enum/feedback-type.enum';
 import {AnswerType} from '../../enum/question-type.enum';
 import {environment} from '../../../environments/environment';
 import {QuizQuestionService} from '../../services/quiz-question.service';
-import {AngularEditorConfig} from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-question-checkbox-list',
@@ -40,30 +39,6 @@ export class QuestionCheckboxListComponent implements OnInit {
       ],
     };
   }
-
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '15rem',
-    minHeight: '5rem',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ]
-  };
 
   options = {
     placeholderText: 'Kérdés szövege...',

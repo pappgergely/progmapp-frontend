@@ -3,7 +3,6 @@ import {QuizQuestion} from '../../interfaces/quiz-question';
 import {AnswerType} from '../../enum/question-type.enum';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {FeedbackType} from '../../enum/feedback-type.enum';
-import {AngularEditorConfig} from '@kolkov/angular-editor';
 import {environment} from '../../../environments/environment';
 
 @Component({
@@ -40,30 +39,6 @@ export class QuestionRadioComponent implements OnInit {
       ],
     };
   }
-
-  // config: AngularEditorConfig = {
-  //   editable: true,
-  //   spellcheck: true,
-  //   height: '15rem',
-  //   minHeight: '5rem',
-  //   placeholder: 'Enter text here...',
-  //   translate: 'no',
-  //   customClasses: [
-  //     {
-  //       name: 'quote',
-  //       class: 'quote',
-  //     },
-  //     {
-  //       name: 'redText',
-  //       class: 'redText'
-  //     },
-  //     {
-  //       name: 'titleText',
-  //       class: 'titleText',
-  //       tag: 'h1',
-  //     },
-  //   ]
-  // };
 
   options = {
     placeholderText: 'Kérdés szövege...',
