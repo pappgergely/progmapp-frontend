@@ -40,19 +40,19 @@ export class StudentQuizPageComponent implements OnInit {
     );
   }
 
-  // getQuesiontImageUrl(): string {
-  //   if (this.question.hasImage) {
-  //     return environment.serverUrl + 'question/' + this.question.id + '/imagefile';
-  //   }
-  //   return null;
-  // }
-  //
-  // getPosibleAnswerImageUrl(po: PossibleAnswerDTO): string{
-  //   if (po.hasImage){
-  //     return environment.serverUrl + 'question/possibleanswer/' + po.id + '/imagefile';
-  //   }
-  //   return null;
-  // }
+  getQuesiontImageUrl(): string {
+    if (this.question.hasImage) {
+      return environment.serverUrl + 'question/' + this.question.id + '/imagefile';
+    }
+    return null;
+  }
+
+  getPosibleAnswerImageUrl(po: PossibleAnswerDTO): string {
+    if (po.hasImage) {
+      return environment.serverUrl + 'question/possibleanswer/' + po.id + '/imagefile';
+    }
+    return null;
+  }
 
   sendAnswer(): void {
     console.log('sendAnswer called');
