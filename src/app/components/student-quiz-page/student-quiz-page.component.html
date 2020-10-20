@@ -44,7 +44,7 @@
 
         <div *ngIf="question">
 
-          <h2>{{question.text}}</h2>
+          <h2 [innerHTML]="question.text"></h2>
           <div *ngIf="question.hasImage" class="row justify-content-center mt-3 mb-3">
             <div class="col-md-2"></div>
             <div class="col-md-6">
