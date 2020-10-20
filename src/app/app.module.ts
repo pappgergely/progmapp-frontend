@@ -62,6 +62,7 @@ import { QuestionRadioComponent } from './components/question-radio/question-rad
 import { QuestionTrueFalseCheckboxComponent } from './components/question-true-false-checkbox/question-true-false-checkbox.component';
 import { QuestionDropdownComponent } from './components/question-dropdown/question-dropdown.component';
 import { QuestionOrdercodeComponent } from './components/question-ordercode/question-ordercode.component';
+import { QuestionAssignToQuizComponent } from './components/question-assign-to-quiz/question-assign-to-quiz.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { QuestionOrdercodeComponent } from './components/question-ordercode/ques
     QuestionTrueFalseCheckboxComponent,
     QuestionDropdownComponent,
     QuestionOrdercodeComponent,
+    QuestionAssignToQuizComponent,
   ],
     imports: [
         BrowserModule,

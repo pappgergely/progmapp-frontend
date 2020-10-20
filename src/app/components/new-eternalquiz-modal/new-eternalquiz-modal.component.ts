@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Eternalquiz} from '../../interfaces/eternalquiz';
 import {EternalQuizService} from '../../services/eternal-quiz.service';
-import {QuestionAssignToQuiz} from '../../interfaces/question-assign-to-quiz';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {FeedbackType} from '../../enum/feedback-type.enum';
 import {QuizQuestionService} from '../../services/quiz-question.service';

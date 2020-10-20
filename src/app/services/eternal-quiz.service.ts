@@ -72,6 +72,14 @@ export class EternalQuizService {
       .pipe(tap(resp => this.updateQuizzes(resp)));
   }
 
+  assignSimpleQuestionToQuiz(quiz: Eternalquiz, questionId: string[]): Observable<EternalquizResponse> {
+    return this.http.put<EternalquizResponse>(this.SERVER_URL + '/quiz/question',
+      {eternalQuizId: quiz.id,
+        questionIds: [questionId]},
+      {withCredentials: true})
+      .pipe(tap(resp => this.updateQuizzes(resp)));
+  }
+
   assignQuizToClass(quizId: string, className: Class): Observable<QuizAssignToClassResponse> {
     return this.http.put<QuizAssignToClassResponse>(this.SERVER_URL + '/quiz/class',
       {eternalQuizId: quizId,

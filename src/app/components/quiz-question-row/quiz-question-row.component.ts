@@ -17,5 +17,4 @@ export class QuizQuestionRowComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

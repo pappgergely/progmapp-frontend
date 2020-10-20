@@ -21,6 +21,7 @@ import {StudentAssignToClassComponent} from './components/student-assign-to-clas
 import {NewUserModalComponent} from './components/new-user-modal/new-user-modal.component';
 import {EternalQuizAssignClassModalComponent} from './components/eternal-quiz-assign-class-modal/eternal-quiz-assign-class-modal.component';
 import {NewStudentComponent} from './components/new-student/new-student.component';
+import {QuestionAssignToQuizComponent} from './components/question-assign-to-quiz/question-assign-to-quiz.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login',  canActivate: [AuthGuard]},
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path: 'student-assign-to-class/:id', component: StudentAssignToClassComponent},
   {path: 'new-user-modal', component: NewUserModalComponent},
   {path: 'eternal-quiz-class/:quiz', component: EternalQuizAssignClassModalComponent},
-  {path: 'new-student', component: NewStudentComponent}
+  {path: 'new-student', component: NewStudentComponent},
+  {path: 'question-assign-to-quiz/:questionId', component: QuestionAssignToQuizComponent}
 ];
 
 @NgModule({
