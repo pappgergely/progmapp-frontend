@@ -7,5 +7,6 @@ export interface QuizQuestion {
   explanationAfter: string;
   feedbackType: FeedbackType;
   hasImage: FormData;
+  adminDescription: string;
   possibleAnswers: PossibleQuestionAnswers[];
 }

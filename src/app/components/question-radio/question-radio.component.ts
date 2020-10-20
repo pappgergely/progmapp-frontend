@@ -25,6 +25,7 @@ export class QuestionRadioComponent implements OnInit {
       explanationAfter: '',
       feedbackType: FeedbackType.default,
       hasImage: null,
+      adminDescription: '',
       possibleAnswers: [
         {
           textBefore: '',
