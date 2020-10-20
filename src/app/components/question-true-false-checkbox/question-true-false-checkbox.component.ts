@@ -4,8 +4,6 @@ import {QuizQuestion} from '../../interfaces/quiz-question';
 import {AnswerType} from '../../enum/question-type.enum';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {FeedbackType} from '../../enum/feedback-type.enum';
-import {AngularEditorConfig} from '@kolkov/angular-editor';
-
 
 @Component({
   selector: 'app-question-true-false-checkbox',

@@ -1,1 +1,53 @@
-<p>question-ordercode works!</p>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="inputText">Kérdés szövege</label>
+  <div class="col-sm-10">
+    <div>
+      <p>
+        Az itt található kód egy Java osztály teljes kódja kell legyen. Az osztály kötelezően az
+        org.progmatic.sourcequiz.classtotest package-ben kell legyen. A kód tetszőleges Java kódot tartalmazhat
+        (de nem férhet hozzá a fájlrendszerhez, a hálózathoz, és általában nem csinálhat olyasmit, ami a Java Security
+        manager korlátozni tud). A kódból az üres sorok és  a sorvégi, soreleji whitespace karakterek törlődni fognak.
+      </p>
+    </div>
+    <textarea name="text" id="inputText" cols="97" rows="5" [(ngModel)]="codeOrder.code"></textarea>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="inputUnitTest">Unit teszt</label>
+  <div class="col-sm-10">
+    <div>
+      <p>
+        Az itt található unit teszt kód kötelezően az org.progmatic.sourcequiz.test packageben kell legyen.
+        A kód JUnit5 unit tesztet tartalmazzon, és a fenti forráskódban definiált osztályt kell hogy letesztelje.
+        A unit tesztben értelemszerűen példányosíthatod a fenti osztályt, és használhatsz JUnit5-ös importokat.
+        Ha nem adsz meg Unit tesztet, akkor az ellenőrzés csak azt fogja vizsgálni, hogy a hallgató álltal beállított
+        sorrend megegyezik-e az általad megadottal.
+      </p>
+    </div>
+    <textarea name="text" id="inputUnitTest" cols="97" rows="10" [(ngModel)]="codeOrder.unitTest"></textarea>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="inputFeedbackType" class="col-sm-2 col-form-label">Visszajelzés típusa</label>
+  <div class="col-sm-10">
+    <select class="form-control" id="inputFeedbackType" name="feedbackType" [(ngModel)]="codeOrder.feedbackType">
+      <option value="default" selected disabled>Válassz...</option>
+      <option value="noFeedback">Nincs visszajelzés</option>
+      <option value="trueFalseFeedback">Helyes/helytelen válasz</option>
+      <option value="showRightAnswer">Jó válasz megmutatása</option>
+    </select>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="inputExplain" class="col-sm-2 col-form-label">Magyarázat</label>
+  <div class="col-sm-10">
+        <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="5" cols="10" name="explanation"
+                  [(ngModel)]="codeOrder.explanationAfter">
+        </textarea>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-sm-10">
+    <button type='submit' class="btn btn-primary mb-4" (click)="saveQuizQuestion()">Kvízkérdés létrehozása</button>
+  </div>
+</div>
