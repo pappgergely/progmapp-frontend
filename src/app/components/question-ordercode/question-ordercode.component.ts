@@ -13,7 +13,7 @@ export class QuestionOrdercodeComponent implements OnInit {
 
   constructor(private quizQuestionService: QuizQuestionService) {
     this.codeOrder = {
-      id: '',
+      id: null,
       text: '',
       adminDescription: '',
       explanationAfter: '',
