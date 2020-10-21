@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
 import {QuizQuestionService} from '../../services/quiz-question.service';
+import {QuestionDTO} from '../../../../build/openapi';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class QuizQuestionListPageComponent implements OnInit {
 
   filter: string;
   questions: QuizQuestion[];
+  selectedQuestion: QuestionDTO;
 
   constructor(private quizQuestionService: QuizQuestionService) {
     this.questions = [];
@@ -24,5 +26,15 @@ export class QuizQuestionListPageComponent implements OnInit {
       question => { this.questions = question;
       }
     );
+  }
+
+  showQuestionPopup(question: QuestionDTO): void{
+    this.selectedQuestion = question;
+    document.getElementById('showQuestionModal').style.display = 'block';
+  }
+
+  closeModal(): void {
+    this.selectedQuestion = null;
+    document.getElementById('showQuestionModal').style.display = 'none';
   }
 }

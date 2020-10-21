@@ -9,6 +9,7 @@ import {
 import {PossibleAnswerResponseProvider} from '../possible-answer-response-provider';
 import {EqStatisticsComponent} from '../eq-statistics/eq-statistics.component';
 import {environment} from '../../../environments/environment';
+import {QuestionStudentViewComponent} from '../question-student-view/question-student-view.component';
 
 @Component({
   selector: 'app-student-quiz-page',
@@ -21,7 +22,7 @@ export class StudentQuizPageComponent implements OnInit {
   answerFeedback: AnswerFeedbackDTO;
   errorMessage: string;
 
-  @ViewChildren(PossibleAnswerResponseProvider) responseProviders: QueryList<PossibleAnswerResponseProvider>;
+  @ViewChild(QuestionStudentViewComponent) studentViewComp: QuestionStudentViewComponent;
 
   @ViewChild(EqStatisticsComponent) statisticsComponent: EqStatisticsComponent;
 
@@ -40,19 +41,7 @@ export class StudentQuizPageComponent implements OnInit {
     );
   }
 
-  getQuesiontImageUrl(): string {
-    if (this.question.hasImage) {
-      return environment.serverUrl + 'question/' + this.question.id + '/imagefile';
-    }
-    return null;
-  }
 
-  getPosibleAnswerImageUrl(po: PossibleAnswerDTO): string {
-    if (po.hasImage) {
-      return environment.serverUrl + 'question/possibleanswer/' + po.id + '/imagefile';
-    }
-    return null;
-  }
 
   setSpinner(): void{
     document.getElementById('spinnerOnButton').classList.add('spinner-border', 'spinner-border-sm');
@@ -61,12 +50,12 @@ export class StudentQuizPageComponent implements OnInit {
 
   sendAnswer(): void {
     console.log('sendAnswer called');
-    console.log('child.length: ' + this.responseProviders.length);
+    console.log('child.length: ' + this.studentViewComp.responseProviders.length);
     const anwerRespDto: AnswerResponseDTO = {
       questionId: this.question.id,
       answers: new Array<PossibleAnswerResponseDTO>()
     };
-    this.responseProviders.forEach(po => anwerRespDto.answers.push(po.getSelectedAnswers()));
+    this.studentViewComp.responseProviders.forEach(po => anwerRespDto.answers.push(po.getSelectedAnswers()));
     this.es.acceptEternalQuizAnswer(anwerRespDto).subscribe(
       feedback => {
         this.question = null;

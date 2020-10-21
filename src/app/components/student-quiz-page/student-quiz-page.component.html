@@ -43,33 +43,7 @@
         </div>
 
         <div *ngIf="question">
-
-          <h2 [innerHTML]="question.text"></h2>
-          <div *ngIf="question.hasImage" class="row justify-content-center mt-3 mb-3">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-              <img [src]="getQuesiontImageUrl()" class="img-fluid">
-            </div>
-            <div class="col-md-2"></div>
-          </div>
-          <div *ngFor="let po of question.possibleAnswers">
-            <div>{{po.textBefore}}</div>
-            <div *ngIf="po.hasImage" class="row justify-content-center mt-3">
-              <div class="col-md-2"></div>
-              <div class="col-md-6">
-                <img [src]="getPosibleAnswerImageUrl(po)" class="img-fluid">
-              </div>
-              <div class="col-md-2"></div>
-            </div>
-            <div>{{po.textAfter}}</div>
-
-            <app-possible-answer-radio *ngIf="po.type == 'radioButtons'" [possibleAnswer]="po"></app-possible-answer-radio>
-            <app-possible-answer-dropdown *ngIf="po.type == 'dropdown'" [possibleAnswer]="po"></app-possible-answer-dropdown>
-            <app-possible-answer-checkboxlist *ngIf="po.type == 'checkboxList'"[possibleAnswer]="po"></app-possible-answer-checkboxlist>
-            <app-possible-answer-checkboxlist *ngIf="po.type == 'trueFalseCheckbox'"[possibleAnswer]="po"></app-possible-answer-checkboxlist>
-            <app-possible-answer-ordercode-simple *ngIf="po.type == 'soruceCodeToOrder_EvalByCompare'"[possibleAnswer]="po"></app-possible-answer-ordercode-simple>
-            <app-possible-answer-ordercode-simple *ngIf="po.type == 'soruceCodeToOrder_EvalByRun'"[possibleAnswer]="po"></app-possible-answer-ordercode-simple>
-          </div>
+          <app-question-student-view [question]="question"></app-question-student-view>
 
           <button type="button" id="sendAnswerButton" class="btn btn-primary float-right" (click)="sendAnswer()">
             <span id="spinnerOnButton"></span>
