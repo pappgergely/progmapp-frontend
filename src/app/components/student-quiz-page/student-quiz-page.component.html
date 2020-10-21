@@ -71,7 +71,10 @@
             <app-possible-answer-ordercode-simple *ngIf="po.type == 'soruceCodeToOrder_EvalByRun'"[possibleAnswer]="po"></app-possible-answer-ordercode-simple>
           </div>
 
-          <button type="button" class="btn btn-primary float-right" (click)="sendAnswer()">Bekülkdöm</button>
+          <button type="button" id="sendAnswerButton" class="btn btn-primary float-right" (click)="sendAnswer()">
+            <span id="spinnerOnButton"></span>
+            Bekülkdöm
+          </button>
 
         </div>
       </div>

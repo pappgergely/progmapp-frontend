@@ -54,6 +54,11 @@ export class StudentQuizPageComponent implements OnInit {
     return null;
   }
 
+  setSpinner(): void{
+    document.getElementById('spinnerOnButton').classList.add('spinner-border', 'spinner-border-sm');
+    document.getElementById('sendAnswerButton').setAttribute('disabled', null);
+  }
+
   sendAnswer(): void {
     console.log('sendAnswer called');
     console.log('child.length: ' + this.responseProviders.length);
@@ -76,5 +81,6 @@ export class StudentQuizPageComponent implements OnInit {
         this.answerFeedback = null;
       }
     );
+    this.setSpinner();
   }
 }
