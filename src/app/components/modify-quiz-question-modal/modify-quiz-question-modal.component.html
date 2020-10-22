@@ -1,75 +1,73 @@
-<form>
-  <h2 class="welcome-msg">Kvízkérdés módosítása</h2>
-  <div class="form-group row">
-    <label for="inputQuestionType" class="col-sm-2 col-form-label">Kérdés típusa</label>
-    <div class="col-sm-10">
-      <select class="form-control" id="inputQuestionType">
-        <option selected disabled>Válassz...</option>
-        <option>Felelet választós</option>
-      </select>
+<form (submit)="submit()" [formGroup]="form">
+  <div class="modal-header">
+    <h4 class="modal-title">Kérdés módosítása</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="inputText">Kérdés szövege</label>
+    <div>
+      <textarea name="text" id="inputText" cols="50" rows="5">
+      </textarea>
+
     </div>
   </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Kérdés szövege</label>
-    <div class="col-sm-10">
-      <pre [froalaEditor]="options"><code></code></pre>
+  <div class="form-group">
+    <label for="inputDescription">Megjegyzés</label>
+    <div>
+      <textarea name="description" id="inputDescription" cols="50" rows="2"></textarea>
     </div>
   </div>
-  <div class="form-group row">
-    <div class="col-form-label col-sm-2 pt-0">Kép (opcionális)</div>
-    <div class="col-sm-10">
-      <img src="/assets/img/empty.jpg" alt="" class="question-picture">
-      <div>
-        <button class="btn btn-primary mt-2">Kép feltöltése</button>
-      </div>
+  <div class="form-group">
+    <label for="inputTextBefore">Szöveg előtte</label>
+    <div>
+      <input type="text" class="form-control" id="inputTextBefore" name="textBefore">
     </div>
   </div>
-  <div class="form-group row">
-    <div class="col-sm-2">Válaszok</div>
-    <div class="col-sm-10">
-      <div class="answers">
-        <!--    answers add dinamically    -->
-      </div>
-      <div class="add-new-answer">
-        <i class="far fa-plus-square mr-2" (click)="generateNewAnswer()"></i>
-        <label>Új válaszlehetőség hozzáadása</label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputTimeLimit" class="col-sm-2 col-form-label">Időlimit (opcionális)</label>
-    <div class="col-sm-10">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="időlimit" aria-label="Recipient's username"
-               aria-describedby="basic-addon2" id="inputTimeLimit">
-        <div class="input-group-append">
-          <span class="input-group-text" id="basic-addon2">perc</span>
+  <div class="form-group">
+    <label for="inputAnswer">Válaszok</label>
+    <div>
+      <div class="input-group mb-3">
+        <textarea id="inputAnswer" name="answer" cols="50" aria-label="Text input with checkbox"></textarea>
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <input class="ml-2" type="checkbox" name="isRightAnswer"
+                   aria-label="Checkbox for following text input">
+          </div>
         </div>
       </div>
+      <button class="btn btn-danger mb-4"></button>
+    </div>
+    <div class="col-sm-2 col-form-label"></div>
+    <div class="col-sm-10">
+      <button class="btn btn-outline-success">
+        Új válaszlehetőség hozzáadása
+      </button>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="inputFeedbackType" class="col-sm-2 col-form-label">Visszajelzés típusa</label>
-    <div class="col-sm-10">
-      <select class="form-control" id="inputFeedbackType">
-        <option selected disabled>Válassz...</option>
-        <option>Nincs visszajelzés</option>
-        <option>Helyes válasz</option>
-        <option>Helytelen válasz</option>
-        <option>Helyes válasz megmutatása</option>
+  <div class="form-group">
+    <label for="inputFeedbackType">Visszajelzés típusa</label>
+    <div>
+      <select class="form-control" id="inputFeedbackType" name="feedbackType">
+        <option value="default" selected disabled>Válassz...</option>
+        <option value="noFeedback">Nincs visszajelzés</option>
+        <option value="trueFalseFeedback">Helyes/helytelen válasz</option>
+        <option value="showRightAnswer">Jó válasz megmutatása</option>
       </select>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="inputExplain" class="col-sm-2 col-form-label">Magyarázat</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="5" cols="10"></textarea>
+  <div class="form-group">
+    <label for="inputExplain">Magyarázat</label>
+    <div>
+        <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="2" cols="50" name="explanation">
+        </textarea>
     </div>
   </div>
-  <div class="form-group row">
-    <div class="col-sm-10 mb-4">
-      <button type="submit" class="btn btn-primary mr-2">Kvízkérdés módosítás</button>
-      <button type="submit" class="btn btn-secondary">Mégsem</button>
+  <div class="form-group">
+    <div>
+      <button type='submit' class="btn btn-primary mb-4">Módosítás</button>
     </div>
   </div>
 </form>
+

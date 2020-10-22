@@ -75,4 +75,12 @@ export class QuizQuestionService {
       this.codeOrderQuestion.next(response.codeOrder);
     }
   }
+
+  modifyQuestion(q: QuizQuestion): void {
+    this.http.put<QuizQuestionsResponse>(
+      this.SERVER_URL,
+      q,
+      {withCredentials: true}
+    ).subscribe(resp => this.updateQuizQuestion(resp));
+  }
 }

@@ -3,8 +3,6 @@ import {NgModule} from '@angular/core';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-// import 'froala-editor/js/plugins.pkgd.min.js';
-import 'froala-editor/js/languages/hu.js';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import {NgxEditorModule} from 'ngx-editor';
 
@@ -34,7 +32,6 @@ import {QuizQuestionListPageComponent} from './components/quiz-question-list-pag
 import {EternalQuizListPageComponent} from './components/eternal-quiz-list-page/eternal-quiz-list-page.component';
 import {EternalQuizRowComponent} from './components/eternal-quiz-row/eternal-quiz-row.component';
 import {QuizQuestionRowComponent} from './components/quiz-question-row/quiz-question-row.component';
-import {ModifyEternalquizModalComponent} from './components/modify-eternalquiz-modal/modify-eternalquiz-modal.component';
 import {ModifyQuizQuestionModalComponent} from './components/modify-quiz-question-modal/modify-quiz-question-modal.component';
 import {CsrfInterceptor} from './interceptors/csrf.interceptor';
 import {MainPageComponent} from './components/main-page/main-page.component';
@@ -89,7 +86,6 @@ import { QuestionAssignToQuizComponent } from './components/question-assign-to-q
     EternalQuizListPageComponent,
     EternalQuizRowComponent,
     QuizQuestionRowComponent,
-    ModifyEternalquizModalComponent,
     ModifyQuizQuestionModalComponent,
     MainPageComponent,
     FilterClassPipe,
@@ -129,7 +125,12 @@ import { QuestionAssignToQuizComponent } from './components/question-assign-to-q
         AngularEditorModule,
         NgxEditorModule,
     ],
-  entryComponents: [],
+  exports: [
+    ModifyQuizQuestionModalComponent
+  ],
+  entryComponents: [
+    ModifyQuizQuestionModalComponent
+  ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true},
     {provide: BASE_PATH, useValue: environment.serverUrl.substring(0, environment.serverUrl.length - 1)}
