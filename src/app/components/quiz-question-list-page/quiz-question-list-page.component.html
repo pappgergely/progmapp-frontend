@@ -15,6 +15,8 @@
           <th scope="col">Kvízkérdések</th>
           <th scope="col">Leírás</th>
           <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +28,18 @@
       </div>
     </div>
   </div>
+
+  <div id="showQuestionModal" class="modal" >
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <app-question-student-view  *ngIf="selectedQuestion"[question]="selectedQuestion"></app-question-student-view>
+    </div>
+
+  </div>
+
+
   <div class="container">
     <p class="lead"></p>
     <p class="lead mb-0"></p>

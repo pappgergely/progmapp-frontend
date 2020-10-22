@@ -60,6 +60,7 @@ import { QuestionTrueFalseCheckboxComponent } from './components/question-true-f
 import { QuestionDropdownComponent } from './components/question-dropdown/question-dropdown.component';
 import { QuestionOrdercodeComponent } from './components/question-ordercode/question-ordercode.component';
 import { QuestionAssignToQuizComponent } from './components/question-assign-to-quiz/question-assign-to-quiz.component';
+import { QuestionStudentViewComponent } from './components/question-student-view/question-student-view.component';
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import { QuestionAssignToQuizComponent } from './components/question-assign-to-q
     QuestionDropdownComponent,
     QuestionOrdercodeComponent,
     QuestionAssignToQuizComponent,
+    QuestionStudentViewComponent,
   ],
     imports: [
         BrowserModule,
