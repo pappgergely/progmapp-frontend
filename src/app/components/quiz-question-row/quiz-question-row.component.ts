@@ -1,6 +1,6 @@
 import {Component, Host, Input, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-import {TestControllerService} from '../../../../build/openapi';
+import {QuestionDTO, TestControllerService} from '../../../../build/openapi';
 import {QuizQuestionListPageComponent} from '../quiz-question-list-page/quiz-question-list-page.component';
 
 @Component({
@@ -12,7 +12,7 @@ import {QuizQuestionListPageComponent} from '../quiz-question-list-page/quiz-que
 export class QuizQuestionRowComponent implements OnInit {
 
   @Input()
-  question: QuizQuestion;
+  question: QuestionDTO;
 
   constructor(private testController: TestControllerService, @Host() private parent: QuizQuestionListPageComponent) {
   }

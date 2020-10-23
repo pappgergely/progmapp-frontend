@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {QuizQuestion} from '../../interfaces/quiz-question';
-import {QuizQuestionService} from '../../services/quiz-question.service';
-import {QuestionDTO} from '../../../../build/openapi';
+import {QuestionDTO, QuestionSearchDto, TestControllerService} from '../../../../build/openapi';
 
 
 @Component({
@@ -12,18 +10,26 @@ import {QuestionDTO} from '../../../../build/openapi';
 
 export class QuizQuestionListPageComponent implements OnInit {
 
-  filter: string;
-  questions: QuizQuestion[];
+  filter: QuestionSearchDto;
+  questions: QuestionDTO[];
   selectedQuestion: QuestionDTO;
 
-  constructor(private quizQuestionService: QuizQuestionService) {
-    this.questions = [];
-    this.filter = '';
+  constructor(private testControllerService: TestControllerService) {
+    this.questions = null;
+    this.filter = {
+      notInEternalQuiz: true
+    };
   }
 
   ngOnInit(): void {
-    this.quizQuestionService.getQuizQuestions().subscribe(
-      question => { this.questions = question;
+    this.doSearch();
+  }
+
+  doSearch(): void{
+    this.questions = null;
+    this.testControllerService.findQuestions(this.filter).subscribe(
+      questionList => {
+        this.questions = questionList;
       }
     );
   }
