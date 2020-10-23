@@ -1,30 +1,55 @@
 <app-header></app-header>
 <div class="container main-container">
-  <h2 class="welcome-msg">kvízkérdések listája</h2>
   <div>
-    <div class="form-group form-inline">
-      <label for="inputFilter" class="col-sm-1 col-form-label">Szűrő:</label>
-      <div>
-        <input class="form-control ml-2" type="text" id="inputFilter" [(ngModel)]="filter">
+
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="inputFquestionTextilter">Kérdés szövege</label>
+                <input type="text" class="form-control" id="inputFquestionTextilter" placeholder="Kérdés szövege"  [(ngModel)]="filter.questionText">
+              </div>
+              <div class="col-sm-6">
+                <label for="uploader">Feltöltő</label>
+                <input type="text" class="form-control" id="uploader" [(ngModel)]="filter.uploader" placeholder="Feltöltő">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 form-inline">
+                <label for="notInEternalQuiz">Nincs örökkvízhez rendelve</label>
+                <input type="checkbox" class="form-control ml-5" id="notInEternalQuiz" [(ngModel)]="filter.notInEternalQuiz">
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary px-4 float-right" (click)="doSearch()">Keres</button>
+
+        </div>
       </div>
     </div>
+
     <div class="pb-3">
       <table class="table table-bordered table-striped">
         <thead>
         <tr>
           <th scope="col">Kvízkérdések</th>
           <th scope="col">Leírás</th>
+          <th scope="col">Feltöltő</th>
           <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr app-quiz-question-row *ngFor="let q of questions | filterQuizQuestion : filter" [question]="q"></tr>
+        <tr app-quiz-question-row *ngFor="let q of questions" [question]="q"></tr>
         </tbody>
       </table>
-      <div *ngIf="questions.length === 0">
-        Nincs kvízkérdés az adatbázisban.
+      <div *ngIf="questions === null">
+        <div class="spinner-border text-primary"></div>
+      </div>
+      <div *ngIf="questions !== null && questions.length === 0">
+        Nincs a keresési feltételeknek megfelelő kvízkérdés az adatbázisban.
       </div>
     </div>
   </div>

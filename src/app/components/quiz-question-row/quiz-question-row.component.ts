@@ -1,9 +1,13 @@
 import {Component, Host, Input, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
+<<<<<<< HEAD
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {ModifyQuizQuestionModalComponent} from '../modify-quiz-question-modal/modify-quiz-question-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TestControllerService} from '../../../../build/openapi';
+=======
+import {QuestionDTO, TestControllerService} from '../../../../build/openapi';
+>>>>>>> a35fe475f4674cb8c4dbff989e0c6c45b98dcc51
 import {QuizQuestionListPageComponent} from '../quiz-question-list-page/quiz-question-list-page.component';
 
 @Component({
@@ -15,7 +19,7 @@ import {QuizQuestionListPageComponent} from '../quiz-question-list-page/quiz-que
 export class QuizQuestionRowComponent implements OnInit {
 
   @Input()
-  question: QuizQuestion;
+  question: QuestionDTO;
 
   constructor(private testController: TestControllerService, @Host() private parent: QuizQuestionListPageComponent,
               private questionServeice: QuizQuestionService, private modalService: NgbModal) {
