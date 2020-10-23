@@ -1,13 +1,10 @@
 import {Component, Host, Input, OnInit} from '@angular/core';
 import {QuizQuestion} from '../../interfaces/quiz-question';
-<<<<<<< HEAD
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {ModifyQuizQuestionModalComponent} from '../modify-quiz-question-modal/modify-quiz-question-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-=======
 import {TestControllerService} from '../../../../build/openapi';
 import {QuizQuestionListPageComponent} from '../quiz-question-list-page/quiz-question-list-page.component';
->>>>>>> 9b4d0c3eb96c57cd47a275ed56e4fe30f58d2e27
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -20,21 +17,19 @@ export class QuizQuestionRowComponent implements OnInit {
   @Input()
   question: QuizQuestion;
 
-<<<<<<< HEAD
-  constructor(private questionServeice: QuizQuestionService, private modalService: NgbModal) {}
-=======
-  constructor(private testController: TestControllerService, @Host() private parent: QuizQuestionListPageComponent) {
+  constructor(private testController: TestControllerService, @Host() private parent: QuizQuestionListPageComponent,
+              private questionServeice: QuizQuestionService, private modalService: NgbModal) {
   }
->>>>>>> 9b4d0c3eb96c57cd47a275ed56e4fe30f58d2e27
+
 
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
   modify(): void {
     const modalRef = this.modalService.open(ModifyQuizQuestionModalComponent);
     modalRef.componentInstance.question = this.question;
-=======
+  }
+
   showQuestion(): void {
     this.testController.findQuestion(this.question.id).subscribe(
       value => {
@@ -43,7 +38,6 @@ export class QuizQuestionRowComponent implements OnInit {
       error => {
 
       }
-    )
->>>>>>> 9b4d0c3eb96c57cd47a275ed56e4fe30f58d2e27
+    );
   }
 }
