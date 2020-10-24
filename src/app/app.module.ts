@@ -61,6 +61,7 @@ import { QuestionDropdownComponent } from './components/question-dropdown/questi
 import { QuestionOrdercodeComponent } from './components/question-ordercode/question-ordercode.component';
 import { QuestionAssignToQuizComponent } from './components/question-assign-to-quiz/question-assign-to-quiz.component';
 import { QuestionStudentViewComponent } from './components/question-student-view/question-student-view.component';
+import { MarkdownTexteditorComponent } from './components/markdown-texteditor/markdown-texteditor.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { QuestionStudentViewComponent } from './components/question-student-view
     QuestionOrdercodeComponent,
     QuestionAssignToQuizComponent,
     QuestionStudentViewComponent,
+    MarkdownTexteditorComponent,
   ],
     imports: [
         BrowserModule,

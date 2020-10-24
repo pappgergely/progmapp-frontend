@@ -1,9 +1,4 @@
-<div class="form-group row">
-  <label class="col-sm-2 col-form-label" for="inputText">Kérdés szövege</label>
-  <div class="col-sm-10">
-    <textarea name="text" id="inputText" cols="97" rows="5" [(ngModel)]="question.text"></textarea>
-  </div>
-</div>
+<app-markdown-texteditor [(text)]="question.text" labelLength="2" textLength="10" [isTwoColumn]="true" description="Szöveg"></app-markdown-texteditor>
 <div class="form-group row">
   <label class="col-sm-2 col-form-label" for="inputDescription">Megjegyzés</label>
   <div class="col-sm-10">

@@ -4,6 +4,7 @@ import {AnswerType} from '../../enum/question-type.enum';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {FeedbackType} from '../../enum/feedback-type.enum';
 import {environment} from '../../../environments/environment';
+import {CommonControllerService} from '../../../../build/openapi';
 
 @Component({
   selector: 'app-question-radio',
@@ -69,5 +70,4 @@ export class QuestionRadioComponent implements OnInit {
   remove(i: number): void {
     this. question.possibleAnswers[0].possibleAnswerValues.splice(i, 1);
   }
-
 }

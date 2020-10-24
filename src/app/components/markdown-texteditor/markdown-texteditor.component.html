@@ -1,0 +1,21 @@
+<div class="form-group row" >
+  <label class="col-sm-{{labelLength}} col-form-label" for="inputText">
+    <span>{{description}}</span>
+    <span class="mdhint">(Használj markdown-t a szöveg megadásához. Az eredményt Enter-re, vagy a textArea-ból kikattintva látod.)</span>
+  </label>
+  <div class="col-sm-{{textLength}}" >
+    <textarea name="text" id="inputText" style="width: 100%"  rows="5" [(ngModel)]="text" (keypress)="loadHtmlFromMd($event)" (focusout)="loadHtmlFromMd()"></textarea>
+  </div>
+  <div class="col-sm-{{displayedTextLength}}" [innerHTML]="htmlDesc" *ngIf="isTwoColumn"></div>
+</div>
+<div class="form-group row" *ngIf="! isTwoColumn">
+  <label class="col-sm-{{labelLength}} col-form-label" for="inputText">
+    <span>{{description}}</span>
+    <span class="mdhint">(Így fog kinézni a végső html)</span>
+  </label>
+  <div class="col-sm-{{textLength}}" >
+    <div class="col-sm-{{displayedTextLength}}" [innerHTML]="htmlDesc"></div>
+  </div>
+
+</div>
+
