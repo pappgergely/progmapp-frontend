@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {QuizQuestion} from '../../interfaces/quiz-question';
@@ -13,37 +13,63 @@ import {PossibleQuestionAnswers} from '../../interfaces/possible-question-answer
 })
 export class ModifyQuizQuestionModalComponent implements OnInit {
 
-  form: FormGroup;
-  question: QuizQuestion;
-  possibleAnswer: PossibleQuestionAnswers;
-  answersValue: PossibleAnswerValues;
-  submitted = false;
-
   constructor(public activeModal: NgbActiveModal, private fb: FormBuilder,
-              private questionServeice: QuizQuestionService) {}
+              private questionService: QuizQuestionService) {}
+
+  modifyForm: FormGroup;
+
+  @Input()
+  question: QuizQuestion;
+  submitted = false;
 
   ngOnInit(): void {
     this.createForm();
   }
 
-  private createForm(): void {
-    this.form = this.fb.group({
+  private createForm(): FormGroup {
+    return this.modifyForm = this.fb.group({
+      id: this.fb.control(this.question.id),
       text: this.fb.control(this.question.text, Validators.required),
-      description: this.fb.control(this.question.adminDescription, Validators.required),
-      textBefore: this.fb.control(this.possibleAnswer.textBefore, Validators.required),
-      answer: this.fb.control(this.answersValue.text, Validators.required),
-      isRightAnswer: this.fb.control(this.answersValue.isRightAnswer, Validators.required),
+      adminDescription: this.fb.control(this.question.adminDescription),
+      possibleAnswers: this.fb.array(this.question.possibleAnswers.map(possibleAnswer =>
+      this.createPossibleAnswerForm(possibleAnswer))),
       feedbackType: this.fb.control(this.question.feedbackType, Validators.required),
-      explanation: this.fb.control(this.question.explanationAfter, Validators.required)
+      explanationAfter: this.fb.control(this.question.explanationAfter)
+    });
+  }
+
+  private createPossibleAnswerForm(possibleAnswer: PossibleQuestionAnswers): FormGroup {
+    return this.fb.group({
+      textBefore: this.fb.control(possibleAnswer.textBefore),
+      type: this.fb.control(possibleAnswer.type, Validators.required),
+      possibleAnswerValues: this.fb.array(possibleAnswer.possibleAnswerValues.map(possibleAnswers =>
+        this.createPossibleAnswerValueForm(possibleAnswers)))
+    });
+  }
+
+  private createPossibleAnswerValueForm(possibleAnswerValues: PossibleAnswerValues): FormGroup {
+    return this.fb.group({
+      text: this.fb.control(possibleAnswerValues.text, Validators.required),
+      isRightAnswer: this.fb.control(possibleAnswerValues.isRightAnswer)
     });
   }
 
   submit(): boolean {
-    if (this.form.valid) {
-      this.questionServeice.modifyQuestion(this.question);
+    if (this.modifyForm.valid) {
+      this.questionService.modifyQuestion(this.modifyForm.value);
       this.activeModal.close();
     } else {
       return false;
     }
+  }
+
+  remove(i: number): void {
+    // this.question.possibleAnswers[0].possibleAnswerValues.splice(i, 1);
+    (((this.modifyForm.get('possibleAnswers') as FormArray).at(0) as FormArray).get('possibleAnswerValues') as FormArray).removeAt(i);
+  }
+
+  addNewPossibleAnswer(): void {
+    const pav = this.createPossibleAnswerValueForm({ text: '', isRightAnswer: false });
+    (((this.modifyForm.get('possibleAnswers') as FormArray).at(0) as FormArray).get('possibleAnswerValues') as FormArray).push( pav );
   }
 }

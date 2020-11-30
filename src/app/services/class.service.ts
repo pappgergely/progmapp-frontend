@@ -8,6 +8,7 @@ import {Student} from '../interfaces/student';
 import {StudentService} from './student.service';
 import {StudentResponse} from '../interfaces/student-response';
 import {tap} from 'rxjs/operators';
+import {ErrorMsgResponse} from '../interfaces/error-msg-response';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +29,18 @@ export class ClassService {
       this.SERVER_URL,
       e,
       { withCredentials: true }
-    ).subscribe(resp => this.updateClasses(resp));
+    ).subscribe(resp => {
+      this.updateClasses(resp);
+      this.errorHandling(resp).subscribe( () => {} ); // Observable-el működik
+    });
+  }
+
+  errorHandling(errorMsg: ClassResponse): Observable<ClassResponse[]> { // ha Observable<ClassResponse> akkor a return nem jó
+    return null;
   }
 
   private updateClasses(response: ClassResponse): void {
-    if (response.success) {
+    if (response.successFullResult) {
       this.classes.next(response.class);
     }
   }
@@ -57,9 +65,5 @@ export class ClassService {
       {idList: s.loginName},
       {withCredentials: true})
       .pipe(tap (resp => this.studentService.updateStudent(resp)));
-  }
-
-  checkClassExistence(id: string): boolean {
-    return this.class.some(classId => classId.id.includes(id));
   }
 }

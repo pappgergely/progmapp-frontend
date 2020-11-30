@@ -1,10 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AngularEditorModule } from '@kolkov/angular-editor';
-import {NgxEditorModule} from 'ngx-editor';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -118,16 +115,12 @@ import { MarkdownTexteditorComponent } from './components/markdown-texteditor/ma
         AppRoutingModule,
         HttpClientModule,
         NgbModule,
-        FroalaEditorModule.forRoot(),
-        FroalaViewModule.forRoot(),
         NgSelectModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
         BrowserAnimationsModule,
         DragDropModule,
-        AngularEditorModule,
-        NgxEditorModule,
     ],
   exports: [
     ModifyQuizQuestionModalComponent

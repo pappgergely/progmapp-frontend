@@ -29,12 +29,9 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-              "./node_modules/froala-editor/css/froala_style.min.css",
               "node_modules/select2/dist/css/select2.min.css"
             ],
             "scripts": [
-              "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
               "node_modules/jquery/dist/jquery.js",
               "node_modules/select2/dist/js/select2.min.js"
             ]

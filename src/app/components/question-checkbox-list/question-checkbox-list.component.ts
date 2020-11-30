@@ -21,32 +21,46 @@ export class QuestionCheckboxListComponent implements OnInit {
   constructor(private quizQuestionService: QuizQuestionService) {
     this.question = {
       id: null,
+      createdAt: null,
+      updatedAt: null,
+      createdBy: '',
+      lastModifiedBy: '',
       text: '',
+      adminDescription: '',
       explanationAfter: '',
+      answerTimeInSec: null,
+      evaluationAlogrithm: '',
       feedbackType: FeedbackType.default,
       hasImage: null,
-      adminDescription: '',
       possibleAnswers: [
         {
+          id: '',
+          createdAt: null,
+          updatedAt: null,
+          createdBy: '',
+          lastModifiedBy: '',
           textBefore: '',
+          textAfter: '',
           type: AnswerType.checkboxList,
+          hasImage: null,
+          order: '',
+          unitTestCode: '',
           possibleAnswerValues: [
             {
+              id: '',
+              createdAt: null,
+              updatedAt: null,
+              createdBy: '',
+              lastModifiedBy: '',
               text: '',
-              isRightAnswer: false
+              isRightAnswer: false,
+              rightOrder: null,
             }
           ]
         }
       ],
     };
   }
-
-  options = {
-    placeholderText: 'Kérdés szövege...',
-    charCounterCount: false,
-    attribution: false,
-    language: 'hu'
-  };
 
   ngOnInit(): void {
   }

@@ -1,8 +1,7 @@
 import {Component, Host, Input, OnInit} from '@angular/core';
-import {QuizQuestion} from '../../interfaces/quiz-question';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {ModifyQuizQuestionModalComponent} from '../modify-quiz-question-modal/modify-quiz-question-modal.component';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import {QuestionDTO, TestControllerService} from '../../../../build/openapi';
 import {QuizQuestionListPageComponent} from '../quiz-question-list-page/quiz-question-list-page.component';
 
@@ -26,7 +25,11 @@ export class QuizQuestionRowComponent implements OnInit {
   }
 
   modify(): void {
-    const modalRef = this.modalService.open(ModifyQuizQuestionModalComponent);
+    const ngbModalOptions: NgbModalOptions = {
+      backdrop : 'static',
+      keyboard : false
+    };
+    const modalRef = this.modalService.open(ModifyQuizQuestionModalComponent, ngbModalOptions);
     modalRef.componentInstance.question = this.question;
   }
 

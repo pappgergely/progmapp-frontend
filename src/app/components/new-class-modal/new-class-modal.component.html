@@ -1,12 +1,14 @@
 <app-header></app-header>
 <div class="container main-container">
   <form class="p-3">
-<!--    <div class="alert alert-success" role="alert" *ngIf="textShow">-->
-<!--      Osztály sikeresen létrehozva.-->
-<!--    </div>-->
-<!--    <div class="alert alert-danger" role="alert" *ngIf="textShow === false">-->
-<!--      Ezzel az id-val: {{class.id}} már létezik osztály a rendszerben.-->
-<!--    </div>-->
+    <div>
+      <div class="alert alert-success" role="alert" *ngIf="response.successFullResult">
+        Osztály sikeresen létrehozva.
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="response.successFullResult === false">
+        {{response.errorMessages[0].localizedMessage}}
+      </div>
+    </div>
     <h3 class="msg pb-4">Új osztály létrehozása</h3>
     <div class="form-group row">
       <label for="inputClassName" class="col-sm-2 col-form-label">Osztály neve</label>

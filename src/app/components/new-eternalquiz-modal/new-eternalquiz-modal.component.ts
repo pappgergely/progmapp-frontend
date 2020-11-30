@@ -5,6 +5,7 @@ import {QuizQuestion} from '../../interfaces/quiz-question';
 import {FeedbackType} from '../../enum/feedback-type.enum';
 import {QuizQuestionService} from '../../services/quiz-question.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AnswerType} from '../../enum/question-type.enum';
 
 @Component({
   selector: 'app-new-foreverquiz-modal',
@@ -29,13 +30,45 @@ export class NewEternalquizModalComponent implements OnInit {
     };
 
     this.question = {
-      id: '',
+      id: null,
+      createdAt: null,
+      updatedAt: null,
+      createdBy: '',
+      lastModifiedBy: '',
       text: '',
+      adminDescription: '',
       explanationAfter: '',
+      answerTimeInSec: null,
+      evaluationAlogrithm: '',
       feedbackType: FeedbackType.default,
       hasImage: null,
-      adminDescription: '',
-      possibleAnswers: [],
+      possibleAnswers: [
+        {
+          id: '',
+          createdAt: null,
+          updatedAt: null,
+          createdBy: '',
+          lastModifiedBy: '',
+          textBefore: '',
+          textAfter: '',
+          type: AnswerType.default,
+          hasImage: null,
+          order: '',
+          unitTestCode: '',
+          possibleAnswerValues: [
+            {
+              id: '',
+              createdAt: null,
+              updatedAt: null,
+              createdBy: '',
+              lastModifiedBy: '',
+              text: '',
+              isRightAnswer: true,
+              rightOrder: null,
+            }
+          ]
+        }
+      ],
     };
   }
 

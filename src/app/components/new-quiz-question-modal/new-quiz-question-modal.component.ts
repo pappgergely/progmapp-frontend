@@ -17,19 +17,40 @@ export class NewQuizQuestionModalComponent implements OnInit {
   constructor() {
     this.question = {
       id: null,
+      createdAt: null,
+      updatedAt: null,
+      createdBy: '',
+      lastModifiedBy: '',
       text: '',
+      adminDescription: '',
       explanationAfter: '',
+      answerTimeInSec: null,
+      evaluationAlogrithm: '',
       feedbackType: FeedbackType.default,
       hasImage: null,
-      adminDescription: '',
       possibleAnswers: [
         {
+          id: '',
+          createdAt: null,
+          updatedAt: null,
+          createdBy: '',
+          lastModifiedBy: '',
           textBefore: '',
+          textAfter: '',
           type: AnswerType.default,
+          hasImage: null,
+          order: '',
+          unitTestCode: '',
           possibleAnswerValues: [
             {
+              id: '',
+              createdAt: null,
+              updatedAt: null,
+              createdBy: '',
+              lastModifiedBy: '',
               text: '',
-              isRightAnswer: true
+              isRightAnswer: true,
+              rightOrder: null,
             }
           ]
         }

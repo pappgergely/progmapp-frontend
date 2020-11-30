@@ -1,73 +1,93 @@
-<form (submit)="submit()" [formGroup]="form">
+<form *ngIf="modifyForm" (submit)="submit()" [formGroup]="modifyForm">
   <div class="modal-header">
     <h4 class="modal-title">Kérdés módosítása</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="form-group">
-    <label for="inputText">Kérdés szövege</label>
-    <div>
-      <textarea name="text" id="inputText" cols="50" rows="5">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="inputText">Kérdés szövege</label>
+      <textarea class="form-control" id="inputText" placeholder="Kérdés szövege" rows="2" cols="50" name="text"
+                formControlName="text" [ngClass]="{'is-invalid': modifyForm.controls.text.invalid}">
       </textarea>
+      <div class="invalid-feedback" *ngIf="modifyForm.controls.text.errors?.required">
+        Kérdés megadása kötelező
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputDescription">Megjegyzés (opcionális)</label>
+      <textarea class="form-control" name="adminDescription" id="inputDescription" cols="50" rows="2"
+                formControlName="adminDescription">
+      </textarea>
+    </div>
+    <div formArrayName="possibleAnswers">
+      <div *ngFor="let possibleAnswer of modifyForm.get('possibleAnswers').controls; let i = index" [formGroupName]="i">
+        <div class="form-group">
+          <label for="inputTextBefore">Szöveg előtte (opcionális)</label>
+          <div>
+            <input type="text" class="form-control" id="inputTextBefore" name="textBefore" formControlName="textBefore">
+          </div>
+        </div>
+        <div formArrayName="possibleAnswerValues">
+          <div *ngFor="let possibleAnswerValue of possibleAnswer.get('possibleAnswerValues').controls;
+                let j = index; let f = first" [formGroupName]="j">
+            <div class="form-group">
+              <label for="inputAnswer">Válaszok</label>
+              <div class="input-group mb-3">
+                      <textarea class="form-control" id="inputAnswer" name="text" cols="50"
+                                aria-label="Text input with checkbox" formControlName="text"
+                                [ngClass]="{'is-invalid': possibleAnswerValue.controls.text.invalid}">
+                      </textarea>
 
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputDescription">Megjegyzés</label>
-    <div>
-      <textarea name="description" id="inputDescription" cols="50" rows="2"></textarea>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputTextBefore">Szöveg előtte</label>
-    <div>
-      <input type="text" class="form-control" id="inputTextBefore" name="textBefore">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAnswer">Válaszok</label>
-    <div>
-      <div class="input-group mb-3">
-        <textarea id="inputAnswer" name="answer" cols="50" aria-label="Text input with checkbox"></textarea>
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <input class="ml-2" type="checkbox" name="isRightAnswer"
-                   aria-label="Checkbox for following text input">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <input class="ml-2" type="checkbox" name="isRightAnswer"
+                           aria-label="Checkbox for following text input" formControlName="isRightAnswer">
+                  </div>
+                </div>
+                <div class="invalid-feedback" *ngIf="possibleAnswerValue.controls.text.errors?.required">
+                  Válasz megadása kötelező
+                </div>
+              </div>
+              <button class="btn btn-danger mb-4" *ngIf="!f" (click)="remove(j)">Törlés</button>
+            </div>
+          </div>
+          <div class="col-sm-10">
+            <button class="btn btn-outline-success mb-3" (click)="addNewPossibleAnswer()">
+              Új válaszlehetőség hozzáadása
+            </button>
           </div>
         </div>
       </div>
-      <button class="btn btn-danger mb-4"></button>
     </div>
-    <div class="col-sm-2 col-form-label"></div>
-    <div class="col-sm-10">
-      <button class="btn btn-outline-success">
-        Új válaszlehetőség hozzáadása
-      </button>
+    <div class="form-group">
+      <label for="inputFeedbackType">Visszajelzés típusa</label>
+      <div>
+        <select class="form-control" id="inputFeedbackType" name="feedbackType" formControlName="feedbackType"
+                [ngClass]="{'is-invalid': modifyForm.controls.feedbackType.invalid}">
+          <option value="default" selected disabled>Válassz...</option>
+          <option value="noFeedback">Nincs visszajelzés</option>
+          <option value="trueFalseFeedback">Helyes/helytelen válasz</option>
+          <option value="showRightAnswer">Jó válasz megmutatása</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="modifyForm.controls.feedbackType.errors?.required">
+          Visszajelzés típus megadása kötelező
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="inputFeedbackType">Visszajelzés típusa</label>
-    <div>
-      <select class="form-control" id="inputFeedbackType" name="feedbackType">
-        <option value="default" selected disabled>Válassz...</option>
-        <option value="noFeedback">Nincs visszajelzés</option>
-        <option value="trueFalseFeedback">Helyes/helytelen válasz</option>
-        <option value="showRightAnswer">Jó válasz megmutatása</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputExplain">Magyarázat</label>
-    <div>
-        <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="2" cols="50" name="explanation">
-        </textarea>
+    <div class="form-group">
+      <label for="inputExplain">Magyarázat (opcionális)</label>
+      <textarea class="form-control" id="inputExplain" placeholder="Magyarázat" rows="2" cols="50"
+                name="explanationAfter"
+                formControlName="explanationAfter">
+      </textarea>
     </div>
   </div>
-  <div class="form-group">
-    <div>
-      <button type='submit' class="btn btn-primary mb-4">Módosítás</button>
-    </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Mégsem</button>
+    <button class="btn btn-primary" type="submit" [disabled]="modifyForm.invalid">Mentés</button>
   </div>
 </form>
 
