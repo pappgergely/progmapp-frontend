@@ -54,6 +54,7 @@ export class ModifyQuizQuestionModalComponent implements OnInit {
     });
   }
 
+  // TODO refresh page after modal was closed
   submit(): boolean {
     if (this.modifyForm.valid) {
       this.questionService.modifyQuestion(this.modifyForm.value);
@@ -64,7 +65,6 @@ export class ModifyQuizQuestionModalComponent implements OnInit {
   }
 
   remove(i: number): void {
-    // this.question.possibleAnswers[0].possibleAnswerValues.splice(i, 1);
     (((this.modifyForm.get('possibleAnswers') as FormArray).at(0) as FormArray).get('possibleAnswerValues') as FormArray).removeAt(i);
   }
 
