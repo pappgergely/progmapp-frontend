@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Class} from '../../interfaces/class';
 import {ClassService} from '../../services/class.service';
 import {Semester} from '../../enum/semester.enum';
@@ -35,8 +35,9 @@ export class NewClassModalComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.classService.errorHandling(this.response.successFullResult[0])) {
-      this.saveClass();
-    }
+    // if (this.classService.errorHandling(this.response.successFullResult[0])) {
+    //   this.saveClass();
+    // }
+    this.saveClass();
   }
 }

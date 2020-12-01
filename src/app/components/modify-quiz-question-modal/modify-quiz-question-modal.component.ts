@@ -54,7 +54,6 @@ export class ModifyQuizQuestionModalComponent implements OnInit {
     });
   }
 
-  // TODO refresh page after modal was closed
   submit(): boolean {
     if (this.modifyForm.valid) {
       this.questionService.modifyQuestion(this.modifyForm.value);

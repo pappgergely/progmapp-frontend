@@ -31,13 +31,13 @@ export class ClassService {
       { withCredentials: true }
     ).subscribe(resp => {
       this.updateClasses(resp);
-      this.errorHandling(resp).subscribe( () => {} ); // Observable-el működik
+      // this.errorHandling(resp).subscribe( () => {} ); // Observable-el működik
     });
   }
 
-  errorHandling(errorMsg: ClassResponse): Observable<ClassResponse[]> { // ha Observable<ClassResponse> akkor a return nem jó
-    return null;
-  }
+  // errorHandling(errorMsg: ClassResponse): Observable<ClassResponse[]> { // ha Observable<ClassResponse> akkor a return nem jó
+  //   return null;
+  // }
 
   private updateClasses(response: ClassResponse): void {
     if (response.successFullResult) {
