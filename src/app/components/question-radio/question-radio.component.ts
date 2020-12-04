@@ -35,7 +35,7 @@ export class QuestionRadioComponent implements OnInit {
       hasImage: null,
       possibleAnswers: [
         {
-          id: '',
+          id: null,
           createdAt: null,
           updatedAt: null,
           createdBy: '',
@@ -48,7 +48,7 @@ export class QuestionRadioComponent implements OnInit {
           unitTestCode: '',
           possibleAnswerValues: [
             {
-              id: '',
+              id: null,
               createdAt: null,
               updatedAt: null,
               createdBy: '',

@@ -31,11 +31,11 @@ export class ClassService {
       { withCredentials: true }
     ).subscribe(resp => {
       this.updateClasses(resp);
-      // this.errorHandling(resp).subscribe( () => {} ); // Observable-el működik
+     // this.errorHandling(resp).subscribe( () => {} );
     });
   }
 
-  // errorHandling(errorMsg: ClassResponse): Observable<ClassResponse[]> { // ha Observable<ClassResponse> akkor a return nem jó
+  // errorHandling(error: ClassResponse): Observable<ClassResponse> {
   //   return null;
   // }
 

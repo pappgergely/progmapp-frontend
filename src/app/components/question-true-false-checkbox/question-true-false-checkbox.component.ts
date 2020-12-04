@@ -34,7 +34,7 @@ export class QuestionTrueFalseCheckboxComponent implements OnInit {
       hasImage: null,
       possibleAnswers: [
         {
-          id: '',
+          id: null,
           createdAt: null,
           updatedAt: null,
           createdBy: '',
@@ -47,7 +47,7 @@ export class QuestionTrueFalseCheckboxComponent implements OnInit {
           unitTestCode: '',
           possibleAnswerValues: [
             {
-              id: '',
+              id: null,
               createdAt: null,
               updatedAt: null,
               createdBy: '',
