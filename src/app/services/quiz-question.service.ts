@@ -39,7 +39,6 @@ export class QuizQuestionService {
     if (response.success) {
       this.quizQuestions.next(response.quizQuestion);
     }
-    window.location.reload();
   }
 
   addQuizQuestion(q: QuizQuestion, imageFormData: FormData): void {
